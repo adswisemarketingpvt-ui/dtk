@@ -60,7 +60,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center">
                 <Mail className="w-5 h-5 text-amber-300 mr-2 flex-shrink-0" />
-                <span className="text-amber-100 text-sm">info@luxuryshoes.com</span>
+                <span className="text-amber-100 text-sm">contact@dtkfootwear.com</span>
               </div>
               <div className="flex items-start">
                 <Clock className="w-5 h-5 text-amber-300 mr-2 mt-0.5 flex-shrink-0" />
@@ -73,7 +73,7 @@ const Footer = () => {
         <div className="border-t border-amber-800 mt-8 pt-8 text-center">
           
           <p className="text-amber-200 text-sm">
-            <span >© 2024 Luxury Shoes. All rights reserved. Crafted with precision and passion.</span>{" "}
+            
             <span className="text-gray-400">Powered By</span>{" "}
             <span className="text-gray-400 font-bold">ads</span>
             <span className="text-cyan-400 font-bold">wise</span>{" "}

@@ -35,7 +35,7 @@ const ProductPage = () => {
 Please confirm availability and next steps. Thank you!`;
 
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/+919529666812?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/+9765758830?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');
   };
 

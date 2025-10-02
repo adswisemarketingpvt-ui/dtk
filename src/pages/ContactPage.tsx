@@ -64,7 +64,7 @@ Thank you! 🙏`;
     {
       icon: Mail,
       title: 'Email Us',
-      details: ['info@luxuryshoes.com', 'orders@luxuryshoes.com', 'support@luxuryshoes.com'],
+      details: ['contact@dtkfootwear.com', 'kamblednyandev@gmail.com'],
     },
     {
       icon: Clock,
@@ -237,7 +237,7 @@ Thank you! 🙏`;
                 <h4 className="font-bold text-amber-900 mb-2">WhatsApp Support</h4>
                 <p className="text-gray-600 text-sm mb-3">Get instant support via WhatsApp</p>
                 <a
-                  href="https://wa.me/+1234567890"
+                  href="https://wa.me/+9765758830"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-green-600 hover:text-green-700 font-medium text-sm"

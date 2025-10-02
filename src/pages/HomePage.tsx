@@ -323,7 +323,7 @@ I would like to schedule a consultation to discuss my custom shoe requirements.
 Thank you for offering this bespoke service! 👞✨`;
 
             const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/+1234567890?text=${encodedMessage}`;
+            const whatsappUrl = `https://wa.me/+9765758830?text=${encodedMessage}`;
             window.open(whatsappUrl, '_blank');
           }}
           className="text-white bg-gradient-to-r from-amber-900 to-orange-900 px-8 py-4 rounded-full font-bold text-lg hover:opacity-90 transition-colors inline-flex items-center"

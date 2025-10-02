@@ -59,12 +59,12 @@ export default function Hero() {
                 className="mx-auto max-w-2xl"
               >
 
-                <h1 className="whitespace-nowrap text-4xl sm:text-5xl md:text-6xl font-extrabold text-white drop-shadow-md">
+                {/* <h1 className="whitespace-nowrap text-4xl sm:text-5xl md:text-6xl font-extrabold text-white drop-shadow-md">
                   FORMAL SHOES
                 </h1>
                 <p className="text-base sm:text-lg md:text-xl font-script text-gray-100/95 mb-2 justify-center drop-shadow-md">
                   Manufacturer , Wholesaler & Retailer of Leather Shoes
-                </p>
+                </p> */}
 
                 
               </motion.div>

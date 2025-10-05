@@ -1,86 +1,86 @@
 import React from "react";
-import { motion } from "framer-motion";
 
-export default function Hero() {
+const App = () => {
+  return <Hero />;
+};
+
+/**
+ * @typedef {object} HeroProps
+ * @property {string} [moreHref] - Optional callback or link for the "More" button.
+ */
+
+/**
+ * A responsive hero section component for an e-commerce site.
+ * It's designed to be mobile-first and scales up for larger screens.
+ * @param {HeroProps} props
+ */
+const Hero = ({ moreHref = "#shop" }: { moreHref?: string }) => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-50 to-orange-50 relative overflow-hidden flex items-center">
-      {/* Background video - replace src and poster with your actual files */}
-      <motion.div
-        initial={{ opacity: 0, scale: 1.02 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.9, ease: "easeOut" }}
-        className="absolute inset-0 z-0 overflow-hidden"
-        aria-hidden="true"
-      >
-        {/*
-          Mobile-friendly: video is hidden under md to save data and ensure fast load.
-          Replace `1st.mp4` and poster paths with your hosted files.
-        */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          <video
-            className="hidden md:block w-full h-full object-cover min-h-[60vh]"
-            autoPlay
-            loop
-            muted
-            playsInline
-            poster="/videos/hero-poster.jpg"
-          >
-            <source src="1st.mp4" type="video/mp4" />
-          </video>
-
-          {/* dark overlay to make the whole hero darker for legibility */}
-          <div className="absolute inset-0 bg-black/40 md:bg-black/45 pointer-events-none" />
-        </div>
-
-        {/* Static background fallback for mobile (shows the poster) */}
-        <div
-          className="md:hidden w-full h-full bg-cover bg-center min-h-[60vh]"
-          style={{ backgroundImage: `url('/videos/hero-poster.jpg')` }}
-          aria-hidden="true"
-        />
-
-        {/* Subtle dark overlay to keep text readable */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-amber-50/85" />
-      </motion.div>
-
-      <main className="relative z-10 w-full">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-          {/* Center everything horizontally and vertically within the hero */}
-          <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-8">
-            {/* Left Shoe (md+) */}
-            <div className="hidden md:flex md:justify-end md:pr-6 order-1 md:order-1"></div>
-
-            {/* Center Content - force center alignment */}
-            <div className="order-2 md:order-2 text-center px-4 md:px-0">
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
-                className="mx-auto max-w-2xl"
-              >
-
-                {/* <h1 className="whitespace-nowrap text-4xl sm:text-5xl md:text-6xl font-extrabold text-white drop-shadow-md">
-                  FORMAL SHOES
-                </h1>
-                <p className="text-base sm:text-lg md:text-xl font-script text-gray-100/95 mb-2 justify-center drop-shadow-md">
-                  Manufacturer , Wholesaler & Retailer of Leather Shoes
-                </p> */}
-
-                
-              </motion.div>
+    // Fill the full viewport height
+    <section className="relative bg-white w-full h-screen overflow-hidden">
+      {/* Full width container (no side padding/margin) */}
+      <div className="w-full h-full">
+        <div className="relative h-full overflow-hidden mb-0">
+          {/* use flex to center content vertically/horizontally */}
+          <div className="relative flex items-center justify-center h-full w-full">
+            {/* Left Shoe (flush to left edge) */}
+            <div
+              className="absolute left-0 top-0 bottom-0 pointer-events-none flex items-center"
+              // keep it off the z-axis so center content sits above
+              aria-hidden="true"
+            >
+              <img
+                src="https://www.dtkfootwear.com/public/Black%20Shoes/1%20(4).png"
+                alt="Black formal shoe"
+                loading="lazy"
+                className="h-full max-h-screen w-auto object-contain select-none"
+                style={{ transform: "translateX(-6%)" }} // slight nudge if you want it beyond edge
+              />
             </div>
 
-            {/* Right Shoe (md+) */}
-            <div className="hidden md:flex md:justify-start md:pl-6 order-3 md:order-3"></div>
+            {/* Right Shoe (flush right + mirrored) */}
+            <div
+              className="absolute right-0 top-0 bottom-0 pointer-events-none flex items-center"
+              aria-hidden="true"
+            >
+              <img
+                src="https://www.dtkfootwear.com/public/Brown%20Shoess/Artboard%204.png"
+                alt="Brown formal shoe"
+                loading="lazy"
+                className="h-full max-h-screen w-auto object-contain select-none"
+                style={{ transform: "scaleX(-1) translateX(6%)" }} // mirror + nudge inside/outside edge
+              />
+            </div>
+
+            {/* Center content */}
+            <div className="relative z-10 w-full max-w-2xl text-center px-6 h-full flex flex-col items-center justify-center">
+              <p className="uppercase text-sm tracking-wider text-amber-700 mb-2 sm:mb-4">
+                New Or Never
+              </p>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-amber-900 leading-tight">
+                Formal Shoes
+              </h1>
+
+              <p className="mt-4 text-gray-600 max-w-xl mx-auto text-sm sm:text-base">
+                Classic craftsmanship meets modern comfort.
+              </p>
+
+              <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a
+                  href={moreHref}
+                  className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 py-3 rounded-full bg-amber-900 text-white text-sm font-medium shadow-md hover:bg-amber-800 focus:outline-none focus:ring-4 focus:ring-amber-300 transition-all"
+                  aria-label="Explore more formal shoes"
+                >
+                  Explore More
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-
-        {/* Decorative shapes (subtle, behind content) */}
-        <div className="absolute inset-0 pointer-events-none hidden md:block">
-          <div className="absolute top-12 left-12 w-28 h-28 bg-amber-200 rounded-full opacity-20 blur-3xl" />
-          <div className="absolute bottom-20 right-12 w-36 h-36 bg-orange-200 rounded-full opacity-18 blur-3xl" />
-        </div>
-      </main>
-    </div>
+      </div>
+    </section>
   );
-}
+};
+
+export default App;

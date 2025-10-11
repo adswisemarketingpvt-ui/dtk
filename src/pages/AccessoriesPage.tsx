@@ -1,158 +1,149 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Star, ArrowRight } from 'lucide-react';
-import { belts } from '../products/belts';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
+interface ShoeImage {
+  src: string;
+  alt: string;
+}
 
-const AccessoriesPage = () => {
-  const categories = [
-    { name: 'All Belts', count: belts.length, active: true },
-    { name: 'Formal Belts', count: 3, active: false },
-    { name: 'Casual Belts', count: 2, active: false },
-    { name: 'Luxury Belts', count: 1, active: false },
-  ];
+const shoeImages: ShoeImage[] = [
+  { src: "https://i.pinimg.com/1200x/45/41/73/4541733fc416d9fac7d5bce17ba0eeef.jpg", alt: "Black Formal Shoe" },
+  { src: "https://i.pinimg.com/736x/27/7c/4a/277c4ae128d146f6203766904fab635d.jpg", alt: "Brown Formal Shoe" },
+  { src: "https://i.pinimg.com/736x/5c/d6/e7/5cd6e713b05f33e5aaeee1d95dd18dc4.jpg", alt: "Classic Leather Shoe" },
+  
+];
+
+const AccessoriesPage: React.FC = () => {
+  const [showDetails, setShowDetails] = useState(false);
 
   return (
-    <div>
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-amber-50 to-orange-50 py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center">
-            <h1 className="text-5xl font-serif font-bold text-amber-900 mb-6">Premium Accessories</h1>
-            <p className="text-xl text-amber-800 max-w-3xl mx-auto leading-relaxed">
-              Complete your sophisticated look with our handcrafted leather belts, 
-              made from the finest materials with attention to every detail.
-            </p>
-          </div>
-        </div>
-      </section>
+    <section className=" text-white py-16 relative overflow-hidden">
+      <div className="container mx-auto flex flex-wrap items-center justify-between gap-10 px-6 md:flex-nowrap">
+        {/* Left Text Section */}
+        <motion.div
+          className="md:w-2/5"
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
+            Wholesale / Bulk Orders
+          </h2>
+          <p className="text-black mb-6 leading-relaxed">
+            Get exclusive pricing and offers on bulk purchases of formal shoes.
+            Partner with DTK Footwear for premium quality, style, and comfort at
+            wholesale rates.
+          </p>
 
-      {/* Categories Filter */}
-      <section className="py-8 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-4">
-            {categories.map((category, index) => (
-              <button
-                key={index}
-                className={`px-6 py-3 rounded-full font-medium transition-colors ${
-                  category.active
-                    ? 'bg-amber-900 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-amber-100 hover:text-amber-900'
-                }`}
-              >
-                {category.name} ({category.count})
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
+          {/* Minimum Orders Info */}
+          <div className="flex items-center gap-4 flex-wrap">
+  <div className="bg-[#1a1a1a] border border-[#eab12b] text-[#eab12b] inline-block px-4 py-2 rounded-md font-semibold">
+    Minimum Order Quantity: 40 Pairs
+  </div>
 
-      {/* Belts Collection */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-serif font-bold text-amber-900 mb-4">Leather Belts Collection</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Discover our exquisite collection of handcrafted leather belts, designed to complement 
-              your formal and casual attire with timeless elegance.
-            </p>
-          </div>
+  <button
+    onClick={() => setShowDetails(!showDetails)}
+    className="bg-[#eab12b] text-black font-semibold px-6 py-3 rounded-md hover:bg-[#c6951f] transition"
+  >
+    {showDetails ? "Hide Details" : "Learn More"}
+  </button>
+</div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {belts.map((belt) => (
-              <Link
-                key={belt.id}
-                to={`/product/${belt.id}`}
-                className="group cursor-pointer"
-              >
-                <div className="bg-white rounded-2xl shadow-lg overflow-hidden transition-transform duration-300 group-hover:scale-105 group-hover:shadow-xl">
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={belt.image}
-                      alt={belt.name}
-                      className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
-                    />
-                    {belt.originalPrice > belt.price && (
-                      <div className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-medium">
-                        SALE
-                      </div>
-                    )}
-                    <div className="absolute top-4 right-4">
-                      <button className="bg-white bg-opacity-90 p-2 rounded-full hover:bg-opacity-100 transition-colors">
-                        <ArrowRight className="w-4 h-4 text-amber-900" />
-                      </button>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center mb-2">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className={`w-4 h-4 ${
-                            i < belt.rating
-                              ? 'fill-amber-400 text-amber-400'
-                              : 'text-gray-300'
-                          }`}
-                        />
-                      ))}
-                    </div>
-                    <h3 className="font-bold text-amber-900 mb-2 group-hover:text-amber-700 transition-colors">
-                      {belt.name}
-                    </h3>
-                    <p className="text-gray-600 text-sm mb-2">{belt.category}</p>
-                    <div className="flex justify-between items-center text-xs text-gray-500 mb-4">
-                      <span>{belt.material}</span>
-                      <span>Width: {belt.width}</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <span className="text-2xl font-bold text-amber-900">${belt.price}</span>
-                      {belt.originalPrice > belt.price && (
-                        <span className="text-gray-400 line-through">${belt.originalPrice}</span>
-                      )}
-                    </div>
-                  </div>
+        </motion.div>
+
+        {/* Image Grid Section (Smaller, Modern Layout) */}
+        <motion.div
+          className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:w-3/5"
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          {shoeImages.map((img, index) => (
+            <div
+              key={index}
+              className="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition"
+            >
+              <img
+                src={img.src}
+                alt={img.alt}
+                className="w-full h-[220px] object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Expandable Details Section */}
+      <AnimatePresence>
+        {showDetails && (
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 50 }}
+            transition={{ duration: 0.7 }}
+            className="bg-amber-900 mt-10 py-12"
+          >
+            <div className="container mx-auto px-6 md:px-10 text-gray-300">
+              <h3 className="text-2xl md:text-3xl font-semibold text-[#eab12b] mb-6">
+                Why Partner with DTK Footwear?
+              </h3>
+
+              <div className="grid md:grid-cols-3 gap-8">
+                <div>
+                  <h4 className="text-lg font-semibold text-white mb-2">
+                    🏷️ Best Wholesale Pricing
+                  </h4>
+                  <p>
+                    Enjoy competitive rates on all formal shoe ranges without
+                    compromising on quality or design.
+                  </p>
                 </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Features Section */}
-      <section className="py-16 bg-amber-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-serif font-bold text-amber-900 mb-4">Why Choose Our Belts</h2>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-amber-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">✂</span>
+                <div>
+                  <h4 className="text-lg font-semibold text-white mb-2">
+                    👞 Premium Quality Assurance
+                  </h4>
+                  <p>
+                    Each pair is crafted with care using top-grade leather and
+                    modern manufacturing techniques.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-semibold text-white mb-2">
+                    🚚 Bulk & Fast Delivery
+                  </h4>
+                  <p>
+                    Get reliable delivery for bulk orders anywhere in India with
+                    guaranteed timelines.
+                  </p>
+                </div>
               </div>
-              <h3 className="font-bold text-amber-900 mb-2">HANDCRAFTED QUALITY</h3>
-              <p className="text-gray-600 text-sm">Each belt is carefully crafted by skilled artisans</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-amber-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">🐄</span>
+
+              {/* MOQ Highlight Section */}
+              <div className="mt-12 text-center">
+                <div className="inline-block border border-[#eab12b] text-[#eab12b] px-6 py-3 rounded-md text-lg font-semibold mb-6">
+                  ⚠️ Minimum Order Quantity (MOQ):{" "}
+                  <span className="text-white font-bold">40 Pairs</span>
+                </div>
+
+                <p className="text-gray-300 mb-6">
+                  Available for retailers, distributors, and corporate clients.
+                  Get custom packaging and branding options on bulk orders.
+                </p>
+
+                <a
+                  href="/contact"
+                  className="inline-block bg-[#eab12b] text-black font-semibold px-8 py-3 rounded-md hover:bg-[#c6951f] transition"
+                >
+                  Contact Wholesale Team
+                </a>
               </div>
-              <h3 className="font-bold text-amber-900 mb-2">PREMIUM LEATHER</h3>
-              <p className="text-gray-600 text-sm">Made from finest Italian and premium leather</p>
             </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-amber-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">⚡</span>
-              </div>
-              <h3 className="font-bold text-amber-900 mb-2">LIFETIME DURABILITY</h3>
-              <p className="text-gray-600 text-sm">Built to last with proper care and maintenance</p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
   );
 };
 

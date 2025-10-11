@@ -1,15 +1,13 @@
-// src/pages/ProductPage.jsx
-import React, { useState, useMemo } from 'react';
+// src/pages/ProductPage.tsx
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Star, ArrowRight, Heart, Truck, Shield, ChevronLeft } from 'lucide-react';
+import { Star, ArrowRight, Heart, Truck, Shield, ChevronLeft, ChevronRight } from 'lucide-react';
 import { products } from '../products/shoes'; // adjust path as needed
 
-// Per-product demo images mapping (key: product id)
-// Place real files in public/images/ or use external URLs.
-// Example: product with id: 1 will use the array under key 1.
+// ... DEMO_IMAGES_MAP and DEFAULT_DEMO_IMAGES same as your version ...
 const DEMO_IMAGES_MAP = {
   1: [
-    'https://www.dtkfootwear.com/public/Black%20Shoes/1%20(2).png', // your uploaded image for product 1
+    'https://www.dtkfootwear.com/public/Black%20Shoes/1%20(2).png',
     'https://www.dtkfootwear.com/public/Black%20Shoes/1%20(3).png',
     'https://www.dtkfootwear.com/public/Black%20Shoes/1%20(4).png',
     'https://www.dtkfootwear.com/public/Black%20Shoes/1%20(5).png'
@@ -26,21 +24,87 @@ const DEMO_IMAGES_MAP = {
     'https://www.dtkfootwear.com/public/Brown%20Shoess/Artboard%205.png',
     'https://www.dtkfootwear.com/public/Brown%20Shoess/Artboard%206.png'
   ],
-  // add mappings for more ids as needed
+  4: [
+    'https://www.dtkfootwear.com/public/Brown%20Shoess%203/Brown%20Shoes%204-2.png',
+    'https://www.dtkfootwear.com/public/Brown%20Shoess%203/Brown%20Shoes%201-2.png',
+    'https://www.dtkfootwear.com/public/Brown%20Shoess%203/Brown%20Shoes%203-2.png',
+    'https://www.dtkfootwear.com/public/Brown%20Shoess%203/Brown%20Shoes%202-2.png'
+  ],
+  5: [
+    'https://www.dtkfootwear.com/public/BROWN%20SHOES%202/Brown%20Shoes%203-3.png',
+    'https://www.dtkfootwear.com/public/BROWN%20SHOES%202/Brown%20Shoes%202-3.png',
+    'https://www.dtkfootwear.com/public/BROWN%20SHOES%202/Brown%20Shoes%201-3.png',
+    'https://www.dtkfootwear.com/public/BROWN%20SHOES%202/Brown%20Shoes%204-3.png'
+  ],
+  6: [
+    'https://www.dtkfootwear.com/public/8/Front%20Side%20.png',
+    'https://www.dtkfootwear.com/public/8/Front%20%2B%20Sole.png',
+    'https://www.dtkfootwear.com/public/8/Frontt%20Cross.png',
+    'https://www.dtkfootwear.com/public/8/Side%201.png',
+    'https://www.dtkfootwear.com/public/8/Back%20Side%20.png'
+  ],
+  7: [
+    'https://www.dtkfootwear.com/public/7/4.png',
+    'https://www.dtkfootwear.com/public/7/2_%20(1).png',
+    'https://www.dtkfootwear.com/public/7/3.png',
+    'https://www.dtkfootwear.com/public/7/5.png',
+    'https://www.dtkfootwear.com/public/7/BLC%201.png'
+  ],
+  8: [
+    'https://www.dtkfootwear.com/public/6/6.png',
+    'https://www.dtkfootwear.com/public/6/4%20(1).png',
+    'https://www.dtkfootwear.com/public/6/DTK%203.png',
+    'https://www.dtkfootwear.com/public/6/DTK.png',
+    'https://www.dtkfootwear.com/public/6/DTK%202.png',
+    
+  ],
+  9: [
+    'https://www.dtkfootwear.com/public/9/Artboard%206.png',
+    'https://www.dtkfootwear.com/public/9/Artboard%205.png',
+    'https://www.dtkfootwear.com/public/9/Artboard%202%20(1).png',
+    'https://www.dtkfootwear.com/public/9/Artboard%201%20(1).png',
+    'https://www.dtkfootwear.com/public/9/Artboard%204.png',
+  ],
+  10: [
+    'https://www.dtkfootwear.com/public/10/Artboard%202%20(2).png',
+    'https://www.dtkfootwear.com/public/10/Artboard%201%20(2).png',
+    'https://www.dtkfootwear.com/public/10/Artboard%206%20(2).png',
+    'https://www.dtkfootwear.com/public/10/Artboard%204%20(2).png',
+    'https://www.dtkfootwear.com/public/10/Artboard%202%20(2).png',
+  ],
+  11: [
+    'https://www.dtkfootwear.com/public/11/Artboard%202%20(3).png',
+    'https://www.dtkfootwear.com/public/11/Artboard%201%20(3).png',
+    'https://www.dtkfootwear.com/public/11/Artboard%203%20(2).png',
+    'https://www.dtkfootwear.com/public/11/Artboard%204%20(3).png',
+    'https://www.dtkfootwear.com/public/11/Artboard%205%20(3).png',
+  ],
+  12: [
+    'https://www.dtkfootwear.com/public/15/Artboard%205%20(4).png',
+    'https://www.dtkfootwear.com/public/15/Artboard%204%20(4).png',
+    'https://www.dtkfootwear.com/public/15/Artboard%202%20(4).png',
+    'https://www.dtkfootwear.com/public/15/Artboard%201%20(4).png', 
+    'https://www.dtkfootwear.com/public/15/Artboard%203%20(3).png',
+  ],
+  13: [
+    'https://www.dtkfootwear.com/public/18/Artboard%205%20(5).png',
+    'https://www.dtkfootwear.com/public/18/Artboard%201%20(5).png',
+    'https://www.dtkfootwear.com/public/18/Artboard%203%20(4).png',
+    'https://www.dtkfootwear.com/public/18/Artboard%204%20(5).png',
+    
+  ],
 };
 
-// default demo images (used when no mapping found for a product id)
-// const DEFAULT_DEMO_IMAGES = [
-//   '/images/demo_default_1.png',
-//   '/images/demo_default_2.png',
-//   '/images/demo_default_3.png',
-// ];
+const DEFAULT_DEMO_IMAGES = [
+  'https://via.placeholder.com/800x600?text=Product+Image+1',
+  'https://via.placeholder.com/800x600?text=Product+Image+2',
+  'https://via.placeholder.com/800x600?text=Product+Image+3',
+];
 
 const ProductPage = () => {
-  const { id } = useParams(); // expects route like /product/1
+  const { id } = useParams();
   const navigate = useNavigate();
 
-  // find product by id; fallback to first product if not found
   const product = useMemo(() => {
     if (!id) return products[0] ?? null;
     const pid = Number(id);
@@ -48,12 +112,26 @@ const ProductPage = () => {
     return found ?? products[0] ?? null;
   }, [id]);
 
-  // Local UI state
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedColor, setSelectedColor] = useState('');
   const [quantity, setQuantity] = useState(1);
   const [mainImageIndex, setMainImageIndex] = useState(0);
   const [wishlisted, setWishlisted] = useState(false);
+
+  // ref for mobile thumbnail container
+  const mobileThumbsRef = useRef<HTMLDivElement | null>(null);
+
+  // --- IMPORTANT: scroll to top when page mounts or product changes ---
+  useEffect(() => {
+    // Use instant jump on navigation to avoid partial render showing scrolled position,
+    // but smooth is also a valid UX; change 'behavior' to 'smooth' if you prefer.
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    // Reset image and selection states when product changes
+    setMainImageIndex(0);
+    setSelectedSize('');
+    setSelectedColor('');
+    setQuantity(1);
+  }, [product?.id]);
 
   if (!product) {
     return (
@@ -71,28 +149,21 @@ const ProductPage = () => {
     );
   }
 
-  // safe defaults for sizes/colors/description/images
   const sizes = Array.isArray(product.sizes) && product.sizes.length ? product.sizes : ['6', '7', '8', '9', '10'];
   const colors = Array.isArray(product.colors) && product.colors.length ? product.colors : ['Black'];
   const description = product.description ?? 'No description available for this product.';
   const productImages = Array.isArray(product.images) && product.images.length ? product.images : (product.image ? [product.image] : []);
 
-  // select demo images based on product id
   const demoForThisProduct = DEMO_IMAGES_MAP[product.id] ?? DEMO_IMAGES_MAP[String(product.id)] ?? DEFAULT_DEMO_IMAGES;
 
-  // combine product images with demo images (product images first)
   const combinedImages = useMemo(() => {
-    const MAX_TOTAL_IMAGES = 10; // cap total images
+    const MAX_TOTAL_IMAGES = 12;
     const base = [...productImages];
-
     for (const d of demoForThisProduct) {
       if (base.length >= MAX_TOTAL_IMAGES) break;
       if (!base.includes(d)) base.push(d);
     }
-
-    // ensure at least one image exists
     if (base.length === 0) base.push('https://via.placeholder.com/800x600?text=No+Image');
-
     return base;
   }, [productImages, demoForThisProduct]);
 
@@ -115,19 +186,27 @@ Please confirm availability and next steps. Thank you!`;
     window.open(whatsappUrl, '_blank');
   };
 
-  // rating clamp
   const rating = Math.max(0, Math.min(5, Number(product.rating ?? 0)));
 
-  // Inline thumbnails logic: exclude current main image index
+  // inline thumbs for overlay (desktop)
   const maxInlineThumbs = 6;
   const inlineThumbIndices = (() => {
-    const indices = [];
+    const indices: number[] = [];
     for (let i = 0; i < combinedImages.length && indices.length < maxInlineThumbs; i++) {
       if (i === mainImageIndex) continue;
       indices.push(i);
     }
     return indices;
   })();
+
+  // Mobile thumbnails scroll controls
+  const scrollMobileThumbs = (dir = 'next') => {
+    const el = mobileThumbsRef.current as any;
+    if (!el) return;
+    const amount = el.clientWidth || window.innerWidth * 0.8;
+    const offset = dir === 'next' ? amount : -amount;
+    el.scrollBy({ left: offset, behavior: 'smooth' });
+  };
 
   return (
     <div className="bg-gradient-to-b from-amber-50 via-amber-50 to-white min-h-screen py-12">
@@ -160,8 +239,14 @@ Please confirm availability and next steps. Thank you!`;
                     onClick={() => setMainImageIndex(idx)}
                     className={`w-20 h-20 rounded-xl overflow-hidden border transition transform ${idx === mainImageIndex ? 'scale-105 border-amber-300 shadow' : 'border-gray-100 hover:scale-105'}`}
                     aria-label={`Show image ${idx + 1}`}
+                    title={`Image ${idx + 1}`}
                   >
-                    <img src={src} alt={`img-${idx}`} className="w-full h-full object-cover" onError={(e) => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/200x200?text=No+Image'; }} />
+                    <img
+                      src={src}
+                      alt={`img-${idx}`}
+                      className="w-full h-full object-contain bg-white"
+                      onError={(e: any) => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/200x200?text=No+Image'; }}
+                    />
                   </button>
                 ))}
               </div>
@@ -169,67 +254,61 @@ Please confirm availability and next steps. Thank you!`;
               {/* main image */}
               <div className="flex-1 flex flex-col items-center justify-center">
                 <div className="relative w-full">
-                  <div className="rounded-2xl overflow-hidden shadow-lg relative">
+                  <div className="rounded-2xl overflow-hidden shadow-lg relative bg-white">
                     <img
                       src={combinedImages[mainImageIndex]}
                       alt={product.name}
-                      className="w-full h-[520px] md:h-[520px] object-cover transform transition duration-500 hover:scale-105"
-                      onError={(e) => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/800x600?text=No+Image'; }}
+                      className="w-full h-[60vh] md:h-[520px] object-contain transition duration-500"
+                      onError={(e: any) => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/800x600?text=No+Image'; }}
                     />
 
-                    {/* INLINE THUMBNAILS: bottom-left overlay (uses combinedImages) */}
-                    <div className="absolute left-4 bottom-4 md:left-6 md:bottom-6">
-                      {/* <div className="flex flex-wrap gap-3 items-end bg-white/0">
-                        {inlineThumbIndices.map((thumbIdx, i) => (
-                          <button
-                            key={`inline-${thumbIdx}-${i}`}
-                            onClick={() => setMainImageIndex(thumbIdx)}
-                            className={`w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden border-2 shadow transition transform hover:scale-110 ${thumbIdx === mainImageIndex ? 'ring-2 ring-amber-200' : 'border-white/80'}`}
-                            aria-label={`Preview image ${thumbIdx + 1}`}
-                            title={`Open image ${thumbIdx + 1}`}
-                          >
-                            <img
-                              src={combinedImages[thumbIdx]}
-                              alt={`thumb-${thumbIdx}`}
-                              className="w-full h-full object-cover"
-                              onError={(e) => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/80x80?text=No'; }}
-                            />
-                          </button>
-                        ))}
-
-                       
-                        {combinedImages.length > inlineThumbIndices.length + 1 && (
-                          <button
-                            onClick={() => {
-                              const next = (inlineThumbIndices.length ? (inlineThumbIndices[inlineThumbIndices.length - 1] + 1) % combinedImages.length : 0);
-                              setMainImageIndex(next === mainImageIndex ? (next + 1) % combinedImages.length : next);
-                            }}
-                            className="h-16 md:h-20 px-3 rounded-full bg-white/90 text-sm font-medium shadow border border-amber-100 transition hover:scale-105"
-                          >
-                            +{combinedImages.length - inlineThumbIndices.length - 1}
-                          </button>
-                        )}
-                      </div> */}
-                    </div>
-
-                    {/* floating badge */}
-                    {/* <div className="absolute top-4 right-4">
-                      <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/80 backdrop-blur shadow-md animate-float">
-                        <svg className="w-5 h-5 text-amber-500" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M12 2L14.09 8.26L20.9 8.27L15.45 11.74L17.54 18L12 13.77L6.46 18L8.55 11.74L3.1 8.27L9.91 8.26L12 2Z" />
-                        </svg>
-                        <span className="text-sm font-medium text-amber-900">Premium Pick</span>
-                      </div>
-                    </div> */}
+                    {/* INLINE THUMBNAILS: bottom-left overlay (desktop) */}
+                    {/* (commented out in original — left untouched) */}
                   </div>
 
-                  {/* small mobile thumbnails under image */}
-                  <div className="flex md:hidden gap-3 mt-4 overflow-x-auto w-full px-2">
-                    {combinedImages.map((src, idx) => (
-                      <button key={`thumb-m-${idx}`} onClick={() => setMainImageIndex(idx)} className={`w-20 h-20 rounded-xl overflow-hidden border ${idx === mainImageIndex ? 'border-amber-300' : 'border-gray-100'}`}>
-                        <img src={src} alt={`mobile-${idx}`} className="w-full h-full object-cover" onError={(e) => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/200x200?text=No+Image'; }} />
-                      </button>
-                    ))}
+                  {/* Enhanced mobile thumbnails under image */}
+                  <div className="relative mt-4 md:hidden">
+                    {/* left/right scroll buttons (mobile) */}
+                    <button
+                      onClick={() => scrollMobileThumbs('prev')}
+                      className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/90 shadow-sm"
+                      aria-label="Scroll thumbnails left"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+
+                    <div
+                      ref={mobileThumbsRef as any}
+                      className="flex gap-2 overflow-x-auto no-scrollbar px-8 py-1"
+                      role="list"
+                      aria-label="Product thumbnails"
+                      style={{ scrollBehavior: 'smooth' }}
+                    >
+                      {combinedImages.map((src, idx) => (
+                        <button
+                          key={`thumb-m-${idx}`}
+                          onClick={() => setMainImageIndex(idx)}
+                          className={`flex-shrink-0 w-14 h-14 rounded-lg overflow-hidden border ${idx === mainImageIndex ? 'border-amber-300 scale-105' : 'border-gray-100'}`}
+                          aria-label={`Select image ${idx + 1}`}
+                          title={`Image ${idx + 1}`}
+                        >
+                          <img
+                            src={src}
+                            alt={`mobile-${idx}`}
+                            className="w-full h-full object-contain bg-white"
+                            onError={(e: any) => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/200x200?text=No+Image'; }}
+                          />
+                        </button>
+                      ))}
+                    </div>
+
+                    <button
+                      onClick={() => scrollMobileThumbs('next')}
+                      className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/90 shadow-sm"
+                      aria-label="Scroll thumbnails right"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
                   </div>
                 </div>
 
@@ -325,6 +404,7 @@ Please confirm availability and next steps. Thank you!`;
                             ? 'bg-amber-900 text-white border-amber-900'
                             : 'bg-white text-amber-900 border-amber-300 hover:bg-amber-100'
                         } transition-colors`}
+                        aria-pressed={selectedSize === size}
                       >
                         {size}
                       </button>
@@ -336,20 +416,25 @@ Please confirm availability and next steps. Thank you!`;
                 <div className="mt-4">
                   <label className="block font-medium mb-2 text-amber-900">Color</label>
                   <div className="flex flex-wrap gap-2 items-center">
-                    {colors.map((color) => (
-                      <button
-                        key={color}
-                        onClick={() => setSelectedColor(color)}
-                        className={`px-4 py-2 rounded-full border font-medium mb-2 ${
-                          selectedColor === color
-                            ? 'bg-amber-900 text-white border-amber-900'
-                            : 'bg-white text-amber-900 border-amber-300 hover:bg-amber-100'
-                        } transition-colors flex items-center gap-2`}
-                      >
-                        <span className="w-3 h-3 rounded-full" style={{ backgroundColor: color.toLowerCase() === 'black' ? '#111' : color }} />
-                        {color}
-                      </button>
-                    ))}
+                    {colors.map((color) => {
+                      const bg = (color || '').toLowerCase();
+                      const swatch = bg === 'black' ? '#111' : (bg === 'white' ? '#f8f8f8' : bg);
+                      return (
+                        <button
+                          key={color}
+                          onClick={() => setSelectedColor(color)}
+                          className={`px-4 py-2 rounded-full border font-medium mb-2 ${
+                            selectedColor === color
+                              ? 'bg-amber-900 text-white border-amber-900'
+                              : 'bg-white text-amber-900 border-amber-300 hover:bg-amber-100'
+                          } transition-colors flex items-center gap-2`}
+                          aria-pressed={selectedColor === color}
+                        >
+                          <span className="w-3 h-3 rounded-full" style={{ backgroundColor: swatch }} />
+                          {color}
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
 
@@ -362,6 +447,7 @@ Please confirm availability and next steps. Thank you!`;
                     value={quantity}
                     onChange={(e) => setQuantity(Number(e.target.value) || 1)}
                     className="w-28 px-4 py-2 rounded-full border border-amber-300 focus:border-amber-900 outline-none"
+                    aria-label="Quantity"
                   />
                 </div>
 
@@ -373,6 +459,7 @@ Please confirm availability and next steps. Thank you!`;
                     className={`w-full flex items-center justify-center px-6 py-3 rounded-full font-bold text-lg transition-colors ${
                       canOrder ? 'bg-amber-900 text-white hover:bg-amber-800' : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                     }`}
+                    aria-disabled={!canOrder}
                   >
                     <span className="mr-2">💬</span>
                     Confirm Order via WhatsApp
@@ -407,7 +494,6 @@ Please confirm availability and next steps. Thank you!`;
               <div className="mt-5 bg-white rounded-2xl shadow p-5">
                 <h4 className="text-lg font-medium text-amber-900">Customer Reviews</h4>
                 <div className="mt-3 text-sm text-gray-600">
-                  {/* Placeholder: you can wire this to actual reviews */}
                   <p className="italic">No reviews yet — be the first to review this product!</p>
                   <button className="mt-3 inline-flex items-center gap-2 px-3 py-2 rounded-full bg-amber-50 text-amber-900 border border-amber-100">
                     <Star className="w-4 h-4" /> Write a Review
@@ -428,6 +514,14 @@ Please confirm availability and next steps. Thank you!`;
         }
         .animate-float {
           animation: float 4s ease-in-out infinite;
+        }
+        /* optional: hide scrollbar for better look */
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
         }
       `}</style>
     </div>

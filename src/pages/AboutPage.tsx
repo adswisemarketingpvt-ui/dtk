@@ -54,9 +54,9 @@ const AboutPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <img
-                src="https://pin.it/6fGANu2dA"
+                src="https://www.dtkfootwear.com/public/About/Gemini_Generated_Image_waeyyjwaeyyjwaey.png"
                 alt="Master Craftsman at Work"
-                className="w-full h-96 object-cover rounded-2xl shadow-lg"
+                className="w-full h-96 object-cover  shadow-lg"
               />
             </div>
             <div>
@@ -146,24 +146,24 @@ const AboutPage = () => {
             
             <div className="grid grid-cols-2 gap-4">
               <img
-                src="https://images.pexels.com/photos/1599004/pexels-photo-1599004.jpeg"
+                src="https://www.dtkfootwear.com//public/About/Gemini_Generated_Image_o0m4fto0m4fto0m4.png"
                 alt="Leather crafting"
-                className="w-full h-48 object-cover rounded-lg shadow-md"
+                className="w-full h-48 object-cover  shadow-md"
               />
               <img
-                src="https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg"
+                src="https://www.dtkfootwear.com/public/About/Gemini_Generated_Image_nqei0cnqei0cnqei.png"
                 alt="Shoe construction"
-                className="w-full h-48 object-cover rounded-lg shadow-md mt-8"
+                className="w-full h-48 object-cover shadow-md mt-8"
               />
               <img
-                src="https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg"
+                src="https://www.dtkfootwear.com/public/About/Gemini_Generated_Image_70a8dv70a8dv70a8.png"
                 alt="Final inspection"
-                className="w-full h-48 object-cover rounded-lg shadow-md -mt-4"
+                className="w-full h-48 object-cover  shadow-md -mt-4"
               />
               <img
-                src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg"
+                 src="https://www.dtkfootwear.com/public/About/Gemini_Generated_Image_bngu2tbngu2tbngu.png"
                 alt="Finished product"
-                className="w-full h-48 object-cover rounded-lg shadow-md mt-4"
+                className="w-full h-48 object-cover  shadow-md mt-4"
               />
             </div>
           </div>

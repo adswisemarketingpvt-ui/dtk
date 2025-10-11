@@ -251,7 +251,7 @@ Thank you! 🙏`;
                 <h4 className="font-bold text-amber-900 mb-2">Email Support</h4>
                 <p className="text-gray-600 text-sm mb-3">Detailed inquiries and support</p>
                 <a
-                  href="mailto:info@luxuryshoes.com"
+                  href="mailto:contact@dtkfootwear.com"
                   className="text-blue-600 hover:text-blue-700 font-medium text-sm"
                 >
                   Send Email
@@ -263,7 +263,7 @@ Thank you! 🙏`;
                 <h4 className="font-bold text-amber-900 mb-2">Phone Support</h4>
                 <p className="text-gray-600 text-sm mb-3">Speak with our experts directly</p>
                 <a
-                  href="tel:+15551234567"
+                  href="tel:+9765758830"
                   className="text-amber-600 hover:text-amber-700 font-medium text-sm"
                 >
                   Call Now

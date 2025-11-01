@@ -1,7 +1,16 @@
-import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send, MessageCircle } from 'lucide-react';
+import React, { useState , useEffect} from 'react';
+import { MapPin, Phone, Mail, Clock, MessageCircle } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+import { useNavigate } from 'react-router-dom';
 
-const ContactPage = () => {
+const ContactPage: React.FC = () => {
+
+   useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -10,40 +19,57 @@ const ContactPage = () => {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [status, setStatus] = useState<{ type: 'idle' | 'sending' | 'success' | 'error'; text?: string }>({
+    type: 'idle',
+  });
+
+  // EmailJS credentials
+  const EMAILJS_SERVICE_ID = 'service_s4z4954';
+  const EMAILJS_TEMPLATE_ID = 'template_gy9ogyv';
+  const EMAILJS_PUBLIC_KEY = 'Y4uZOXAoYAAPtZvA5';
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    const whatsappMessage = `🌟 *NEW CONTACT INQUIRY*
+    setStatus({ type: 'sending', text: 'Sending message...' });
 
-👤 *Customer Details:*
-• Name: ${formData.name}
-• Email: ${formData.email}
-• Phone: ${formData.phone}
+    const templateParams = {
+      name: formData.name || '-',
+      email: formData.email || '-',
+      phone: formData.phone || '-',
+      subject: formData.subject || 'General Inquiry',
+      message: formData.message || '-',
+    };
 
-📋 *Inquiry Details:*
-• Subject: ${formData.subject}
-• Message: ${formData.message}
+    try {
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY);
 
-Please respond to this inquiry at your earliest convenience.
+      setStatus({ type: 'success', text: 'Message sent successfully!' });
 
-Thank you! 🙏`;
+      setTimeout(() => {
+        navigate('/thank-you');
+      }, 1500); // Redirect after 1.5s
 
-    const encodedMessage = encodeURIComponent(whatsappMessage);
-    const whatsappUrl = `https://wa.me/+9765758830?text=${encodedMessage}`;
-    
-    window.open(whatsappUrl, '_blank');
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: '',
-    });
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: '',
+      });
+    } catch (err) {
+      console.error('EmailJS error:', err);
+      setStatus({
+        type: 'error',
+        text: 'Failed to send message. Please try again or email contact@dtkfootwear.com directly.',
+      });
+
+      setTimeout(() => setStatus({ type: 'idle' }), 8000);
+    }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -54,7 +80,11 @@ Thank you! 🙏`;
     {
       icon: MapPin,
       title: 'Visit Our Store',
-      details: ['Shop No 3, near Gavane Hospital,', 'Gujar Nagar, Laxman Nagar,Thergaon,',' Pimpri-Chinchwad, Maharashtra-411033'],
+      details: [
+        'Shop No 3, near Gavane Hospital,',
+        'Gujar Nagar, Laxman Nagar, Thergaon,',
+        'Pimpri-Chinchwad, Maharashtra-411033',
+      ],
     },
     {
       icon: Phone,
@@ -64,31 +94,29 @@ Thank you! 🙏`;
     {
       icon: Mail,
       title: 'Email Us',
-      details: ['contact@dtkfootwear.com', 'kamblednyandev@gmail.com'],
+      details: ['contact@dtkfootwear.com'],
     },
     {
       icon: Clock,
       title: 'Business Hours',
-      details: ['Monday - Saturday: 9:00 AM - 7:00 PM', 'Sunday: 11:00 AM - 5:00 PM', 'Holidays: Closed'],
+      details: ['Mon - Sat: 9:00 AM - 7:00 PM', 'Sun: 11:00 AM - 5:00 PM', 'Holidays: Closed'],
     },
   ];
 
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-amber-50 to-orange-50 py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center">
-            <h1 className="text-5xl font-serif font-bold text-amber-900 mb-6">Contact Us</h1>
-            <p className="text-xl text-amber-800 max-w-3xl mx-auto leading-relaxed">
-              We're here to help with any questions about our handcrafted luxury footwear. 
-              Reach out to our expert team today.
-            </p>
-          </div>
+      <section id="contact" className="bg-gradient-to-r from-amber-50 to-orange-50 py-20">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h1 className="text-5xl font-serif font-bold text-amber-900 mb-6">Contact Us</h1>
+          <p className="text-xl text-amber-800 max-w-3xl mx-auto leading-relaxed">
+            We're here to help with any questions about our handcrafted luxury footwear.
+            Reach out to our expert team today.
+          </p>
         </div>
       </section>
 
-      {/* Contact Information */}
+      {/* Contact Info Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
@@ -99,8 +127,10 @@ Thank you! 🙏`;
                 </div>
                 <h3 className="text-xl font-bold text-amber-900 mb-3">{info.title}</h3>
                 <div className="space-y-1">
-                  {info.details.map((detail, detailIndex) => (
-                    <p key={detailIndex} className="text-gray-600 text-sm">{detail}</p>
+                  {info.details.map((detail, i) => (
+                    <p key={i} className="text-gray-600 text-sm">
+                      {detail}
+                    </p>
                   ))}
                 </div>
               </div>
@@ -150,45 +180,21 @@ Thank you! 🙏`;
                       placeholder="Enter your email address"
                     />
                   </div>
-                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                      Phone Number
+                      Phonr Number *
                     </label>
                     <input
-                      type="tel"
+                      type="phone"
                       id="phone"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-300 focus:border-transparent transition-colors"
-                      placeholder="Enter your phone number"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                      Subject *
-                    </label>
-                    <select
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
                       required
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-300 focus:border-transparent transition-colors"
-                    >
-                      <option value="">Select a subject</option>
-                      <option value="Product Inquiry">Product Inquiry</option>
-                      <option value="Order Status">Order Status</option>
-                      <option value="Size & Fit">Size & Fit</option>
-                      <option value="Custom Order">Custom Order</option>
-                      <option value="Returns & Exchange">Returns & Exchange</option>
-                      <option value="General Question">General Question</option>
-                      <option value="Other">Other</option>
-                    </select>
+                      placeholder="Enter your Phone Number"
+                    />
                   </div>
                 </div>
 
@@ -208,67 +214,22 @@ Thank you! 🙏`;
                   />
                 </div>
 
-                <div className="flex space-x-4">
-                  <button
-                    type="submit"
-                    className="flex-1 bg-green-600 text-white py-4 px-6 rounded-full font-medium hover:bg-green-700 transition-colors flex items-center justify-center"
-                  >
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    Send via WhatsApp
-                  </button>
-                </div>
+                <button
+                  type="submit"
+                  disabled={status.type === 'sending'}
+                  className="w-full bg-amber-900 text-white py-4 px-6 rounded-full font-medium hover:bg-amber-800 transition-colors flex items-center justify-center disabled:opacity-60"
+                >
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  {status.type === 'sending' ? 'Sending...' : 'Send Message'}
+                </button>
 
-                <div className="text-center text-sm text-gray-500">
-                  <p>
-                    By submitting this form, you agree to our privacy policy and terms of service.
-                    We typically respond within 24 hours.
-                  </p>
-                </div>
+                {status.type === 'success' && (
+                  <p className="text-center text-green-600 mt-4">{status.text}</p>
+                )}
+                {status.type === 'error' && (
+                  <p className="text-center text-red-600 mt-4">{status.text}</p>
+                )}
               </form>
-            </div>
-          </div>
-
-          {/* Additional Contact Options */}
-          <div className="mt-16 text-center">
-            <h3 className="text-2xl font-serif font-bold text-amber-900 mb-6">More Ways to Connect</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-              <div className="bg-amber-50 p-6 rounded-xl">
-                <MessageCircle className="w-8 h-8 text-green-600 mx-auto mb-3" />
-                <h4 className="font-bold text-amber-900 mb-2">WhatsApp Support</h4>
-                <p className="text-gray-600 text-sm mb-3">Get instant support via WhatsApp</p>
-                <a
-                  href="https://wa.me/+9765758830"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-green-600 hover:text-green-700 font-medium text-sm"
-                >
-                  Start Chat
-                </a>
-              </div>
-
-              <div className="bg-blue-50 p-6 rounded-xl">
-                <Mail className="w-8 h-8 text-blue-600 mx-auto mb-3" />
-                <h4 className="font-bold text-amber-900 mb-2">Email Support</h4>
-                <p className="text-gray-600 text-sm mb-3">Detailed inquiries and support</p>
-                <a
-                  href="mailto:contact@dtkfootwear.com"
-                  className="text-blue-600 hover:text-blue-700 font-medium text-sm"
-                >
-                  Send Email
-                </a>
-              </div>
-
-              <div className="bg-amber-50 p-6 rounded-xl">
-                <Phone className="w-8 h-8 text-amber-600 mx-auto mb-3" />
-                <h4 className="font-bold text-amber-900 mb-2">Phone Support</h4>
-                <p className="text-gray-600 text-sm mb-3">Speak with our experts directly</p>
-                <a
-                  href="tel:+9765758830"
-                  className="text-amber-600 hover:text-amber-700 font-medium text-sm"
-                >
-                  Call Now
-                </a>
-              </div>
             </div>
           </div>
         </div>

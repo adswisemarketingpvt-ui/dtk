@@ -19,8 +19,8 @@ const Header: React.FC = () => {
   };
 
   // Admin phone (tel: link)
-  const adminPhoneDisplay = '+91 97302 66648';
-  const adminPhoneTel = '+919730266648'; // no spaces for tel:
+  const adminPhoneDisplay = '+91 97657 58830';
+  const adminPhoneTel = '+919765758830'; // no spaces for tel:
 
   return (
     <header className="bg-[#2e0e02] shadow-sm border-b border-gray-100 relative">

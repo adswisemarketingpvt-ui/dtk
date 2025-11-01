@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ShoeImage {
@@ -14,6 +14,10 @@ const shoeImages: ShoeImage[] = [
 ];
 
 const AccessoriesPage: React.FC = () => {
+
+   useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
   const [showDetails, setShowDetails] = useState(false);
 
   return (
@@ -133,7 +137,7 @@ const AccessoriesPage: React.FC = () => {
                 </p>
 
                 <a
-                  href="/contact"
+                  href="/#/contact"
                   className="inline-block bg-[#eab12b] text-black font-semibold px-8 py-3 rounded-md hover:bg-[#c6951f] transition"
                 >
                   Contact Wholesale Team

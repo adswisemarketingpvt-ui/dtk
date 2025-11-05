@@ -18,8 +18,7 @@ const Footer = () => {
               alt="DTK Footwear Logo"
             />
             <p className="text-amber-100 mb-4 leading-relaxed max-w-xs">
-              Crafting exceptional footwear since 1985. Each pair tells a story of
-              dedication, precision, and timeless elegance.
+             Crafting exceptional footwear, each pair tells a story of dedication, precision, and timeless elegance.
             </p>
 
             <div className="flex space-x-4 mt-2">

@@ -22,7 +22,7 @@ export const products = [
     name: "DTK Urban Loafer",
     price: 1799,
     // originalPrice: 449,
-    image: "https://www.dtkfootwear.com/public/Tranding/2.png",
+    image: "https://www.dtkfootwear.com/public/Gemini_Generated_Image_sf6l8fsf6l8fsf6l.png",
     category: "Formal / Casual",
     sizes: ["5", "6", "7", "8", "9", "10", "11"],
     colors: ["Black", "Brown", "Tan"],

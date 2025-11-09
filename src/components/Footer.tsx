@@ -73,17 +73,17 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="/#/about" className="text-amber-100 hover:text-white transition-colors">
+                  <a href="/about" className="text-amber-100 hover:text-white transition-colors">
                     About Us
                   </a>
                 </li>
                 <li>
-                  <a href="/#/contact" className="text-amber-100 hover:text-white transition-colors">
+                  <a href="/contact" className="text-amber-100 hover:text-white transition-colors">
                     Contact
                   </a>
                 </li>
                 <li>
-                  <a href="/#/accessories" className="text-amber-100 hover:text-white transition-colors">
+                  <a href="/accessories" className="text-amber-100 hover:text-white transition-colors">
                     Wholesale
                   </a>
                 </li>
@@ -96,7 +96,7 @@ const Footer = () => {
               <ul className="space-y-3">
                 <li>
                   <a
-                    href="/#/return-policy"
+                    href="/return-policy"
                     className="text-amber-100 hover:text-white transition-colors"
                   >
                     Return Policy
@@ -104,7 +104,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <a
-                    href="/#/shipping-policy"
+                    href="/shipping-policy"
                     className="text-amber-100 hover:text-white transition-colors"
                   >
                     Shipping Policy
@@ -170,9 +170,9 @@ const Footer = () => {
           <p className="text-amber-200 text-sm">
             <span className="text-gray-400">Powered By</span>{" "}
             <span className="text-gray-400 font-bold">ads</span>
-            <span className="text-cyan-400 font-bold">wise</span>{" "}
+            <span className="text-gray-400 font-bold">wise</span>{" "}
             <span className="text-gray-400 font-bold">marke</span>
-            <span className="text-cyan-400 font-bold">ting</span>
+            <span className="text-gray-400 font-bold">ting</span>
           </p>
         </div>
       </div>

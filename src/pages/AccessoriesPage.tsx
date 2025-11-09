@@ -156,7 +156,7 @@ const AccessoriesPage: React.FC = () => {
 
                 <div className="flex items-center justify-center gap-4 flex-wrap">
                   <a
-                    href="/#/contact"
+                    href="/contact"
                     className="inline-block bg-[#eab12b] text-black font-semibold px-8 py-3 rounded-md hover:bg-[#c6951f] transition"
                   >
                     Contact Wholesale Team

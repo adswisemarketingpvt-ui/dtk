@@ -17,6 +17,7 @@ function App() {
     <div className="min-h-screen bg-white">
       <Header />
       <main>
+        
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/product/:id" element={<ProductPage />} />

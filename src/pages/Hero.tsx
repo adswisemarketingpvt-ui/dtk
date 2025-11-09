@@ -196,19 +196,20 @@ export default function Hero() {
           <div className="text-center md:text-left order-2 md:order-1">
           
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-4 animate-fade-in-up">
-              Classic Shoes,
+            <h1 className="text-4xl sm:text-5xl lg:text-5xl font-extrabold text-gray-900 leading-tight mb-4 animate-fade-in-up">
+              Handcrafted Leather Shoes | Best Leather
+
+  
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-900 to-orange-800 animate-gradient">
-                Modern Style
+              Shoes in India
               </span>
             </h1>
 
             <p className="text-lg text-gray-600 mb-8 max-w-xl mx-auto md:mx-0 animate-fade-in-up-delay">
-              DTK Footwear blends timeless craftsmanship with contemporary
-              design, offering formal shoes that define sophistication. Step
-              confidently into every occasion with comfort, class, and unmatched
-              quality.
+              Discover the true art of craftsmanship at DTK Footwear, home of the best leather shoes for discerning professionals. Founded in India, DTK Footwear celebrates our rich heritage by offering handcrafted shoes made entirely from original leather. We are proud to be recognized as one of the best shoe brands in India, delivering unmatched quality and style without importing a single pair. Each pair of leather shoes is carefully crafted in Pune by skilled artisans who pay close attention to detail and design. 
+
+
             </p>
 
             {/* Feature badges */}
@@ -233,7 +234,7 @@ export default function Hero() {
                 className="group relative bg-gradient-to-r from-amber-900 to-amber-800 text-white font-semibold py-4 px-8 shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none rounded-lg overflow-hidden"
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
-                  Explore Collection
+                  Explore Styles
                   <svg
                     className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
                     fill="none"

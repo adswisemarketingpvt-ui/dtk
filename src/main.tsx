@@ -1,16 +1,16 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import App from './App';
-import './index.css';
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App";
+import "./index.css";
 import { HelmetProvider } from "react-helmet-async";
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from "react-router-dom";
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <HashRouter>
-      <HelmetProvider>
+    <HelmetProvider>
+      <BrowserRouter>
         <App />
-      </HelmetProvider>
-    </HashRouter>
+      </BrowserRouter>
+    </HelmetProvider>
   </StrictMode>
 );

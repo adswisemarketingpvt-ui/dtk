@@ -89,6 +89,7 @@ const HomePage = () => {
 
   // primary page image for SEO (banner)
   const pageImage = "https://www.dtkfootwear.com/DTK%20Footwear%20Website%20(1).png";
+  
 
   return (
     // Prevent horizontal overflow that can show white bars on mobile

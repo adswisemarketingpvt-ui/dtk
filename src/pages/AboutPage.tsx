@@ -324,6 +324,10 @@ const AboutPage: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+
   // Fix: define ref and visibility state
   const storyRef = useRef<HTMLDivElement | null>(null);
   const [storyVisible, setStoryVisible] = useState(false);

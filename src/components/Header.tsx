@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, ShoppingBag, Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
   const navigation = [
-    { name: 'SHOES', href: '/' },
+    { name: 'HOME', href: '/' },
     { name: 'WHOLESALE', href: '/accessories' },
     { name: 'ABOUT', href: '/about' },
     { name: 'CONTACT', href: '/contact' },
@@ -22,8 +22,23 @@ const Header: React.FC = () => {
   const adminPhoneDisplay = '+91 97657 58830';
   const adminPhoneTel = '+919765758830'; // no spaces for tel:
 
+  // Make header transparent only on the home page
+  const isHome = location.pathname === '/';
+
+  const headerWrapperClass = isHome
+    ? 'absolute inset-x-0 top-0 z-50 bg-transparent'
+    : 'relative bg-[#2e0e02] shadow-sm border-b border-gray-100';
+
+  // Link styles adjust based on whether header is transparent (home) or solid
+  const desktopLinkBase =
+    'px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-full';
+  const desktopLinkActive = isHome
+    ? 'bg-amber-900/90 text-white'
+    : 'bg-amber-900 text-white';
+  const desktopLinkInactive = isHome ? 'text-white hover:bg-white/10' : 'text-white hover:bg-amber-100';
+
   return (
-    <header className="bg-[#2e0e02] shadow-sm border-b border-gray-100 relative">
+    <header className={headerWrapperClass}>
       {/* Main Navigation */}
       <nav className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
@@ -31,7 +46,7 @@ const Header: React.FC = () => {
           <Link to="/" className="flex-shrink-0">
             <div>
               <img
-                className="h-12 w-32 pl-5"
+                className={`h-12 w-32 pl-5 ${isHome ? '' : ''}`}
                 src="https://www.dtkfootwear.com/logo.png"
                 alt="DTK Footwear Logo"
               />
@@ -44,10 +59,8 @@ const Header: React.FC = () => {
               <Link
                 key={item.name}
                 to={item.href}
-                className={`px-4 py-2 text-sm font-medium transition-colors duration-200 ${
-                  isActive(item.href)
-                    ? 'bg-amber-900 text-white rounded-full'
-                    : 'text-white hover:bg-amber-100 rounded-full'
+                className={`${desktopLinkBase} ${
+                  isActive(item.href) ? desktopLinkActive : desktopLinkInactive
                 }`}
               >
                 {item.name}
@@ -58,27 +71,31 @@ const Header: React.FC = () => {
             <a
               href={`tel:${adminPhoneTel}`}
               aria-label={`Call admin ${adminPhoneDisplay}`}
-              className="ml-3 inline-flex items-center gap-2 px-4 py-2 bg-amber-900 text-white text-sm font-medium rounded-full shadow hover:opacity-95 transition"
+              className={`ml-3 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-full shadow transition ${
+                isHome ? 'bg-amber-900/90 text-white' : 'bg-amber-900 text-white'
+              }`}
             >
               <Phone className="w-4 h-4" />
               <span className="hidden sm:inline">{adminPhoneDisplay}</span>
             </a>
           </div>
 
-          {/* Mobile menu button and call icon */}
+          {/* Mobile menu button and compact call icon */}
           <div className="flex items-center gap-2 md:hidden">
-            {/* On small screens also show a compact call icon beside menu */}
+            {/* Compact call icon */}
             <a
               href={`tel:${adminPhoneTel}`}
               aria-label={`Call admin ${adminPhoneDisplay}`}
-              className="p-2 rounded-full bg-amber-900 text-white"
+              className={`p-2 rounded-full ${
+                isHome ? 'bg-amber-900/90 text-white' : 'bg-amber-900 text-white'
+              }`}
               title={`Call ${adminPhoneDisplay}`}
             >
               <Phone className="w-5 h-5" />
             </a>
 
             <button
-              className="p-2 text-amber-900"
+              className={`${isHome ? 'text-white' : 'text-amber-900'} p-2`}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -90,15 +107,16 @@ const Header: React.FC = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden border-t border-gray-200">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white">
+            {/* When header was transparent on home, the open menu should be readable => use white bg */}
+            <div className={`${isHome ? 'bg-white' : 'bg-white'} px-2 pt-2 pb-3 space-y-1`}>
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
-                  className={`block px-3 py-2 text-base font-medium transition-colors ${
+                  className={`block px-3 py-2 text-base font-medium transition-colors rounded-lg ${
                     isActive(item.href)
-                      ? 'bg-amber-900 text-white rounded-lg'
-                      : 'text-amber-900 hover:bg-amber-100 rounded-lg'
+                      ? 'bg-amber-900 text-white'
+                      : 'text-amber-900 hover:bg-amber-100'
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -106,8 +124,8 @@ const Header: React.FC = () => {
                 </Link>
               ))}
 
-              {/* Mobile call row inside the menu (optional, as there's a floating button and one beside the menu toggle) */}
-              {/* <a
+              {/* Optional: Mobile call row inside the menu */}
+              <a
                 href={`tel:${adminPhoneTel}`}
                 className="flex items-center gap-3 px-3 py-3 mt-2 bg-amber-900 text-white rounded-lg font-medium"
                 onClick={() => setIsMenuOpen(false)}
@@ -116,7 +134,7 @@ const Header: React.FC = () => {
                 <Phone className="w-5 h-5" />
                 <span>Call Admin</span>
                 <span className="ml-auto text-sm opacity-90">{adminPhoneDisplay}</span>
-              </a> */}
+              </a>
             </div>
           </div>
         )}

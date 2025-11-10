@@ -17,7 +17,6 @@ function App() {
     <div className="min-h-screen bg-white">
       <Header />
       <main>
-        
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/product/:id" element={<ProductPage />} />
@@ -28,8 +27,8 @@ function App() {
           <Route path="/shipping-policy" element={<ShippingPolicy />} />
           <Route path="/return-policy" element={<ReturnPolicy />} />
         </Routes>
+        <Footer />
       </main>
-      <Footer />
     </div>
   );
 }

@@ -1,13 +1,13 @@
-import React, { useState , useEffect} from 'react';
+// src/pages/ContactPage.tsx
+import React, { useState, useEffect } from 'react';
 import { MapPin, Phone, Mail, Clock, MessageCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { useNavigate } from 'react-router-dom';
 
 const ContactPage: React.FC = () => {
-
-   useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const navigate = useNavigate();
 
@@ -23,7 +23,6 @@ const ContactPage: React.FC = () => {
     type: 'idle',
   });
 
-  // EmailJS credentials
   const EMAILJS_SERVICE_ID = 'service_s4z4954';
   const EMAILJS_TEMPLATE_ID = 'template_gy9ogyv';
   const EMAILJS_PUBLIC_KEY = 'Y4uZOXAoYAAPtZvA5';
@@ -42,38 +41,21 @@ const ContactPage: React.FC = () => {
 
     try {
       await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY);
-
       setStatus({ type: 'success', text: 'Message sent successfully!' });
-
-      setTimeout(() => {
-        navigate('/thank-you');
-      }, 1500); // Redirect after 1.5s
-
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: '',
-      });
+      setTimeout(() => navigate('/thank-you'), 1500);
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
     } catch (err) {
       console.error('EmailJS error:', err);
       setStatus({
         type: 'error',
-        text: 'Failed to send message. Please try again or email contact@dtkfootwear.com directly.',
+        text: 'Failed to send message. Please email contact@dtkfootwear.com directly.',
       });
-
       setTimeout(() => setStatus({ type: 'idle' }), 8000);
     }
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const contactInfo = [
@@ -81,54 +63,53 @@ const ContactPage: React.FC = () => {
       icon: MapPin,
       title: 'Visit Our Store',
       details: [
-        'Shop No 3, near Gavane Hospital,',
-        'Gujar Nagar, Laxman Nagar, Thergaon,',
-        'Pimpri-Chinchwad, Maharashtra-411033',
+        ' Thergaon Pune, Maharashtra 411033',
       ],
     },
     {
       icon: Phone,
       title: 'Call Us',
-      details: ['+91 97657 58830', '+91 90212 20354'],
+      details: ['+91 9730266648'],
     },
     {
       icon: Mail,
       title: 'Email Us',
-      details: ['contact@dtkfootwear.com'],
+      details: ['contact@theformales.com'],
     },
     {
       icon: Clock,
       title: 'Business Hours',
-      details: ['Mon - Sat: 9:00 AM - 7:00 PM', 'Sun: 11:00 AM - 5:00 PM', 'Holidays: Closed'],
+      details: ['Mon - Sat: 9:00 AM - 7:00 PM', 'Sun: 11:00 AM - 5:00 PM'],
     },
   ];
 
   return (
-    <div>
-      {/* Hero Section */}
-      <section id="contact" className="bg-gradient-to-r from-amber-50 to-orange-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-5xl font-serif font-bold text-amber-900 mb-6">Contact Us</h1>
-          <p className="text-xl text-amber-800 max-w-3xl mx-auto leading-relaxed">
-            We're here to help with any questions about our handcrafted luxury footwear.
-            Reach out to our expert team today.
+    <div className="bg-[#FAF7F0] min-h-screen">
+      
+      {/* Hero Section - Charcoal with Terracotta Border */}
+      <section className="bg-[#4A4947] py-24 border-b border-[#B17457]/30">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <span className="text-[#B17457] font-bold tracking-[0.3em] uppercase text-xs mb-4 block">Get In Touch</span>
+          <h1 className="text-4xl md:text-6xl font-serif text-white mb-6 tracking-tight">Contact Us</h1>
+          <p className="text-lg text-[#D8D2C2] max-w-2xl mx-auto leading-relaxed font-light">
+            Whether you have a custom request or an inquiry about our artisanal collection, our expert team is ready to assist you.
           </p>
         </div>
       </section>
 
       {/* Contact Info Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 mb-16 shadow-xl">
             {contactInfo.map((info, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-amber-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <info.icon className="w-8 h-8 text-white" />
+              <div key={index} className="bg-white p-10 text-center border border-[#FAF7F0] transition-colors hover:bg-white/80">
+                <div className="w-12 h-12 bg-[#FAF7F0] rounded-full flex items-center justify-center mx-auto mb-6">
+                  <info.icon className="w-5 h-5 text-[#B17457]" />
                 </div>
-                <h3 className="text-xl font-bold text-amber-900 mb-3">{info.title}</h3>
+                <h3 className="text-xs font-bold text-black uppercase tracking-[0.2em] mb-4">{info.title}</h3>
                 <div className="space-y-1">
                   {info.details.map((detail, i) => (
-                    <p key={i} className="text-gray-600 text-sm">
+                    <p key={i} className="text-[#4A4947] text-xs font-light tracking-wide leading-relaxed">
                       {detail}
                     </p>
                   ))}
@@ -138,20 +119,21 @@ const ContactPage: React.FC = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="max-w-2xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl font-serif font-bold text-amber-900 mb-4">Send Us a Message</h2>
-                <p className="text-gray-600">
-                  Have a question about our products or need assistance? We'd love to hear from you.
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white shadow-2xl rounded-sm p-8 md:p-16 border border-[#D8D2C2]/30">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-serif text-black mb-4">Send Us a Message</h2>
+                <div className="w-12 h-0.5 bg-[#B17457] mx-auto mb-6"></div>
+                <p className="text-[#4A4947] font-light text-sm italic">
+                  Complete the form below and an advisor will contact you shortly.
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      Full Name *
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="relative">
+                    <label htmlFor="name" className="block text-[10px] font-bold text-[#4A4947] uppercase tracking-widest mb-2">
+                      Full Name
                     </label>
                     <input
                       type="text"
@@ -160,14 +142,14 @@ const ContactPage: React.FC = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-300 focus:border-transparent transition-colors"
-                      placeholder="Enter your full name"
+                      className="w-full px-0 py-3 border-b border-[#D8D2C2] focus:border-[#B17457] outline-none transition-colors bg-transparent text-sm"
+                      placeholder="Jane Doe"
                     />
                   </div>
 
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Email Address *
+                  <div className="relative">
+                    <label htmlFor="email" className="block text-[10px] font-bold text-[#4A4947] uppercase tracking-widest mb-2">
+                      Email Address
                     </label>
                     <input
                       type="email"
@@ -176,31 +158,31 @@ const ContactPage: React.FC = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-300 focus:border-transparent transition-colors"
-                      placeholder="Enter your email address"
+                      className="w-full px-0 py-3 border-b border-[#D8D2C2] focus:border-[#B17457] outline-none transition-colors bg-transparent text-sm"
+                      placeholder="email@example.com"
                     />
                   </div>
 
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                      Phonr Number *
+                  <div className="md:col-span-2">
+                    <label htmlFor="phone" className="block text-[10px] font-bold text-[#4A4947] uppercase tracking-widest mb-2">
+                      Phone Number
                     </label>
                     <input
-                      type="phone"
+                      type="tel"
                       id="phone"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-300 focus:border-transparent transition-colors"
-                      placeholder="Enter your Phone Number"
+                      className="w-full px-0 py-3 border-b border-[#D8D2C2] focus:border-[#B17457] outline-none transition-colors bg-transparent text-sm"
+                      placeholder="+91 00000 00000"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Message *
+                  <label htmlFor="message" className="block text-[10px] font-bold text-[#4A4947] uppercase tracking-widest mb-2">
+                    Your Message
                   </label>
                   <textarea
                     id="message"
@@ -208,26 +190,32 @@ const ContactPage: React.FC = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    rows={6}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-300 focus:border-transparent transition-colors resize-none"
-                    placeholder="Please describe your inquiry in detail..."
+                    rows={5}
+                    className="w-full px-0 py-3 border-b border-[#D8D2C2] focus:border-[#B17457] outline-none transition-colors bg-transparent text-sm resize-none"
+                    placeholder="How can we assist you?"
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  disabled={status.type === 'sending'}
-                  className="w-full bg-amber-900 text-white py-4 px-6 rounded-full font-medium hover:bg-amber-800 transition-colors flex items-center justify-center disabled:opacity-60"
-                >
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  {status.type === 'sending' ? 'Sending...' : 'Send Message'}
-                </button>
+                <div className="pt-4">
+                  <button
+                    type="submit"
+                    disabled={status.type === 'sending'}
+                    className="w-full bg-black text-white py-5 px-8 text-xs font-bold uppercase tracking-[0.3em] hover:bg-[#B17457] transition-all duration-500 disabled:opacity-50 flex items-center justify-center shadow-lg"
+                  >
+                    <MessageCircle className="w-4 h-4 mr-3" />
+                    {status.type === 'sending' ? 'Sending Request...' : 'Send Message'}
+                  </button>
+                </div>
 
                 {status.type === 'success' && (
-                  <p className="text-center text-green-600 mt-4">{status.text}</p>
+                  <p className="text-center text-[#B17457] text-xs font-bold tracking-widest uppercase mt-4">
+                    {status.text}
+                  </p>
                 )}
                 {status.type === 'error' && (
-                  <p className="text-center text-red-600 mt-4">{status.text}</p>
+                  <p className="text-center text-red-800 text-xs font-bold tracking-widest uppercase mt-4">
+                    {status.text}
+                  </p>
                 )}
               </form>
             </div>

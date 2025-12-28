@@ -1,3 +1,4 @@
+// src/components/Header.tsx
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
@@ -8,7 +9,7 @@ const Header: React.FC = () => {
 
   const navigation = [
     { name: 'HOME', href: '/' },
-    { name: 'WHOLESALE', href: '/accessories' },
+    { name: 'WHOLESALE', href: '/wholesale' },
     { name: 'ABOUT', href: '/about' },
     { name: 'CONTACT', href: '/contact' },
   ];
@@ -18,43 +19,43 @@ const Header: React.FC = () => {
     return location.pathname.startsWith(path);
   };
 
-  // Admin phone (tel: link)
   const adminPhoneDisplay = '+91 97657 58830';
-  const adminPhoneTel = '+919765758830'; // no spaces for tel:
+  const adminPhoneTel = '+919765758830'; 
 
-  // Make header transparent only on the home page
   const isHome = location.pathname === '/';
 
+  // Background: Dark Charcoal (#4A4947) when solid, or Transparent on Home
   const headerWrapperClass = isHome
     ? 'absolute inset-x-0 top-0 z-50 bg-transparent'
-    : 'relative bg-[#2e0e02] shadow-sm border-b border-gray-100';
+    : 'relative bg-[#4A4947] shadow-lg border-b border-[#D8D2C2]/10';
 
-  // Link styles adjust based on whether header is transparent (home) or solid
+  // Link styles
   const desktopLinkBase =
-    'px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-full';
-  const desktopLinkActive = isHome
-    ? 'bg-amber-900/90 text-white'
-    : 'bg-amber-900 text-white';
-  const desktopLinkInactive = isHome ? 'text-white hover:bg-white/10' : 'text-white hover:bg-amber-100';
+    'px-4 py-2 text-[11px] font-bold transition-all duration-300 rounded-sm tracking-[0.2em] uppercase';
+  
+  // Active: Terracotta (#B17457)
+  const desktopLinkActive = 'text-[#B17457] border-b-2 border-[#B17457]';
+
+  // Inactive: Warm Stone (#D8D2C2) text, hover turns Terracotta
+  const desktopLinkInactive = 'text-[#D8D2C2] hover:text-[#B17457] hover:border-b-2 hover:border-[#B17457] border-b-2 border-transparent opacity-90 hover:opacity-100';
 
   return (
     <header className={headerWrapperClass}>
-      {/* Main Navigation */}
-      <nav className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
+      <nav className="max-w-[1500px] mx-auto px-6">
+        <div className="flex justify-between items-center h-24">
           {/* Logo */}
           <Link to="/" className="flex-shrink-0">
-            <div>
+            <div className="transition-transform duration-500 hover:scale-105">
               <img
-                className={`h-12 w-32 pl-5 ${isHome ? '' : ''}`}
-                src="https://www.dtkfootwear.com/logo.png"
+                className="h-16 w-auto brightness-0 invert" // Keeps logo white for the dark header
+                src="https://theformales.in/Untitled.png"
                 alt="DTK Footwear Logo"
               />
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-2">
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -67,87 +68,84 @@ const Header: React.FC = () => {
               </Link>
             ))}
 
-            {/* Desktop call button */}
+            {/* Premium Call Button: Terracotta (#B17457) */}
             <a
               href={`tel:${adminPhoneTel}`}
-              aria-label={`Call admin ${adminPhoneDisplay}`}
-              className={`ml-3 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-full shadow transition ${
-                isHome ? 'bg-amber-900/90 text-white' : 'bg-amber-900 text-white'
-              }`}
+              className="ml-8 inline-flex items-center gap-3 px-6 py-3 text-[10px] font-black rounded-sm tracking-[0.2em] bg-[#B17457] text-white hover:bg-black transition-all duration-500 shadow-xl uppercase"
             >
-              <Phone className="w-4 h-4" />
-              <span className="hidden sm:inline">{adminPhoneDisplay}</span>
+              <Phone className="w-3.5 h-3.5" />
+              <span className="hidden lg:inline">{adminPhoneDisplay}</span>
             </a>
           </div>
 
-          {/* Mobile menu button and compact call icon */}
-          <div className="flex items-center gap-2 md:hidden">
-            {/* Compact call icon */}
+          {/* Mobile menu button */}
+          <div className="flex items-center gap-5 md:hidden">
             <a
               href={`tel:${adminPhoneTel}`}
-              aria-label={`Call admin ${adminPhoneDisplay}`}
-              className={`p-2 rounded-full ${
-                isHome ? 'bg-amber-900/90 text-white' : 'bg-amber-900 text-white'
-              }`}
-              title={`Call ${adminPhoneDisplay}`}
+              className="p-3 rounded-full bg-[#B17457] text-white shadow-lg"
             >
               <Phone className="w-5 h-5" />
             </a>
 
             <button
-              className={`${isHome ? 'text-white' : 'text-amber-900'} p-2`}
+              className="text-white p-1"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMenuOpen ? <X className="w-9 h-9 text-[#D8D2C2]" /> : <Menu className="w-9 h-9 text-[#D8D2C2]" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation - Using Luxury Parchment Background (#FAF7F0) */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-gray-200">
-            {/* When header was transparent on home, the open menu should be readable => use white bg */}
-            <div className={`${isHome ? 'bg-white' : 'bg-white'} px-2 pt-2 pb-3 space-y-1`}>
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className={`block px-3 py-2 text-base font-medium transition-colors rounded-lg ${
-                    isActive(item.href)
-                      ? 'bg-amber-900 text-white'
-                      : 'text-amber-900 hover:bg-amber-100'
-                  }`}
+          <div className="md:hidden fixed inset-0 z-[60] bg-[#FAF7F0] transition-all duration-500">
+            <div className="flex flex-col h-full">
+              {/* Mobile Menu Header - Dark Charcoal */}
+              <div className="bg-[#4A4947] px-8 py-8 flex items-center justify-between">
+                 <span className="text-[#D8D2C2] font-bold tracking-[0.3em] text-xs uppercase">Navigation</span>
+                 <X className="w-9 h-9 text-white cursor-pointer" onClick={() => setIsMenuOpen(false)} />
+              </div>
+
+              <div className="flex-1 px-8 py-12 space-y-8">
+                {navigation.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className={`block text-3xl font-serif tracking-tight transition-colors ${
+                      isActive(item.href)
+                        ? 'text-[#B17457]'
+                        : 'text-black'
+                    }`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+
+              {/* Mobile call row */}
+              <div className="p-8 border-t border-[#D8D2C2]/30">
+                <a
+                  href={`tel:${adminPhoneTel}`}
+                  className="flex items-center justify-center gap-4 py-5 w-full bg-black text-white rounded-sm font-bold tracking-[0.2em] text-xs shadow-2xl uppercase"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {item.name}
-                </Link>
-              ))}
-
-              {/* Optional: Mobile call row inside the menu */}
-              <a
-                href={`tel:${adminPhoneTel}`}
-                className="flex items-center gap-3 px-3 py-3 mt-2 bg-amber-900 text-white rounded-lg font-medium"
-                onClick={() => setIsMenuOpen(false)}
-                aria-label={`Call admin ${adminPhoneDisplay}`}
-              >
-                <Phone className="w-5 h-5" />
-                <span>Call Admin</span>
-                <span className="ml-auto text-sm opacity-90">{adminPhoneDisplay}</span>
-              </a>
+                  <Phone className="w-5 h-5 text-[#B17457]" />
+                  <span>Call {adminPhoneDisplay}</span>
+                </a>
+              </div>
             </div>
           </div>
         )}
       </nav>
 
-      {/* Floating quick-call button for mobile (bottom-right) */}
+      {/* Floating Quick Call (Mobile Only) - Terracotta theme */}
       <a
         href={`tel:${adminPhoneTel}`}
-        className="fixed bottom-6 right-4 z-50 md:hidden inline-flex items-center justify-center w-14 h-14 rounded-full shadow-lg bg-amber-900 text-white"
-        aria-label={`Quick call ${adminPhoneDisplay}`}
-        title={`Call ${adminPhoneDisplay}`}
+        className="fixed bottom-10 right-8 z-50 md:hidden flex items-center justify-center w-16 h-16 rounded-full shadow-2xl bg-[#4A4947] text-[#B17457] border border-[#B17457]/50"
+        aria-label="Quick call"
       >
-        <Phone className="w-6 h-6" />
+        <Phone className="w-7 h-7" />
       </a>
     </header>
   );

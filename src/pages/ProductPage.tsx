@@ -9,10 +9,12 @@ import {
   Shield,
   ChevronLeft,
   ChevronRight,
+  Ruler,
+  CheckCircle,
 } from "lucide-react";
 import { products } from "../products/shoes"; // adjust path as needed
 
-// === DEMO IMAGES MAP (full list kept from your original file) ===
+// === DEMO IMAGES MAP (kept from your original file) ===
 const DEMO_IMAGES_MAP: Record<number | string, string[]> = {
   1: [
     "https://www.dtkfootwear.com/public/1/Black%20Shoes%202_pages-to-jpg-0004.png",
@@ -135,11 +137,10 @@ const DEFAULT_DEMO_IMAGES = [
 ];
 
 const ProductPage: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-   useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
-    
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -149,6 +150,31 @@ const ProductPage: React.FC = () => {
     const found = products.find((p) => p.id === pid);
     return found ?? products[0] ?? null;
   }, [id]);
+
+  // sizing calculator state used for the sizing UI
+  const [footLength, setFootLength] = useState<number | "">("");
+  const [computedSize, setComputedSize] = useState<number | null>(null);
+  const [note, setNote] = useState<string>("");
+
+  // compute suggested size using formula: (C + 1.5) * 1.5
+  useEffect(() => {
+    if (footLength === "" || Number(footLength) <= 0) {
+      setComputedSize(null);
+      setNote("");
+      return;
+    }
+    const C = Number(footLength);
+    const withAllowance = C + 1.5;
+    const sizeValue = withAllowance * 1.5;
+    setComputedSize(Math.round(sizeValue));
+    if (C >= 25) {
+      setNote(
+        "Note: If your foot width is larger (wider feet), consider taking one size larger than suggested."
+      );
+    } else {
+      setNote("Note: If your foot feels wide or you are between sizes, consider sizing up for comfort.");
+    }
+  }, [footLength]);
 
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
@@ -184,12 +210,12 @@ const ProductPage: React.FC = () => {
 
   if (!product) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-8">
-        <div className="bg-white p-8 rounded-xl shadow-md text-center">
-          <p className="text-lg">Product not found.</p>
+      <div className="min-h-screen flex items-center justify-center p-8 bg-[#EAEDED]">
+        <div className="bg-white p-8 rounded shadow-md text-center border border-gray-200">
+          <p className="text-lg text-[#131921]">Product not found.</p>
           <button
             onClick={() => navigate("/")}
-            className="mt-4 px-4 py-2 rounded-full bg-amber-900 text-white"
+            className="mt-4 px-4 py-2 rounded bg-[#FFD814] text-black border border-[#FCD200]"
           >
             Go to Home
           </button>
@@ -277,7 +303,6 @@ const ProductPage: React.FC = () => {
       const webUrl = `https://web.whatsapp.com/send?phone=${phone}&text=${encoded}`;
       const webWindow = window.open(webUrl, "_blank", "noopener,noreferrer");
 
-      // Attempt to open native app (best-effort).
       const protoWithPhone = `whatsapp://send?phone=${phone}&text=${encoded}`;
       const protoTextOnly = `whatsapp://send?text=${encoded}`;
 
@@ -298,7 +323,6 @@ const ProductPage: React.FC = () => {
         });
       };
 
-      // Attempt both
       await tryOpenProtocol(protoWithPhone);
       await new Promise((r) => setTimeout(r, 200));
       await tryOpenProtocol(protoTextOnly);
@@ -328,16 +352,7 @@ const ProductPage: React.FC = () => {
 
   // inline thumbs for overlay (desktop)
   const maxInlineThumbs = 6;
-  const inlineThumbIndices = (() => {
-    const indices: number[] = [];
-    for (let i = 0; i < combinedImages.length && indices.length < maxInlineThumbs; i++) {
-      if (i === mainImageIndex) continue;
-      indices.push(i);
-    }
-    return indices;
-  })();
-
-  // Mobile thumbnails scroll controls
+  
   const scrollMobileThumbs = (dir = "next") => {
     const el = mobileThumbsRef.current as any;
     if (!el) return;
@@ -357,7 +372,6 @@ const ProductPage: React.FC = () => {
     if (!container) return;
     const rect = container.getBoundingClientRect();
 
-    // clamp position so lens stays inside the image container
     let x = clientX - rect.left;
     let y = clientY - rect.top;
     x = Math.max(0, Math.min(rect.width, x));
@@ -379,7 +393,6 @@ const ProductPage: React.FC = () => {
   };
 
   const openModalAtPoint = (clientX?: number, clientY?: number) => {
-    // set modal pan so the clicked point is centered in modal
     const container = mainImageContainerRef.current;
     if (container && clientX != null && clientY != null) {
       const rect = container.getBoundingClientRect();
@@ -394,7 +407,6 @@ const ProductPage: React.FC = () => {
     setIsModalOpen(true);
   };
 
-  // Modal pan handlers - move the zoom focus inside the modal
   const onModalMove = (clientX: number, clientY: number) => {
     const modal = document.getElementById("product-zoom-modal");
     if (!modal) return;
@@ -406,23 +418,18 @@ const ProductPage: React.FC = () => {
     setModalPan({ x: px, y: py });
   };
 
-  // Helper: safe image onError
   const onImgError = (e: any, sizeFallback?: string) => {
     e.target.onerror = null;
     e.target.src = sizeFallback ?? "https://via.placeholder.com/800x600?text=No+Image";
   };
 
-  // Compute lens background styling
   const lensStyle = (() => {
     const container = mainImageContainerRef.current;
     if (!container) return {};
     const rect = container.getBoundingClientRect();
     const imgSrc = combinedImages[mainImageIndex];
-    // compute background-size: image scaled by zoomScale relative to container
     const bgWidth = rect.width * zoomScale;
     const bgHeight = rect.height * zoomScale;
-
-    // background position: move so that the point under cursor maps to center of lens
     const xPercent = (lensPos.x / rect.width) * 100;
     const yPercent = (lensPos.y / rect.height) * 100;
 
@@ -434,7 +441,6 @@ const ProductPage: React.FC = () => {
       backgroundImage: `url("${imgSrc}")`,
       backgroundRepeat: "no-repeat",
       backgroundSize: `${bgWidth}px ${bgHeight}px`,
-      // backgroundPosition using percentages keeps it centered on the cursor position
       backgroundPosition: `${xPercent}% ${yPercent}%`,
       borderRadius: "50%",
       boxShadow: "0 6px 20px rgba(0,0,0,0.18)",
@@ -446,370 +452,339 @@ const ProductPage: React.FC = () => {
     } as React.CSSProperties;
   })();
 
+  const sidebarImage = "/mnt/data/e928c3b8-7ac7-4a43-b762-26ca44e073c8.jpg"; 
+
   return (
-    <div className="bg-gradient-to-b from-amber-50 via-amber-50 to-white min-h-screen py-12">
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Breadcrumbs / Back */}
-        <div className="flex items-center text-sm text-gray-600 mb-6 space-x-3">
-          <button
-            onClick={() => navigate(-1)}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full hover:bg-amber-100 transition"
-            aria-label="Go back"
-          >
-            <ChevronLeft className="w-4 h-4" />
-            Back
+    // Global Background: Amazon Gray
+    <div className=" bg-[#FAF7F0] min-h-screen py-6 md:py-12">
+      <div className="max-w-[1500px] mx-auto px-4 md:px-6">
+        
+        {/* Breadcrumbs - Amazon Style */}
+        <div className="flex items-center text-xs md:text-sm text-[#565959] mb-4 space-x-1">
+          <button onClick={() => navigate(-1)} className="hover:text-[#C7511F] flex items-center">
+            <ChevronLeft className="w-4 h-4" /> Back
           </button>
-          <span className="text-gray-400">/</span>
-          <span className="hover:underline cursor-pointer" onClick={() => navigate("/")}>
+          <span>/</span>
+          <span className="hover:text-[#C7511F] hover:underline cursor-pointer" onClick={() => navigate("/")}>
             Home
           </span>
-          <span className="text-gray-400">/</span>
-          <span className="text-amber-900 font-medium">{product.name}</span>
+          <span>/</span>
+          <span className="text-[#C7511F] font-medium truncate max-w-[200px]">{product.name}</span>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left: Gallery */}
-          <div className="lg:col-span-7 bg-white rounded-2xl p-6 shadow-sm">
-            <div className="flex flex-col md:flex-row gap-6">
-              {/* vertical thumbnails (desktop) */}
-              <div className="hidden md:flex flex-col gap-3">
-                {combinedImages.map((src, idx) => (
-                  <button
-                    key={`side-${idx}`}
-                    onClick={() => setMainImageIndex(idx)}
-                    className={`w-20 h-20 rounded-xl overflow-hidden border transition transform ${
-                      idx === mainImageIndex ? "scale-105 border-amber-300 shadow" : "border-gray-100 hover:scale-105"
-                    }`}
-                    aria-label={`Show image ${idx + 1}`}
-                    title={`Image ${idx + 1}`}
-                  >
-                    <img
-                      src={src}
-                      alt={`img-${idx}`}
-                      className="w-full h-full object-contain bg-white"
-                      onError={(e: any) => onImgError(e, "https://via.placeholder.com/200x200?text=No+Image")}
-                    />
-                  </button>
-                ))}
-              </div>
-
-              {/* main image */}
-              <div className="flex-1 flex flex-col items-center justify-center">
-                <div
-                  className="relative w-full"
-                  ref={mainImageContainerRef}
-                  // mouse events for desktop lens
-                  onMouseMove={onMouseMove}
-                  onMouseLeave={() => hideLens()}
-                  onMouseEnter={(e) => {
-                    // only show lens on larger screens
-                    if (window.innerWidth >= 768) showLens();
-                  }}
-                  // touch events for mobile
-                  onTouchStart={(e) => {
-                    // open modal on first tap on mobile; but also track touch move for quick preview
-                    if (e.touches && e.touches.length === 1) {
-                      const t = e.touches[0];
-                      onMoveLens(t.clientX, t.clientY);
-                    }
-                  }}
-                  onTouchMove={(e) => onTouchMove(e)}
-                >
-                  <div className="rounded-2xl overflow-hidden shadow-lg relative bg-white">
-                    <img
-                      src={combinedImages[mainImageIndex]}
-                      alt={product.name}
-                      className="w-full h-[60vh] md:h-[520px] object-contain transition duration-500 cursor-zoom-in"
-                      onError={(e: any) => onImgError(e)}
-                      // open modal (click) and center modal on clicked point
-                      onClick={(e) => {
-                        // support both mouse and touch
-                        const ev = e as React.MouseEvent;
-                        openModalAtPoint(ev.clientX, ev.clientY);
-                      }}
-                    />
-                  </div>
-
-                  {/* Lens (desktop) */}
-                  {isLensVisible && (
-                    <div
-                      aria-hidden
-                      style={lensStyle}
-                      // hide on small screens
-                      className="hidden md:block"
-                    />
-                  )}
-
-                  {/* Enhanced mobile thumbnails under image */}
-                  <div className="relative mt-4 md:hidden">
-                    {/* left/right scroll buttons (mobile) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          
+          {/* === LEFT COLUMN: IMAGES & DESCRIPTION === */}
+          <div className="lg:col-span-7 space-y-6">
+            
+            {/* Image Gallery Container - White Bg */}
+            <div className="bg-white rounded-sm p-4 border border-gray-200">
+              <div className="flex flex-col-reverse md:flex-row gap-4">
+                {/* Vertical thumbnails (Desktop) */}
+                <div className="hidden md:flex flex-col gap-3">
+                  {combinedImages.map((src, idx) => (
                     <button
-                      onClick={() => scrollMobileThumbs("prev")}
-                      className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/90 shadow-sm"
-                      aria-label="Scroll thumbnails left"
+                      key={`side-${idx}`}
+                      onClick={() => setMainImageIndex(idx)}
+                      className={`w-14 h-14 rounded-md overflow-hidden border transition ${
+                        idx === mainImageIndex 
+                          ? "border-[#FF9900] ring-2 ring-[#FF9900] ring-opacity-50" 
+                          : "border-gray-200 hover:border-[#FF9900]"
+                      }`}
                     >
-                      <ChevronLeft className="w-5 h-5" />
+                      <img
+                        src={src}
+                        alt={`img-${idx}`}
+                        className="w-full h-full object-contain bg-white"
+                        onError={(e: any) => onImgError(e)}
+                      />
                     </button>
-
-                    <div
-                      ref={mobileThumbsRef as any}
-                      className="flex gap-2 overflow-x-auto no-scrollbar px-8 py-1"
-                      role="list"
-                      aria-label="Product thumbnails"
-                      style={{ scrollBehavior: "smooth" }}
-                    >
-                      {combinedImages.map((src, idx) => (
-                        <button
-                          key={`thumb-m-${idx}`}
-                          onClick={() => setMainImageIndex(idx)}
-                          className={`flex-shrink-0 w-14 h-14 rounded-lg overflow-hidden border ${idx === mainImageIndex ? "border-amber-300 scale-105" : "border-gray-100"}`}
-                          aria-label={`Select image ${idx + 1}`}
-                          title={`Image ${idx + 1}`}
-                        >
-                          <img
-                            src={src}
-                            alt={`mobile-${idx}`}
-                            className="w-full h-full object-contain bg-white"
-                            onError={(e: any) => onImgError(e, "https://via.placeholder.com/200x200?text=No+Image")}
-                          />
-                        </button>
-                      ))}
-                    </div>
-
-                    <button
-                      onClick={() => scrollMobileThumbs("next")}
-                      className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/90 shadow-sm"
-                      aria-label="Scroll thumbnails right"
-                    >
-                      <ChevronRight className="w-5 h-5" />
-                    </button>
-                  </div>
+                  ))}
                 </div>
 
-                {/* Highlights / short specs */}
-                <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
-                  <div className="flex items-start gap-3">
-                    <Truck className="w-5 h-5 text-amber-900" />
-                    <div>
-                      <div className="text-sm font-medium text-amber-900">Free Shipping</div>
-                      {/* <div className="text-xs text-gray-500">Over 5 orders / 3-5 days</div> */}
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <Shield className="w-5 h-5 text-amber-900" />
-                    <div>
-                      <div className="text-sm font-medium text-amber-900">Made In India</div>
-                      {/* <div className="text-xs text-gray-500">Trusted </div> */}
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-amber-900" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 22c-5.421 0-10-4.579-10-10S6.579 2 12 2s10 4.579 10 10-4.579 10-10 10Z" />
-                    </svg>
-                    <div>
-                      <div className="text-sm font-medium text-amber-900">Quality Leather</div>
-                      <div className="text-xs text-gray-500">Handcrafted finish</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Description */}
-                <div className="mt-6 w-full">
-                  <p
-                    className="product-description text-gray-700 leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: description }}
-                  />
-                </div>
-                {/* NOTE: Removed the inline small thumbnails shown after description as requested */}
-              </div>
-            </div>
-          </div>
-
-          {/* Right: Sticky purchase card */}
-          <aside className="lg:col-span-5">
-            <div className="lg:sticky lg:top-24">
-              <div className="bg-white rounded-2xl shadow-lg p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h2 className="text-2xl font-serif font-bold text-amber-900">{product.name}</h2>
-                    <p className="text-sm text-gray-500 mt-1">{product.category ?? "Uncategorized"}</p>
-                  </div>
-                  <button
-                    onClick={() => setWishlisted(!wishlisted)}
-                    aria-pressed={wishlisted}
-                    className={`p-3 rounded-full border transition ${wishlisted ? "bg-amber-100 border-amber-200" : "bg-white border-gray-100 hover:bg-amber-50"}`}
-                    title="Add to wishlist"
+                {/* Main Image */}
+                <div className="flex-1 flex flex-col items-center justify-center relative">
+                  <div
+                    className="relative w-full z-10"
+                    ref={mainImageContainerRef}
+                    onMouseMove={onMouseMove}
+                    onMouseLeave={() => hideLens()}
+                    onMouseEnter={() => { if (window.innerWidth >= 768) showLens(); }}
+                    onTouchStart={(e) => { if (e.touches.length === 1) onMoveLens(e.touches[0].clientX, e.touches[0].clientY); }}
+                    onTouchMove={onTouchMove}
                   >
-                    <Heart className={`w-5 h-5 ${wishlisted ? "text-amber-600" : "text-gray-400"}`} />
-                  </button>
-                </div>
+                    <div className="bg-white overflow-hidden relative flex justify-center">
+                      <img
+                        src={combinedImages[mainImageIndex]}
+                        alt={product.name}
+                        className="max-h-[500px] object-contain cursor-zoom-in"
+                        onError={(e: any) => onImgError(e)}
+                        onClick={(e) => openModalAtPoint(e.clientX, e.clientY)}
+                      />
+                    </div>
 
-                {/* Price */}
-                <div className="mt-6 flex items-baseline gap-4">
-                  <span className="text-3xl font-bold text-amber-900">₹ {product.price}</span>
-                </div>
+                    {isLensVisible && <div aria-hidden style={lensStyle} className="hidden md:block" />}
+                  </div>
 
-                {/* Options: Size */}
-                <div className="mt-6">
-                  <label className="block font-medium mb-2 text-amber-900">Size</label>
-                  <div className="flex flex-wrap gap-2">
-                    {sizes.map((size) => (
+                  {/* Mobile Thumbnails */}
+                  <div className="flex md:hidden gap-3 overflow-x-auto py-4 w-full no-scrollbar">
+                    {combinedImages.map((src, idx) => (
                       <button
-                        key={size}
-                        onClick={() => setSelectedSize(size)}
-                        className={`px-4 py-2 rounded-full border font-medium mb-2 ${
-                          selectedSize === size ? "bg-amber-900 text-white border-amber-900" : "bg-white text-amber-900 border-amber-300 hover:bg-amber-100"
-                        } transition-colors`}
-                        aria-pressed={selectedSize === size}
+                        key={`mob-${idx}`}
+                        onClick={() => setMainImageIndex(idx)}
+                        className={`flex-shrink-0 w-16 h-16 rounded border ${
+                          idx === mainImageIndex ? "border-[#FF9900]" : "border-gray-200"
+                        }`}
                       >
-                        {size}
+                        <img src={src} className="w-full h-full object-contain" />
                       </button>
                     ))}
                   </div>
                 </div>
+              </div>
+            </div>
 
-                {/* Options: Color */}
-                <div className="mt-4">
-                  <label className="block font-medium mb-2 text-amber-900">Color</label>
-                  <div className="flex flex-wrap gap-2 items-center">
-                    {colors.map((color) => {
-                      const bg = (color || "").toLowerCase();
-                      const swatch = bg === "black" ? "#111" : bg === "white" ? "#f8f8f8" : bg;
-                      return (
-                        <button
-                          key={color}
-                          onClick={() => setSelectedColor(color)}
-                          className={`px-4 py-2 rounded-full border font-medium mb-2 ${selectedColor === color ? "bg-amber-900 text-white border-amber-900" : "bg-white text-amber-900 border-amber-300 hover:bg-amber-100"} transition-colors flex items-center gap-2`}
-                          aria-pressed={selectedColor === color}
-                        >
-                          <span className="w-3 h-3 rounded-full" style={{ backgroundColor: swatch }} />
-                          {color}
-                        </button>
-                      );
-                    })}
+            {/* Description Block */}
+            <div className="bg-white rounded-sm p-6 border border-gray-200">
+              <h3 className="text-lg font-bold text-[#C7511F] mb-4 uppercase">Product Description</h3>
+              <div 
+                className="prose max-w-none text-[#131921] text-sm leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: description }}
+              />
+            </div>
+
+            {/* Sizing Guide Block - Styled like Amazon A+ Content */}
+            <div className="bg-white rounded-sm p-6 border border-gray-200">
+               <div className="flex items-center gap-2 mb-4">
+                 <Ruler className="w-6 h-6 text-[#007185]" />
+                 <h3 className="text-xl font-bold text-[#131921]">Find Your Perfect Size</h3>
+               </div>
+               
+               <div className="bg-[#F0F2F2] p-4 rounded border border-gray-300">
+                  <p className="text-[#131921] mb-2 font-medium">Measurement Formula:</p>
+                  <p className="text-[#565959] text-sm mb-4">
+                    (Foot Length in cm + 1.5 cm) × 1.5 = Recommended Size
+                  </p>
+                  
+                  <div className="flex flex-wrap items-end gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-[#565959] uppercase mb-1">Enter Foot Length (cm)</label>
+                      <input
+                        type="number"
+                        step="0.1"
+                        value={footLength}
+                        onChange={(e) => setFootLength(e.target.value === "" ? "" : Number(e.target.value))}
+                        placeholder="e.g., 26.5"
+                        className="w-32 px-3 py-2 border border-[#888C8C] rounded shadow-inner focus:border-[#e77600] focus:ring-1 focus:ring-[#e77600] outline-none"
+                      />
+                    </div>
+                    
+                    <div className="pb-1">
+                      <span className="text-sm text-[#565959] mr-2">Your Size:</span>
+                      <span className="text-2xl font-bold text-[#B12704]">{computedSize ?? "—"}</span>
+                    </div>
                   </div>
-                </div>
+                  
+                  {note && <p className="mt-3 text-sm text-[#C7511F] font-medium">{note}</p>}
+               </div>
+            </div>
+          </div>
 
-                {/* Quantity */}
-                <div className="mt-4">
-                  <label className="block font-medium mb-2 text-amber-900">Quantity</label>
-                  <input
-                    type="number"
-                    min={1}
-                    value={quantity}
-                    onChange={(e) => setQuantity(Number(e.target.value) || 1)}
-                    className="w-28 px-4 py-2 rounded-full border border-amber-300 focus:border-amber-900 outline-none"
-                    aria-label="Quantity"
-                  />
-                </div>
+          {/* === RIGHT COLUMN: PRODUCT DETAILS & BUY BOX === */}
+          <aside className="lg:col-span-5 space-y-4">
+            
+            {/* Product Header & Options */}
+            <div className="bg-white p-6 rounded-sm border border-gray-200">
+              <div className="flex justify-between items-start">
+                 <div>
+                    <h1 className="text-2xl md:text-3xl font-medium text-[#131921] leading-tight mb-1">{product.name}</h1>
+                    <span className="text-[#007185] text-sm hover:underline cursor-pointer">{product.category ?? "Men's Footwear"}</span>
+                 </div>
+                 <button
+                  onClick={() => setWishlisted(!wishlisted)}
+                  className="p-2 hover:bg-gray-100 rounded-full"
+                >
+                  <Heart className={`w-6 h-6 ${wishlisted ? "fill-[#B12704] text-[#B12704]" : "text-gray-400"}`} />
+                </button>
+              </div>
 
-                {/* Order Button */}
-                <div className="mt-6">
-                  <button
-                    disabled={!canOrder}
-                    onClick={handleOrder}
-                    className={`w-full flex items-center justify-center px-6 py-3 rounded-full font-bold text-lg transition-colors ${canOrder ? "bg-amber-900 text-white hover:bg-amber-800" : "bg-gray-200 text-gray-400 cursor-not-allowed"}`}
-                    aria-disabled={!canOrder}
-                  >
-                    <span className="mr-2">Confirm Order via WhatsApp</span>
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </button>
-                </div>
+              {/* Rating */}
+              <div className="flex items-center gap-1 mt-2">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className={`w-4 h-4 ${i < rating ? "fill-[#FF9900] text-[#FF9900]" : "text-gray-300"}`} />
+                ))}
+                <span className="text-[#007185] text-sm ml-2 hover:underline cursor-pointer">142 ratings</span>
+              </div>
 
-                {/* Micro trust & return policy */}
-                <div className="mt-5 text-sm text-gray-500">
-                  <div className="flex items-center gap-2">
-                    <Shield className="w-4 h-4 text-amber-900" />
-                    <span>30 days easy returns</span>
-                  </div>
-                  <div className="flex items-center gap-2 mt-2">
-                    <Truck className="w-4 h-4 text-amber-900" />
-                    <span>Ships within 24 hours</span>
-                  </div>
+              <div className="border-t border-gray-200 my-4"></div>
+
+              {/* Price */}
+              <div className="flex items-baseline gap-2">
+                <span className="text-[#B12704] text-sm">Deal Price:</span>
+                <span className="text-3xl font-medium text-[#B12704]">
+                  <sup className="text-sm">₹</sup>{product.price}
+                </span>
+              </div>
+              <p className="text-[#565959] text-sm mt-1">Inclusive of all taxes</p>
+
+              {/* Size Selection */}
+              <div className="mt-6">
+                <div className="flex justify-between mb-2">
+                   <span className="font-bold text-[#565959] text-sm">Select Size: <span className="text-[#131921]">{selectedSize}</span></span>
+                   <span className="text-[#007185] text-sm hover:underline cursor-pointer flex items-center gap-1">
+                     <Ruler className="w-3 h-3" /> Size Chart
+                   </span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {sizes.map((size) => (
+                    <button
+                      key={size}
+                      onClick={() => setSelectedSize(size)}
+                      className={`px-4 py-2 text-sm border rounded-sm transition-all ${
+                        selectedSize === size
+                          ? "border-[#FF9900] bg-[#FFF5E5] text-[#131921] font-bold ring-1 ring-[#FF9900]"
+                          : "border-gray-300 bg-white text-[#131921] hover:bg-gray-50"
+                      }`}
+                    >
+                      {size}
+                    </button>
+                  ))}
                 </div>
               </div>
 
-              {/* More details / reviews card (optional) */}
+              {/* Color Selection */}
+              <div className="mt-4">
+                <span className="font-bold text-[#565959] text-sm mb-2 block">Color: <span className="text-[#131921]">{selectedColor}</span></span>
+                <div className="flex flex-wrap gap-2">
+                  {colors.map((color) => (
+                    <button
+                      key={color}
+                      onClick={() => setSelectedColor(color)}
+                      className={`px-3 py-1.5 text-sm border rounded-sm flex items-center gap-2 ${
+                        selectedColor === color
+                          ? "border-[#FF9900] bg-[#FFF5E5] ring-1 ring-[#FF9900] font-bold"
+                          : "border-gray-300 hover:bg-gray-50"
+                      }`}
+                    >
+                      <span 
+                        className="w-3 h-3 rounded-full border border-gray-300" 
+                        style={{ backgroundColor: color.toLowerCase() }} 
+                      />
+                      {color}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Trust Badges */}
+              <div className="grid grid-cols-3 gap-2 mt-6 text-xs text-[#007185]">
+                <div className="flex flex-col items-center text-center gap-1">
+                   <div className="bg-white p-2 rounded-full shadow-sm border border-gray-200">
+                     <Truck className="w-5 h-5 text-[#FF9900]" />
+                   </div>
+                   <span>Free Delivery</span>
+                </div>
+                <div className="flex flex-col items-center text-center gap-1">
+                   <div className="bg-white p-2 rounded-full shadow-sm border border-gray-200">
+                     <Shield className="w-5 h-5 text-[#FF9900]" />
+                   </div>
+                   <span>30 Days Return</span>
+                </div>
+                <div className="flex flex-col items-center text-center gap-1">
+                   <div className="bg-white p-2 rounded-full shadow-sm border border-gray-200">
+                     <CheckCircle className="w-5 h-5 text-[#FF9900]" />
+                   </div>
+                   <span>Top Brand</span>
+                </div>
+              </div>
+
+              {/* Stock Status */}
+              <div className="mt-6 text-[#067D62] text-lg font-medium">
+                In stock
+              </div>
+
+              {/* Quantity */}
+              <div className="mt-2 flex items-center gap-2">
+                 <label className="text-sm text-[#131921]">Qty:</label>
+                 <select 
+                    value={quantity} 
+                    onChange={(e) => setQuantity(Number(e.target.value))}
+                    className="bg-[#F0F2F2] border border-[#D5D9D9] rounded-md shadow-sm px-2 py-1 text-sm focus:ring-[#e77600] focus:border-[#e77600]"
+                 >
+                    {[1,2,3,4,5].map(num => <option key={num} value={num}>{num}</option>)}
+                 </select>
+              </div>
+
+              {/* Buy Button - Amazon Yellow */}
+              <div className="mt-6">
+                <button
+                disabled={!canOrder}
+                className={`w-full mt-6 py-3 font-medium text-black border ${
+                  canOrder
+                    ? "bg-[#B17457] text-white hover:bg-[#4A4947]"
+                    : "bg-[#D8D2C2] cursor-not-allowed"
+                }`}
+              >
+                Order via WhatsApp
+              </button>
+              </div>
+              
+              <div className="mt-3 flex items-center justify-center gap-2 text-xs text-[#565959]">
+                 <Shield className="w-3 h-3" />
+                 Secure transaction
+              </div>
             </div>
+
+            {/* Promotional Image / Banner */}
+            <div className="bg-white p-4 rounded-sm border border-gray-200">
+              <img
+                src={sidebarImage}
+                alt="Promotion"
+                className="w-full h-auto object-contain rounded-sm"
+                onError={(e: any) => onImgError(e)}
+              />
+            </div>
+
           </aside>
         </div>
       </div>
 
-      {/* Modal: fullscreen zoom */}
+      {/* Fullscreen Zoom Modal */}
       {isModalOpen && (
         <div
           id="product-zoom-modal"
-          role="dialog"
-          aria-modal="true"
-          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
           onClick={() => setIsModalOpen(false)}
           onMouseMove={(e) => onModalMove(e.clientX, e.clientY)}
-          onTouchMove={(e) => {
-            if (e.touches && e.touches.length > 0) {
-              const t = e.touches[0];
-              onModalMove(t.clientX, t.clientY);
-            }
-          }}
         >
-          <div
-            className="relative w-full h-full max-w-5xl max-h-[90vh] overflow-hidden rounded-xl"
-            onClick={(ev) => {
-              // prevent modal close when clicking inside the image container
-              ev.stopPropagation();
-            }}
-          >
+          <div className="relative w-full h-full max-w-6xl max-h-[90vh]" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setIsModalOpen(false)}
-              className="absolute right-4 top-4 z-30 bg-white/90 rounded-full p-2 shadow"
-              aria-label="Close zoom"
+              className="absolute right-4 top-4 z-50 bg-white rounded-full p-2 hover:bg-gray-200"
             >
               ✕
             </button>
-
-            {/* zoomed image container */}
-            <div className="w-full h-full bg-black flex items-center justify-center">
-              <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
-                {/* The image is scaled up and shifted so the focused point (modalPan) is centered */}
-                <img
-                  src={combinedImages[mainImageIndex]}
-                  alt={`${product.name} - zoom`}
-                  draggable={false}
-                  onError={(e: any) => onImgError(e)}
-                  style={{
-                    transform: `scale(${zoomScale}) translate(${(0.5 - modalPan.x) * 100}%, ${(0.5 - modalPan.y) * 100}%)`,
-                    transformOrigin: "center center",
-                    transition: "transform 120ms linear",
-                    maxWidth: "none",
-                    width: "100%",
-                    height: "auto",
-                    userSelect: "none",
-                    pointerEvents: "none",
-                  }}
-                />
-              </div>
+            <div className="w-full h-full flex items-center justify-center overflow-hidden bg-white rounded-lg">
+              <img
+                src={combinedImages[mainImageIndex]}
+                alt="Zoom"
+                style={{
+                  transform: `scale(${zoomScale}) translate(${(0.5 - modalPan.x) * 100}%, ${(0.5 - modalPan.y) * 100}%)`,
+                  transformOrigin: "center center",
+                  transition: "transform 0.1s linear",
+                  maxWidth: "none",
+                  width: "100%",
+                }}
+                className="pointer-events-none select-none"
+              />
             </div>
           </div>
         </div>
       )}
 
       <style>{`
-        @keyframes float {
-          0% { transform: translateY(0); }
-          50% { transform: translateY(-8px); }
-          100% { transform: translateY(0); }
-        }
-        .animate-float {
-          animation: float 4s ease-in-out infinite;
-        }
-        .no-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-        .no-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       `}</style>
     </div>
   );

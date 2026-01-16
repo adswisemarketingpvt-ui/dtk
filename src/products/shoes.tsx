@@ -3,295 +3,325 @@ import { color } from "framer-motion";
 export const products = [
   {
     id: 1,
-    name: "DTK Regal Oxford",
-    price: 1499,
-    image: "https://www.dtkfootwear.com//public/Tranding/1.png",
-    category: "Formal",
+    name: "Abstract Bhakt",
+    price: 1999,
+    image: "https://tartariatech.com/public/1.webp?v=1680173599",
+    category: "Bhakt",
     sizes: ["5", "6", "7", "8", "9", "10", "11"],
-    colors: ["Black", "Brown", "Tan"],
+    colors: ["Black"],
     rating: 4,
-    description: `<b>Step into elegance with DTK Regal Oxford</b>, the benchmark in premium leather formal shoes. Designed for executives and professionals who value detail and durability, this shoe blends timeless Oxford styling with modern comfort engineering.
-
-  <b>Why DTK Regal Oxford:</b>
-  Each pair of DTK Regal Oxford shoes is handcrafted to perfection, offering a luxurious feel, precise fit, and unbeatable elegance. Whether you’re closing a deal or attending a celebration, these genuine leather Oxford shoes project authority and sophistication.
+    description: `The Abstract Bhakt combines traditional craftsmanship with a contemporary aesthetic. Its sleek design and premium leather construction make it a versatile choice for formal occasions. The cushioned insole ensures comfort throughout the day, while the durable outsole provides reliable traction.
+<br/>
+  <b>Key features:</b>
+    Modern silhouette; leather upper; cushioned insole; durable rubber outsole; available in Black, Brown & Tan.
+   <br/> <b>Specs:</b> Sizes 5–11 (UK); Material: leather upper, textile lining, rubber outsole.
   `,
   },
 
   {
-    id: 2,
-    name: "DTK Urban Loafer",
-    price: 1799,
-    // originalPrice: 449,
-    image: "https://www.dtkfootwear.com//public/Tranding/2.png",
-    category: "Formal / Casual",
-    sizes: ["5", "6", "7", "8", "9", "10", "11"],
-    colors: ["Black", "Brown", "Tan"],
-    rating: 5,
-    description: `<b>DTK Urban Loafer</b> — Premium Leather Loafers for Men
-Add a touch of effortless sophistication to your wardrobe with the DTK Urban Loafer, a modern classic crafted for men who value comfort and class in equal measure. Designed for versatility, these premium leather loafers transition seamlessly from formal meetings to casual evenings, making them a must-have in every gentleman’s collection.
-
-<b>Why DTK Urban Loafer:</b>
-The DTK Urban Loafer combines traditional craftsmanship with contemporary styling. Its handcrafted premium leather finish and slip-on convenience make it perfect for professionals and fashion-conscious men alike. Whether at the office, a dinner meeting, or a weekend outing, these luxury leather loafers deliver unbeatable comfort and timeless appeal.
-
-    `,
-  },
-  {
+  id: 2,
+  name: "Urban Loafer",
+  price: 2999,
+  // originalPrice: 449,
+  image: "https://tartariatech.com/public/2.webp?v=1680173590",
+  category: "Formal / Casual",
+  sizes: ["5", "6", "7", "8", "9", "10", "11"],
+  colors: ["Black", "Brown", "Tan"],
+  rating: 5,
+  description: `The Urban Loafer is built for the professional who values convenience and polish. Its smooth leather upper and cushioned footbed make it ideal for commuting and meetings. The low-profile sole keeps the look formal while offering everyday flexibility. Pair them with chinos or a suit for a refined yet effortless outfit.
+<br/>
+  <b>Key features:</b>
+    Slip-on design; premium leather upper; padded insole; flexible rubber outsole; breathable lining; available in Black, Brown & Tan.
+    <br/> <b>Specs:</b> Sizes 5–11 (UK); Material: leather upper, textile lining, rubber outsole.
+  <br/><b>Care & warranty:</b> Use a soft brush and leather cleaner; store with shoe trees; 3-month workmanship warranty.
+  `,
+},
+ {
     id: 3,
-    name: "DTK Heritage Mojari",
-    price: 1799,
+    name: "Heritage Mojari",
+    price: 2999,
     // originalPrice: 379,
-    image: "https://www.dtkfootwear.com//public/Tranding/3.png",
+    image: "https://tartariatech.com//public/3.webp?v=1680173595",
     category: "Formal / Casual/ Functions",
     colors: ["Black", "Brown", "Tan"],
     sizes: ["5", "6", "7", "8", "9", "10", "11"],
     rating: 4,
-    description: `<b>DTK Heritage Mojari</b> — Premium Leather Ethnic & Formal Slip-On Shoes for Men
-Step into tradition with modern sophistication through the DTK Heritage Mojari. Expertly handcrafted from premium genuine leather, this shoe beautifully merges Indian heritage with contemporary comfort. Designed for men who appreciate elegance in every detail, it’s perfect for both ethnic celebrations and formal occasions.
-
-<b>Why DTK Heritage Mojari:</b> The DTK Heritage Mojari is a perfect blend of heritage craftsmanship and modern comfort. With its minimalist silhouette and premium materials, it brings grace and sophistication to every outfit — from ethnic attire to business formals. Designed for those who appreciate class, culture, and comfort, it’s more than footwear — it’s a statement of identity.
-
-    `,
-  },
-  {
+    description: `Celebrate tradition with the Heritage Mojari — a handcrafted footwear option that adds cultural charm to your formal wardrobe. Finished in premium leather, it offers a snug, comfortable fit and pairs beautifully with ethnic and fusion outfits at weddings and festivals.
+<br/>
+  <b>Key features:</b>
+    Hand-finished leather upper; cushioned lining; slip-on design; detailed stitching; lightweight sole; ethnic styling.
+    <br/> <b>Specs:</b> Sizes 5–11 (UK); Material: leather upper & lining; Sole: flexible rubber.
+  <br/><b>Care & warranty:</b> Wipe with soft cloth; keep away from water; avoid machine cleaning.
+  `,
+},
+ {
     id: 4,
-    name: "DTK Prime Oxford",
-    price: 1799,
+    name: " Prime Oxford",
+    price: 2999,
     // originalPrice: 529,
-    image: "https://www.dtkfootwear.com//public/Tranding/4.png",
+    image: "https://tartariatech.com/public/4.webp?v=1680173592",
     category: "Formal / Casual",
     rating: 5,
     colors: ["Black", "Brown", "Tan"],
     sizes: ["5", "6", "7", "8", "9", "10", "11"],
-    description: `<b>DTK Prime Oxford</b> — Premium Leather Formal & Semi-Formal Shoes for Men
-Make a lasting impression with the DTK Prime Oxford, a masterpiece of craftsmanship and contemporary style. Designed for modern professionals, these premium leather oxford shoes blend elegance, durability, and comfort — perfect for both business and casual occasions.
-<b>Why DTK Prime Oxford :</b>
-The DTK Prime Oxford reflects timeless design with a modern touch. Its polished leather upper, precise stitching, and comfortable interior make it ideal for the man who values both style and substance. Whether paired with a business suit or chinos, these luxury men’s Oxfords complete your look with sophistication and authority.
-    `,
-  },
+    description: `The Prime Oxford refines classic Oxford styling with practical comfort features. It’s suited to professionals seeking a dependable formal shoe for regular wear. The firm heel support and cushioned insole reduce strain during long days while maintaining a slim, elegant toe line.
+<br/>
+  <b>Key features:</b>
+    Polished leather upper; cushioned footbed; leather-lined interior; anti-slip sole insert; reinforced heel.
+    <br/> <b>Specs:</b> Sizes 5–11 (UK); Material: leather upper, PU insole, rubber insert.
+  <br/><b>Care & warranty:</b> Apply leather polish periodically; repel moisture with waterproof spray.
+  `,
+},
   {
     id: 5,
-    name: "DTK Elite Loafer",
-    price: 1799,
+    name: "Elite Loafer",
+    price: 2999,
     // originalPrice: 359,
-    image: "https://www.dtkfootwear.com//public/Tranding/5.png",
+    image: "https://www.artarium.com/cdn/shop/products/3_22.jpg?v=1680173586",
     category: "Formal / Casual",
     rating: 4,
     colors: ["Black", "Brown", "Tan"],
     sizes: ["5", "6", "7", "8", "9", "10", "11"],
-    description: `<b>DTK Elite Loafer</b> — Premium Leather Slip-On Formal Shoes for Men Refined, versatile, and effortlessly stylish — the DTK Elite Loafer defines modern sophistication. Made from premium quality leather, these loafers combine timeless design with unmatched comfort, making them the perfect choice for both formal occasions and smart casual wear.
-
-<b>Why DTK Elite Loafer:</b>
-The DTK Elite Loafer is a perfect balance of classic luxury and modern convenience. Designed for the man who values sophistication without compromising comfort, its handcrafted structure and refined detailing make it ideal for any setting — from the boardroom to a casual evening out. These luxury leather loafers redefine everyday elegance.
-    `,
-  },
+    description: `The Elite Loafer fuses traditional loafer aesthetics with modern comfort. Smooth leather and a soft cushioned insole make it a favorite for professionals who prefer easy-on footwear without losing formality. Perfect with suits and chinos alike.
+<br/>
+  <b>Key features:</b>
+    Penny-loafer strap detail; leather upper & lining; cushioned insole; flexible outsole; low-profile heel.
+    <br/> <b>Specs:</b> Sizes 5–11 (UK); Material: leather upper, PU insole, rubber outsole.
+  <br/><b>Care & warranty:</b> Clean with damp cloth and use neutral conditioner.
+  `,
+},
   {
     id: 6,
-    name: "DTK Heritage Nagra",
-    price: 1799,
+    name: "Heritage Nagra",
+    price: 2999,
     // originalPrice: 489,
+    image: "https://www.artarium.com/cdn/shop/products/4_25.jpg?v=1680173590",
+    category: "Formal / Casual/ Functions",
     colors: ["Black", "Brown", "Tan"],
     sizes: ["5", "6", "7", "8", "9", "10", "11"],
-    image: "https://www.dtkfootwear.com/public/Tranding/6.png",
-    category: "Formal / Casual/ Functions",
     rating: 5,
-    description: `<b>DTK Heritage Nagra</b> — Premium Leather Ethnic & Formal Slip-On Shoes for Men Celebrate tradition with sophistication through the DTK Heritage Nagra, a luxurious blend of Indian craftsmanship and modern comfort. Handcrafted from premium genuine leather, these slip-on shoes exude cultural elegance while providing the all-day comfort needed for today’s lifestyle. Perfect for formal events, ethnic functions, and everyday wear, the Nagra adds timeless charm to every outfit.
-
-<b>Why DTK Heritage Nagra:</b>
-The DTK Heritage Nagra embodies heritage, comfort, and class. Its handcrafted leather body and minimalist silhouette reflect pure elegance rooted in Indian tradition. Whether paired with a sherwani, kurta-pyjama, or formal attire, these luxury men’s Nagra shoes are designed to complement every ensemble with sophistication.
-    `,
+    description: `The Heritage Nagra delivers a traditional aesthetic with a modern comfort-oriented sole. Tailored for festive events and function wear, it’s a great choice when you want formal flair and slip-on convenience.
+<br/>
+  <b>Key features:</b>
+    Smooth leather upper; slip-on design; cushioned footbed; non-slip sole; decorative stitching.
+    <br/> <b>Specs:</b> Sizes 5–11 (UK); Material: leather upper.
+  <br/><b>Care & warranty:</b> Avoid soaking; polish gently.
+  `,
   },
   {
     id: 7,
-    name: "DTK Windsor Brogue ",
-    price: 1499,
+    name: "Windsor Brogue",
+    price: 2499,
     // originalPrice: 489,
-    image: "https://www.dtkfootwear.com/public/Tranding/7.png",
+    image: "https://www.artarium.com/cdn/shop/products/5_27.jpg?v=1680173593",
     category: "Formal",
     colors: ["Black", "Brown", "Tan"],
     sizes: ["5", "6", "7", "8", "9", "10", "11"],
     rating: 5,
-    description: `<b>DTK Windsor Brogue</b> — Premium Leather Wingtip Formal Shoes for Men Classic, confident, and timeless — the DTK Windsor Brogue represents the finest craftsmanship in premium leather formal shoes. Known for its distinctive wingtip design and detailed perforations, this shoe blends traditional British elegance with modern sophistication. Ideal for both formal and smart casual occasions, it’s a staple for every gentleman’s wardrobe.
-<b>
-Why DTK Windsor Brogue</b>:
-The DTK Windsor Brogue is the definition of timeless sophistication. Designed for men who appreciate meticulous detailing and refined aesthetics, it pairs effortlessly with suits, chinos, or dress trousers. Every pair reflects handcrafted precision, durability, and premium comfort, making it the ultimate choice for professionals and style enthusiasts alike.
-    `,
+    description: `The Windsor Brogue balances formal elegance and character. Its decorative brogue perforations add texture while the leather upper keeps the shoe suitable for black-tie and smart-casual ensembles. Comfortable insoles and solid stitching ensure durability.
+<br/>
+  <b>Key features:</b>
+    Wingtip brogue perforation; leather upper; cushioned insole; welted stitching; rubber heel tip for grip.
+    <br/> <b>Specs:</b> Sizes 5–11 (UK); Material: leather upper, leather lining, rubber heel.
+  <br/><b>Care & warranty:</b> Use brogue brush and leather polish.
+  `,
   },
   {
     id: 8,
-    name: "DTK Classic Slip-On",
-    price: 1499,
+    name: "Classic Slip-On",
+    price: 2499,
     // originalPrice: 2000,
-    image: "https://www.dtkfootwear.com/public/Tranding/8.png",
+    image: "https://www.artarium.com/cdn/shop/products/7_19.jpg?v=1680173596",
     category: "Formal / Casual/ Functions",
-    rating: 5,
     colors: ["Black", "Brown", "Tan"],
     sizes: ["5", "6", "7", "8", "9", "10", "11"],
-    description: `<b>DTK Classic Slip-On</b> —Premium Leather Formal & Casual Shoes for Men Sleek, timeless, and effortlessly stylish — the DTK Classic Slip-On is the ultimate blend of elegance and comfort. Designed for men who appreciate convenience without compromising sophistication, this shoe is a staple for every wardrobe. Crafted from premium genuine leather, it delivers a clean, polished look suitable for formal and casual occasions alike.
-
-<b>Why DTK Classic Slip-On</b>:
-The DTK Classic Slip-On redefines simplicity with class. Its minimalist design, premium leather texture, and handcrafted construction make it a versatile choice for professionals and style-conscious men. Whether paired with business suits or semi-formal outfits, these luxury leather slip-ons ensure a sophisticated and confident look every time.
-    `,
+    rating: 5,
+    description: `The Classic Slip-On simplifies formal dressing without sacrificing style. With a soft leather lining and supportive insole, it suits professionals who prize quick wearability and refined looks. The subtle design makes it ideal for office-to-evening transitions.
+<br/>
+  <b>Key features:</b>
+    Slip-on construction; leather upper; padded collar; soft lining; anti-slip sole.
+    <br/> <b>Specs:</b> Sizes 5–11 (UK); Material: leather upper & lining, synthetic sole.
+  <br/><b>Care & warranty:</b> Wipe and buff; 3-month warranty.
+  `,
   },
   {
     id: 9,
-    name: "DTK Penny Loafer",
-    price: 1499,
+    name: "Penny Loafer",
+    price: 2499,
     // originalPrice: 489,
-
-    image: "https://www.dtkfootwear.com/public/Tranding/9.png",
+    image: "https://www.artarium.com/cdn/shop/products/8_16.jpg?v=1680173598",
     category: "Formal / Casual",
     colors: ["Black", "Brown", "Tan"],
     sizes: ["5", "6", "7", "8", "9", "10", "11"],
     rating: 5,
-    description: `<b>DTK Penny Loafer</b> — Premium Leather Slip-On Shoes for Men Classic, comfortable, and undeniably stylish — the DTK Penny Loafer redefines understated luxury. Expertly handcrafted from premium genuine leather, these loafers embody timeless design and effortless sophistication. Whether for formal meetings or casual gatherings, the DTK Penny Loafer offers a perfect blend of elegance and versatility.
-<b>
-Why DTK Penny Loafer</b>:
-The DTK Penny Loafer stands for effortless elegance. With its handcrafted finish, luxurious leather, and slip-on convenience, it’s designed for men who value both comfort and class. Pair it with formal trousers, chinos, or even smart denims — these luxury leather loafers adapt perfectly to any setting, making them a timeless wardrobe essential.
-    `,
+    description: `The Penny Loafer offers a sleek silhouette and comfortable insole for everyday formal-casual wear. It’s a wardrobe staple for professionals who want a low-effort yet refined footwear option.
+<br/>
+  <b>Key features:</b>
+    Penny strap detail; leather upper; cushioned lining; flexible rubber outsole.
+    <br/> <b>Specs:</b> Sizes 5–11 (UK); Material: leather upper, PU insole.
+  <br/><b>Care & warranty:</b> Spot-clean only; use leather conditioner monthly; 3-month warranty.
+  `,
   },
   {
     id: 10,
-    name: "DTK Monarch Plain Derby",
-    price: 1499,
+    name: "Monarch Plain Derby",
+    price: 2499,
     // originalPrice: 489,
-    image: "https://www.dtkfootwear.com/public/Tranding/10.png",
+    image: "https://www.artarium.com/cdn/shop/products/10_13.jpg?v=1680173600",
     category: "Formal / Casual",
     colors: ["Black", "Brown", "Tan"],
     sizes: ["5", "6", "7", "8", "9", "10", "11"],
     rating: 5,
-    description: `<b>DTK Monarch Plain Derby</b> — Premium Leather Formal Lace-Up Shoes for Men Elegant, timeless, and designed for the modern professional — the DTK Monarch Plain Derby is a statement of power and precision. Crafted from premium genuine leather, this sleek lace-up shoe offers unmatched comfort and a sophisticated look, making it ideal for formal events, business attire, and semi-casual occasions.
-<b>
-Why DTK Monarch Plain Derby</b>:
-The DTK Monarch Plain Derby exemplifies minimalism and luxury. Its clean design, handcrafted quality, and precision detailing make it a perfect companion for every occasion — from boardroom sessions to evening outings. With its durable construction and all-day comfort, it stands as one of the most versatile and luxurious leather Derby shoes for men.
-    `,
+    description: `The Monarch Plain Derby is a practical, stylish choice for professionals needing a dependable daily formal shoe. Its open-lacing Derby fit suits a range of foot shapes while the ergonomic insole provides long-wear comfort.
+<br/>
+  <b>Key features:</b>
+    Open-lace Derby design; leather upper; padded insole; rubber grip outsole; reinforced toe.
+    <br/> <b>Specs:</b> Sizes 5–11 (UK); Material: leather upper, rubber outsole.
+  <br/><b>Care & warranty:</b> Polish regularly; avoid water.
+  `,
   },
   {
     id: 11,
-    name: "DTK Regal Oxford",
-    price: 1799,
+    name: "Regal Plain Oxford",
+    price: 2999,
     // originalPrice: 489,
-    image: "https://www.dtkfootwear.com/public/Tranding/11.png",
+    image: "https://image.shutterstock.com/image-photo/hindu-goddess-durga-sculpture-pune-260nw-1143323375.jpg",
     category: "Formal",
     colors: ["Black", "Brown", "Tan"],
     sizes: ["5", "6", "7", "8", "9", "10", "11"],
     rating: 5,
-    description: `<b>DTK Regal Oxford</b> — Premium Leather Formal Lace-Up Shoes for Men Experience unmatched sophistication and craftsmanship with the DTK Regal Oxford, a timeless classic designed for men who appreciate refined elegance. Handcrafted from premium full-grain leather, this shoe embodies traditional Oxford styling with modern comfort, making it the perfect choice for formal wear and professional settings.
-<b>
-Why DTK Regal Oxford</b>:
-The DTK Regal Oxford stands as a symbol of class and craftsmanship. With its polished leather texture, structured toe cap, and meticulous detailing, it adds a touch of authority to every step. Whether paired with tailored suits or business formals, these luxury men’s Oxford shoes deliver timeless elegance, professional presence, and ultimate comfort.
-    `,
+    description: `The Regal Plain Oxford emphasizes simplicity and elegance. The unadorned toe and glossy leather make it a versatile formal staple, blending seamlessly with suit trousers and formal attire. Comfort features keep it suitable for long days.
+<br/>
+  <b>Key features:</b>
+    Plain-toe Oxford; full-grain leather upper; cushioned insole; leather sole with rubber tip; secure lace-up.
+    <br/> <b>Specs:</b> Sizes 5–11 (UK); Material: leather upper, leather lining.
+  <br/><b>Care & warranty:</b> Clean and polish; keep in dust bag.
+  `,
   },
   {
     id: 12,
-    name: " DTK Prime Oxford ",
-    price: 1799,
+    name: "Prime Oxford",
+    price: 2999,
     // originalPrice: 489,
-    image: "https://www.dtkfootwear.com/public/Tranding/12.png",
+    image: "https://image.shutterstock.com/image-photo/statue-sri-ayyappan-hindu-deity-260nw-1933036430.jpg",
     category: "Formal / Casual",
     colors: ["Black", "Brown", "Tan"],
     sizes: ["5", "6", "7", "8", "9", "10", "11"],
     rating: 5,
-    description: `<b>DTK Prime Oxford</b> — Premium Leather Formal & Semi-Formal Shoes for Men Elevate your everyday elegance with the DTK Prime Oxford, a perfect fusion of tradition and modern craftsmanship. Handcrafted from premium genuine leather, this classic Oxford design brings sophistication, strength, and comfort together — ideal for both formal meetings and semi-formal occasions.
-<b>
-Why DTK Prime Oxford</b>:
-The DTK Prime Oxford represents the essence of refined craftsmanship. With its sleek silhouette, handcrafted stitching, and premium finish, it’s designed for men who command confidence and style. Whether worn with a tailored suit or semi-casual attire, these luxury leather Oxfords make an impeccable statement of professionalism and taste.
-    `,
+    description: `The Prime Oxford refines classic Oxford styling with practical comfort features. It’s suited to professionals seeking a dependable formal shoe for regular wear. The firm heel support and cushioned insole reduce strain during long days while maintaining a slim, elegant toe line.
+<br/>
+  <b>Key features:</b>
+    Polished leather upper; cushioned footbed; leather-lined interior; anti-slip sole insert; reinforced heel.
+    <br/> <b>Specs:</b> Sizes 5–11 (UK); Material: leather upper, PU insole, rubber insert.
+  <br/><b>Care & warranty:</b> Apply leather polish periodically; repel moisture with waterproof spray.
+  `,
   },
   {
     id: 13,
-    name: "DTK Regal Plain Oxford",
-    price: 1499,
+    name: "Regal Plain Oxford",
+    price: 2499,
     // originalPrice: 489,
-    image: "https://www.dtkfootwear.com/public/Tranding/13.png",
+    image: "https://image.shutterstock.com/image-photo/statue-hindu-god-shiva-meditating-260nw-152192732.jpg",
     category: "Formal",
     colors: ["Black", "Brown", "Tan"],
     sizes: ["5", "6", "7", "8", "9", "10", "11"],
     rating: 5,
-    description: `<b>DTK Regal Plain Oxford</b> — Premium Leather Formal Lace-Up Shoes for Men Simple. Elegant. Timeless. The DTK Regal Plain Oxford captures the essence of refined professionalism and classic design. Expertly handcrafted from premium genuine leather, these shoes combine minimalistic style with maximum sophistication — making them perfect for corporate wear, business meetings, and formal occasions.
-<b>
-Why DTK Regal Plain Oxford</b>:
-The DTK Regal Plain Oxford is designed for the modern gentleman who values understated luxury. Its clean lines, fine stitching, and mirror-shine finish make it the ideal choice for any formal ensemble. Whether worn with a tailored suit or classic trousers, these luxury leather Oxfords speak of confidence, precision, and craftsmanship.
-    `,
+    description: `The Regal Plain Oxford is designed for the modern professional who values understated elegance. With a clean plain-toe design and closed-lacing Oxford construction, this shoe delivers a crisp, formal profile that pairs perfectly with suits and corporate attire.
+<br/>
+  <b>Key features:</b>
+    Closed-lacing Oxford; plain-toe design; leather upper; cushioned PU insole; anti-slip rubber outsole; reinforced heel.
+    <br/> <b>Specs:</b> Sizes 5–11 (UK); Material: leather upper, PU insole, rubber sole.
+  <br/><b>Care & warranty:</b> Wipe clean and polish regularly; 6-month warranty on manufacturing defects.
+  `,
   },
   {
     id: 14,
-    name: "DTK Monarch Toe Derby",
-    price: 1799,
+    name: "Monarch Toe Derby",
+    price: 2999,
     // originalPrice: 489,
-    image: "https://www.dtkfootwear.com/public/Tranding/14.png",
+    image: "https://image.shutterstock.com/image-photo/lord-ganesha-ganesh-festival-ganesha-260nw-1143323375.jpg",
     category: "Formal / Casual",
     colors: ["Black", "Brown", "Tan"],
     sizes: ["5", "6", "7", "8", "9", "10", "11"],
     rating: 5,
-    description: `<b>DTK Monarch Toe Derby</b> — Premium Leather Formal & Semi-Formal Shoes for Men Step into distinction with the DTK Monarch Toe Derby, a refined blend of traditional design and modern craftsmanship. Handcrafted from premium genuine leather, this lace-up shoe features a sleek toe cap and elegant stitching that reflect sophistication and strength. Perfect for formal occasions, office wear, and smart casual outfits, the Monarch Toe Derby redefines classic style for today’s gentleman.
-<b>
-Why DTK Monarch Toe Derby</b>:
-The DTK Monarch Toe Derby captures the essence of sophistication through its timeless design and handcrafted quality. Its distinctive toe-cap styling and smooth leather finish make it the perfect addition to any professional or casual ensemble. Designed for durability and all-day comfort, these luxury Derby shoes showcase your refined taste and confidence wherever you go.
-    `,
+    description: `With a defined toe-cap and strong construction, the Monarch Toe Derby offers durability and a sharp look. The supportive midsole and leather upper make this a practical option for daily professional use.
+<br/>
+  <b>Key features:</b>
+    Toe-cap design; leather upper; cushioned midsole; anti-slip outsole; reinforced heel.
+    <br/> <b>Specs:</b> Sizes 5–11 (UK); Material: leather upper, PU insole, rubber sole.
+  <br/><b>Care & warranty:</b> Brush and polish regularly; store dry.
+  `,
   },
   {
     id: 15,
-    name: "DTK Classic Slip-on",
-    price: 1499,
+    name: "Classic Slip-on",
+    price: 2499,
     // originalPrice: 489,
-    image: "https://www.dtkfootwear.com/public/Tranding/15.png",
+    image: "https://image.shutterstock.com/image-photo/beautiful-lakshmi-statue-diwali-festival-260nw-1842 beautiful-lakshmi-statue-diwali-festival-260nw-1842918199.jpg",
     category: "Formal / Casual",
     colors: ["Black", "Brown", "Tan"],
     sizes: ["5", "6", "7", "8", "9", "10", "11"],
     rating: 5,
-    description: `<b>DTK Monarch Toe Derby</b> — Premium Leather Formal & Semi-Formal Shoes for Men Step into distinction with the DTK Monarch Toe Derby, a refined blend of traditional design and modern craftsmanship. Handcrafted from premium genuine leather, this lace-up shoe features a sleek toe cap and elegant stitching that reflect sophistication and strength. Perfect for formal occasions, office wear, and smart casual outfits, the Monarch Toe Derby redefines classic style for today’s gentleman.
-<b>
-Why DTK Monarch Toe Derby</b>:
-The DTK Monarch Toe Derby captures the essence of sophistication through its timeless design and handcrafted quality. Its distinctive toe-cap styling and smooth leather finish make it the perfect addition to any professional or casual ensemble. Designed for durability and all-day comfort, these luxury Derby shoes showcase your refined taste and confidence wherever you go.
-    `,
+    description: `The Classic Slip-On is crafted for men who prefer simplicity without compromising on style. Featuring a smooth leather upper and a streamlined silhouette, this shoe offers effortless wear with a polished appearance.
+<br/>
+  <b>Key features:</b>
+    Easy slip-on design; smooth leather upper; cushioned PU insole; anti-slip rubber outsole; lightweight construction.
+    <br/> <b>Specs:</b> Sizes 5–11 (UK); Material: Leather upper, PU insole, rubber sole.
+  <br/><b>Care & warranty:</b> Clean with soft cloth; 6-month warranty against manufacturing defects.
+  `,
   },
   {
     id: 16,
-    name: "DTK Monarch Plain Derby",
-    price: 1799,
+    name: "Monarch Plain Derby",
+    price: 2999,
     // originalPrice: 489,
-    image: "https://www.dtkfootwear.com/public/Tranding/16.png",
+    image: "https://image.shutterstock.com/image-photo/hindu-deity-lord-krishna-radha-260nw-1701334909.jpg",
     category: "Formal / Casual",
     colors: ["Black", "Brown", "Tan"],
     sizes: ["5", "6", "7", "8", "9", "10", "11"],
     rating: 5,
-    description: `<b>DTK Monarch Plain Derby</b> — Premium Leather Formal & Semi-Formal Shoes for Men Classic design meets modern comfort in the DTK Monarch Plain Derby, a symbol of refined craftsmanship and effortless sophistication. Made from premium genuine leather, this Derby offers unmatched durability and style, making it ideal for both formal events and business-casual occasions.
-<b>
-Why DTK Monarch Plain Derby</b>:
-The DTK Monarch Plain Derby represents understated class and timeless appeal. With its minimalist design and handcrafted excellence, it’s built for the man who values both comfort and confidence. Perfectly suited for office wear or evening outings, these luxury leather Derbies complement every outfit with sophistication.
-
-    `,
+    description: `Classic design meets modern comfort in the Monarch Plain Derby. Made from premium genuine leather, this Derby offers unmatched durability and style, making it ideal for both formal events and business-casual occasions.
+<br/>
+  <b>Key features:</b>
+    Minimalist design; premium leather; handcrafted excellence; open-lacing fit; durable rubber sole.
+    <br/> <b>Specs:</b> Sizes 5–11 (UK); Material: leather upper, rubber outsole.
+  <br/><b>Care & warranty:</b> Polish regularly; store in a dry place.
+  `,
   },
   {
     id: 17,
-    name: "DTK Monarch Plain Derby",
-    price: 1499,
+    name: "Monarch Plain Derby",
+    price: 2499,
     // originalPrice: 489,
-    image: "https://www.dtkfootwear.com/public/Tranding/17.png",
+    image: "https://image.shutterstock.com/image-photo/lord-rama-sita-laxshman-hanuman-260nw-1099528280.jpg",
     category: "Formal / Casual",
     colors: ["Black", "Brown", "Tan"],
     sizes: ["5", "6", "7", "8", "9", "10", "11"],
     rating: 5,
-    description: `<b>DTK Monarch Plain Derby</b> — Premium Black Leather Formal & Semi-Formal Shoes for Men The DTK Monarch Plain Derby is a masterpiece of craftsmanship that combines classic design with contemporary sophistication. Made from premium genuine leather, this sleek black Derby shoe offers durability, polish, and comfort—ideal for professionals who demand elegance in every step.
-<b>
-Why DTK Monarch Plain Derby</b>:
-The DTK Monarch Plain Derby exemplifies minimalism with class. Designed for the modern gentleman, it features a clean silhouette, smooth polish, and a handcrafted finish that elevate any attire—from sharp business suits to refined casual ensembles. These luxury leather Derby shoes ensure style, comfort, and durability, making them an essential wardrobe staple.
-    `,
+    description: `The Monarch Plain Derby blends traditional derby construction with a minimal plain-toe profile for a look that’s both refined and versatile. Its open-lacing system provides a comfortable, adjustable fit while the leather upper delivers a polished finish suited to business meetings and semi-formal events.
+<br/>
+  <b>Key features:</b>
+    Plain-toe design for a minimal, formal appearance; Derby (open-lacing) construction; leather upper; cushioned PU insole; anti-slip rubber outsole; reinforced heel.
+    <br/> <b>Specs:</b> Sizes: 5–11 (UK); Material: Leather upper, PU insole, rubber sole.
+  <br/><b>Care & warranty:</b> Clean with a soft cloth; apply leather polish regularly; 6-month warranty on manufacturing defects.
+  `,
   },
   {
     id: 18,
-    name: "DTK Dummy Lace Oxford",
-    price: 1499,
+    name: "Dummy Lace Oxford",
+    price: 2499,
     // originalPrice: 489,
-    image: "https://www.dtkfootwear.com/public/Tranding/18.png",
+    image: "https://image.shutterstock.com/image-photo/closeup-face-lord-buddha-statue-260nw-110487059.jpg",
     category: "Formal / Casual",
     colors: ["Black", "Brown", "Tan"],
     sizes: ["5", "6", "7", "8", "9", "10", "11"],
     rating: 5,
-    description: `<b>DTK Dummy Lace Oxford</b> — Premium Leather Slip-On Formal Shoes for Men The DTK Dummy Lace Oxford combines the sophistication of a classic Oxford with the convenience of a slip-on. Crafted from premium genuine leather, this design features a faux lace pattern for a polished appearance without the hassle of tying laces. Perfect for formal wear, business meetings, and casual occasions, it delivers elegance, comfort, and versatility in one refined pair.
-<b>
-Why DTK Dummy Lace Oxford</b>:
-The DTK Dummy Lace Oxford redefines convenience and sophistication. It retains the elegant aesthetic of traditional lace-up shoes while offering the ease of a slip-on design. Crafted for today’s professionals, these luxury leather formal shoes provide both unmatched comfort and timeless style, making them a must-have for every wardrobe.
-    `,
-  },
+    description: `The Dummy Lace Oxford preserves the polished look of laced formal shoes while offering the convenience of a slip-on. Great for professionals on the go who want a classic silhouette without fuss. Durable leather finish and a cushioned insole deliver both style and comfort.
+<br/>
+  <b>Key features:</b>
+    Faux-lace appearance with elastic fit; leather upper; cushioned footbed; lightweight sole; neat profile.
+    <br/> <b>Specs:</b> Sizes 5–11 (UK); Material: leather upper, elastic gore, synthetic sole.
+  <br/><b>Care & warranty:</b> Wipe clean; condition leather occasionally; 3-month workmanship warranty.
+  `,
+  }
 ];

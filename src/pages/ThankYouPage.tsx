@@ -18,7 +18,7 @@ const ThankYouPage = () => {
       left: Math.random() * 100,
       delay: Math.random() * 2,
       duration: 3 + Math.random() * 2,
-      color: ['#78350f', '#92400e', '#b45309', '#d97706', '#f59e0b'][Math.floor(Math.random() * 5)]
+      color: ['#FFC21A', '#F47A3C', '#E34B2F'][Math.floor(Math.random() * 3)]
     }));
     setConfetti(confettiArray);
 
@@ -52,7 +52,7 @@ const ThankYouPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 flex flex-col items-center justify-center text-center px-6 overflow-hidden relative">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-background flex flex-col items-center justify-center text-center px-6 overflow-hidden relative">
       {/* Confetti */}
       {confetti.map(piece => (
         <div
@@ -80,7 +80,7 @@ const ThankYouPage = () => {
             animation: 'sparkle 1.5s ease-out'
           }}
         >
-          <Sparkles className="w-4 h-4 text-amber-400" />
+          <Sparkles className="w-4 h-4 text-primary-button" />
         </div>
       ))}
 
@@ -89,35 +89,35 @@ const ThankYouPage = () => {
         {/* Success Icon with Pulse */}
         <div className="mb-8 relative inline-block">
           <div className="absolute inset-0 bg-green-400 rounded-full blur-xl opacity-40 animate-pulse" />
-          <div className="relative bg-white rounded-full p-6 shadow-2xl transform hover:scale-110 transition-transform duration-300">
+          <div className="relative bg-card-background rounded-full p-6 shadow-2xl transform hover:scale-110 transition-transform duration-300">
             <CheckCircle className="w-20 h-20 text-green-600 animate-bounce" style={{ animationDuration: '2s' }} />
           </div>
         </div>
 
         {/* Animated Heading */}
-        <h1 className="text-6xl font-serif font-bold text-amber-900 mb-4 animate-fade-in">
+        <h1 className="text-6xl font-serif font-bold text-primary-heading mb-4 animate-fade-in">
           Thank You!
         </h1>
 
         {/* Decorative Line */}
         <div className="flex items-center justify-center gap-3 mb-6">
-          <div className="h-0.5 w-16 bg-gradient-to-r from-transparent to-amber-400 animate-expand-right" />
-          <Heart className="w-5 h-5 text-amber-600 animate-pulse" />
-          <div className="h-0.5 w-16 bg-gradient-to-l from-transparent to-amber-400 animate-expand-left" />
+          <div className="h-0.5 w-16 bg-gradient-to-r from-transparent to-primary-button animate-expand-right" />
+          <Heart className="w-5 h-5 text-accent animate-pulse" />
+          <div className="h-0.5 w-16 bg-gradient-to-l from-transparent to-primary-button animate-expand-left" />
         </div>
 
         {/* Message */}
-        <p className="text-xl text-amber-800 mb-4 animate-slide-up" style={{ animationDelay: '0.3s' }}>
+        <p className="text-xl text-primary-body mb-4 animate-slide-up" style={{ animationDelay: '0.3s' }}>
           Your message has been successfully sent!
         </p>
-        <p className="text-lg text-amber-700 mb-10 animate-slide-up" style={{ animationDelay: '0.5s' }}>
+        <p className="text-lg text-secondary-text mb-10 animate-slide-up" style={{ animationDelay: '0.5s' }}>
           Our team will get back to you shortly. We appreciate your interest.
         </p>
 
         {/* Interactive Button */}
         <a
           href="/"
-          className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-900 to-amber-800 text-white py-4 px-8 rounded-full font-semibold text-lg shadow-lg hover:shadow-2xl hover:scale-105 transform transition-all duration-300 group animate-slide-up"
+          className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-heading to-primary-heading text-white py-4 px-8 rounded-full font-semibold text-lg shadow-lg hover:shadow-2xl hover:scale-105 transform transition-all duration-300 group animate-slide-up"
           style={{ animationDelay: '0.7s' }}
         >
           <Home className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
@@ -126,15 +126,15 @@ const ThankYouPage = () => {
         </a>
 
         {/* Floating Shapes */}
-        <div className="absolute -top-20 -left-20 w-40 h-40 bg-amber-200 rounded-full blur-3xl opacity-30 animate-float" />
-        <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-orange-200 rounded-full blur-3xl opacity-30 animate-float" style={{ animationDelay: '1s' }} />
+        <div className="absolute -top-20 -left-20 w-40 h-40 bg-primary-button/10 rounded-full blur-3xl opacity-30 animate-float" />
+        <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-accent/10 rounded-full blur-3xl opacity-30 animate-float" style={{ animationDelay: '1s' }} />
       </div>
 
       {/* Scroll to Top Button */}
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 bg-gradient-to-r from-amber-900 to-amber-800 text-white p-4 rounded-full shadow-2xl hover:shadow-amber-900/50 hover:scale-110 transform transition-all duration-300 z-50 group animate-slide-up"
+          className="fixed bottom-8 right-8 bg-gradient-to-r from-primary-heading to-primary-heading text-white p-4 rounded-full shadow-2xl hover:shadow-primary-heading/50 hover:scale-110 transform transition-all duration-300 z-50 group animate-slide-up"
           aria-label="Scroll to top"
         >
           <ArrowUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform duration-300" />

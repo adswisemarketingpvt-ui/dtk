@@ -1,43 +1,41 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const TrendingCollectionCard: React.FC = () => {
   const collections = [
      {
-      title: "Function",
-      image: "https://theformales.in/function.png",
-      link: "/#trending",
+      title: "Gifting",
+      image: "https://i.pinimg.com/1200x/8f/fc/e8/8ffce88d2880f9a29196ee8d2de23ae9.jpg",
+      link: "/products",
     },
     {
-      title: "Formal",
-      image: "https://theformales.in/formal1.png",
-      link: "/#trending",
+      title: "Home Decor",
+      image: "https://i.pinimg.com/1200x/53/0d/b8/530db82713fe803f892927582a2ab4d0.jpg",
+      link: "/products",
     },
     {
-      title: "Casual",
-      image: "https://theformales.in/Casual.png",
-      link: "/#trending",
+      title: "Table Decor",
+      image: "https://i.pinimg.com/1200x/74/17/fe/7417fe4e44846472f1d8f1241ee10e2a.jpg",
+      link: "/products",
     }
    
   ];
 
   return (
-    // Background updated to #FAF7F0
-    <section id="most-trending" className="py-24 bg-[#FAF7F0] px-4 md:px-8">
+    <section id="most-trending" className="py-24 bg-background px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
-            {/* Accent color #B17457 */}
-            <span className="text-[#B17457] text-sm font-bold uppercase tracking-[0.3em]">
+            <span className="text-accent text-sm font-bold uppercase tracking-[0.3em]">
               Curated Picks
             </span>
-            {/* Primary Dark text #4A4947 */}
-            <h2 className="text-4xl md:text-5xl font-serif text-black mb-6 tracking-tight mt-2">
+            <h2 className="text-4xl md:text-5xl font-serif text-primary-heading mb-6 tracking-tight mt-2">
               Most Trending Collection
             </h2>
           </div>
-          <p className="text-[#4A4947]/70 max-w-xs text-sm font-light leading-relaxed">
+          <p className="text-secondary-text/70 max-w-xs text-sm font-light leading-relaxed">
             Discover our most sought-after styles designed for every occasion.
           </p>
         </div>
@@ -45,11 +43,10 @@ const TrendingCollectionCard: React.FC = () => {
         {/* Grid Container */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {collections.map((item, index) => (
-            <a
+            <Link
               key={index}
-              href={item.link}
-              // Base card color #D8D2C2
-              className="group relative h-[500px] w-full bg-[#D8D2C2] overflow-hidden flex items-center justify-center transition-all duration-700"
+              to={item.link}
+              className="group relative h-[500px] w-full bg-border-divider overflow-hidden flex items-center justify-center transition-all duration-700"
             >
               {/* Image Container (Revealed on hover) */}
               <div 
@@ -63,8 +60,7 @@ const TrendingCollectionCard: React.FC = () => {
 
               {/* Text Layer */}
               <div className="relative z-10 text-center transition-transform duration-500 group-hover:-translate-y-4">
-                {/* Title starts as Dark Text, turns White on hover */}
-                <h3 className="text-5xl md:text-6xl font-black uppercase italic tracking-tighter text-[#4A4947] group-hover:text-white transition-colors duration-500">
+                <h3 className="text-4xl md:text-4xl font-black uppercase italic tracking-tighter text-primary-heading group-hover:text-white transition-colors duration-500">
                   {item.title}
                 </h3>
                 
@@ -78,14 +74,14 @@ const TrendingCollectionCard: React.FC = () => {
 
               {/* Overlay for legibility */}
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            </a>
+            </Link>
           ))}
         </div>
       </div>
 
       <style jsx>{`
         .stroke-dark {
-          -webkit-text-stroke: 1px #4A4947;
+          -webkit-text-stroke: 1px #1F344C;
         }
       `}</style>
     </section>

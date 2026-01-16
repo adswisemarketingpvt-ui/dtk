@@ -12,17 +12,19 @@ import ContactPage from "./pages/ContactPage";
 import ThankYouPage from "./pages/ThankYouPage";
 import ShippingPolicy from "./policy/shipping-policy";
 import ReturnPolicy from "./policy/return-policy";
-import WholesalePage from "./pages/WholesalePage";
+// import WholesalePage from "./pages/WholesalePage";
+import ProductsPageMain from "./pages/ProductsPageMain";
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Header />
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/product/:id" element={<ProductPage />} />
-          <Route path="/wholesale" element={<WholesalePage />} />
+          <Route path="/products" element={<ProductsPageMain />} />
+          {/* <Route path="/wholesale" element={<WholesalePage />} /> */}
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
           

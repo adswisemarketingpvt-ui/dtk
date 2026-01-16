@@ -62,9 +62,7 @@ const ContactPage: React.FC = () => {
     {
       icon: MapPin,
       title: 'Visit Our Store',
-      details: [
-        ' Thergaon Pune, Maharashtra 411033',
-      ],
+      details: ['Thergaon Pune, Maharashtra 411033'],
     },
     {
       icon: Phone,
@@ -84,32 +82,32 @@ const ContactPage: React.FC = () => {
   ];
 
   return (
-    <div className="bg-[#FAF7F0] min-h-screen">
+    <div className="bg-background min-h-screen">
       
-      {/* Hero Section - Charcoal with Terracotta Border */}
-      <section className="bg-[#4A4947] py-24 border-b border-[#B17457]/30">
+      {/* Hero Section */}
+      <section className="bg-primary-heading py-24 border-b border-accent/30">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <span className="text-[#B17457] font-bold tracking-[0.3em] uppercase text-xs mb-4 block">Get In Touch</span>
+          <span className="text-accent font-bold tracking-[0.3em] uppercase text-xs mb-4 block">Get In Touch</span>
           <h1 className="text-4xl md:text-6xl font-serif text-white mb-6 tracking-tight">Contact Us</h1>
-          <p className="text-lg text-[#D8D2C2] max-w-2xl mx-auto leading-relaxed font-light">
+          <p className="text-lg text-secondary-text max-w-2xl mx-auto leading-relaxed font-light">
             Whether you have a custom request or an inquiry about our artisanal collection, our expert team is ready to assist you.
           </p>
         </div>
       </section>
 
-      {/* Contact Info Section */}
+      {/* Contact Info & Form Section */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 mb-16 shadow-xl">
             {contactInfo.map((info, index) => (
-              <div key={index} className="bg-white p-10 text-center border border-[#FAF7F0] transition-colors hover:bg-white/80">
-                <div className="w-12 h-12 bg-[#FAF7F0] rounded-full flex items-center justify-center mx-auto mb-6">
-                  <info.icon className="w-5 h-5 text-[#B17457]" />
+              <div key={index} className="bg-card-background p-10 text-center border border-background transition-colors hover:bg-card-background/80">
+                <div className="w-12 h-12 bg-background rounded-full flex items-center justify-center mx-auto mb-6">
+                  <info.icon className="w-5 h-5 text-accent" />
                 </div>
-                <h3 className="text-xs font-bold text-black uppercase tracking-[0.2em] mb-4">{info.title}</h3>
+                <h3 className="text-xs font-bold text-primary-heading uppercase tracking-[0.2em] mb-4">{info.title}</h3>
                 <div className="space-y-1">
                   {info.details.map((detail, i) => (
-                    <p key={i} className="text-[#4A4947] text-xs font-light tracking-wide leading-relaxed">
+                    <p key={i} className="text-secondary-text text-xs font-light tracking-wide leading-relaxed">
                       {detail}
                     </p>
                   ))}
@@ -118,13 +116,12 @@ const ContactPage: React.FC = () => {
             ))}
           </div>
 
-          {/* Contact Form */}
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white shadow-2xl rounded-sm p-8 md:p-16 border border-[#D8D2C2]/30">
+          <div className="max-w-4xl mx-auto mb-20">
+            <div className="bg-card-background shadow-2xl rounded-sm p-8 md:p-16 border border-border-divider/30">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-serif text-black mb-4">Send Us a Message</h2>
-                <div className="w-12 h-0.5 bg-[#B17457] mx-auto mb-6"></div>
-                <p className="text-[#4A4947] font-light text-sm italic">
+                <h2 className="text-3xl font-serif text-primary-heading mb-4">Send Us a Message</h2>
+                <div className="w-12 h-0.5 bg-accent mx-auto mb-6"></div>
+                <p className="text-secondary-text font-light text-sm italic">
                   Complete the form below and an advisor will contact you shortly.
                 </p>
               </div>
@@ -132,7 +129,7 @@ const ContactPage: React.FC = () => {
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="relative">
-                    <label htmlFor="name" className="block text-[10px] font-bold text-[#4A4947] uppercase tracking-widest mb-2">
+                    <label htmlFor="name" className="block text-[10px] font-bold text-secondary-text uppercase tracking-widest mb-2">
                       Full Name
                     </label>
                     <input
@@ -142,13 +139,13 @@ const ContactPage: React.FC = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-0 py-3 border-b border-[#D8D2C2] focus:border-[#B17457] outline-none transition-colors bg-transparent text-sm"
+                      className="w-full px-0 py-3 border-b border-border-divider focus:border-accent outline-none transition-colors bg-transparent text-sm text-primary-body"
                       placeholder="Jane Doe"
                     />
                   </div>
 
                   <div className="relative">
-                    <label htmlFor="email" className="block text-[10px] font-bold text-[#4A4947] uppercase tracking-widest mb-2">
+                    <label htmlFor="email" className="block text-[10px] font-bold text-secondary-text uppercase tracking-widest mb-2">
                       Email Address
                     </label>
                     <input
@@ -158,13 +155,13 @@ const ContactPage: React.FC = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-0 py-3 border-b border-[#D8D2C2] focus:border-[#B17457] outline-none transition-colors bg-transparent text-sm"
+                      className="w-full px-0 py-3 border-b border-border-divider focus:border-accent outline-none transition-colors bg-transparent text-sm text-primary-body"
                       placeholder="email@example.com"
                     />
                   </div>
 
                   <div className="md:col-span-2">
-                    <label htmlFor="phone" className="block text-[10px] font-bold text-[#4A4947] uppercase tracking-widest mb-2">
+                    <label htmlFor="phone" className="block text-[10px] font-bold text-secondary-text uppercase tracking-widest mb-2">
                       Phone Number
                     </label>
                     <input
@@ -174,14 +171,14 @@ const ContactPage: React.FC = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       required
-                      className="w-full px-0 py-3 border-b border-[#D8D2C2] focus:border-[#B17457] outline-none transition-colors bg-transparent text-sm"
+                      className="w-full px-0 py-3 border-b border-border-divider focus:border-accent outline-none transition-colors bg-transparent text-sm text-primary-body"
                       placeholder="+91 00000 00000"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-[10px] font-bold text-[#4A4947] uppercase tracking-widest mb-2">
+                  <label htmlFor="message" className="block text-[10px] font-bold text-secondary-text uppercase tracking-widest mb-2">
                     Your Message
                   </label>
                   <textarea
@@ -191,7 +188,7 @@ const ContactPage: React.FC = () => {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full px-0 py-3 border-b border-[#D8D2C2] focus:border-[#B17457] outline-none transition-colors bg-transparent text-sm resize-none"
+                    className="w-full px-0 py-3 border-b border-border-divider focus:border-accent outline-none transition-colors bg-transparent text-sm resize-none text-primary-body"
                     placeholder="How can we assist you?"
                   />
                 </div>
@@ -200,7 +197,7 @@ const ContactPage: React.FC = () => {
                   <button
                     type="submit"
                     disabled={status.type === 'sending'}
-                    className="w-full bg-black text-white py-5 px-8 text-xs font-bold uppercase tracking-[0.3em] hover:bg-[#B17457] transition-all duration-500 disabled:opacity-50 flex items-center justify-center shadow-lg"
+                    className="w-full bg-primary-button text-primary-heading py-5 px-8 text-xs font-bold uppercase tracking-[0.3em] hover:bg-button-hover transition-all duration-500 disabled:opacity-50 flex items-center justify-center shadow-lg"
                   >
                     <MessageCircle className="w-4 h-4 mr-3" />
                     {status.type === 'sending' ? 'Sending Request...' : 'Send Message'}
@@ -208,12 +205,12 @@ const ContactPage: React.FC = () => {
                 </div>
 
                 {status.type === 'success' && (
-                  <p className="text-center text-[#B17457] text-xs font-bold tracking-widest uppercase mt-4">
+                  <p className="text-center text-accent text-xs font-bold tracking-widest uppercase mt-4">
                     {status.text}
                   </p>
                 )}
                 {status.type === 'error' && (
-                  <p className="text-center text-red-800 text-xs font-bold tracking-widest uppercase mt-4">
+                  <p className="text-center text-secondary-accent text-xs font-bold tracking-widest uppercase mt-4">
                     {status.text}
                   </p>
                 )}
@@ -221,6 +218,20 @@ const ContactPage: React.FC = () => {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Full Width Map Section */}
+      <section className="w-full h-[450px] grayscale hover:grayscale-0 transition-all duration-700 ease-in-out border-t border-border-divider/50 shadow-inner">
+        <iframe
+          title="Store Location"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.2638848135!2d73.7634458751926!3d18.562137682540053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b992167d4f9b%3A0x74f63c6316717a02!2sThergaon%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
       </section>
     </div>
   );

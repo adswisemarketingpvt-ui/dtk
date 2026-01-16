@@ -5,46 +5,51 @@ import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import {
   FaInstagram,
   FaFacebookF,
-  FaLinkedinIn,
   FaStore,
+  FaQuora,
+  FaPinterest,
+
 } from "react-icons/fa";
 
 const Footer: React.FC = () => {
   return (
-    // Background: Dark Charcoal (#4A4947) for a sophisticated, grounded finish
-    <footer className="bg-[#4A4947] text-white border-t border-[#D8D2C2]/20">
+    <footer className="bg-card-background text-secondary-text border-t border-border-divider">
       <div className="max-w-7xl mx-auto px-4 py-16">
         {/* Grid layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 items-start">
           {/* Company Info */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
             <img
-              className="h-16 w-auto mb-6 brightness-0 invert" // Ensures logo is white against charcoal
-              src="https://theformales.in/Untitled.png"
+              className="h-16 w-auto mb-6"
+              src="http://tartariatech.com/public/Logo-01.png"
               alt="DTK Footwear Logo"
             />
-            <p className="text-[#D8D2C2] mb-8 leading-relaxed max-w-xs text-sm font-light">
+            <p className="text-secondary-text mb-8 leading-relaxed max-w-xs text-sm font-light">
               Crafting exceptional footwear, each pair tells a story of
               dedication, precision, and timeless elegance.
             </p>
 
             <div className="flex space-x-3">
-              {/* Social Icons: Warm Stone bg, Terracotta on hover */}
               {[
                 {
                   icon: FaInstagram,
                   label: "Instagram",
-                  href: "https://www.instagram.com/dtkfootwear",
+                  href: "https://www.instagram.com/the.formales",
                 },
                 {
                   icon: FaFacebookF,
                   label: "Facebook",
-                  href: "https://www.facebook.com/share/1DEHb67kZh/",
+                  href: "https://www.facebook.com/share/17TGZCbzkQ/",
                 },
                 {
-                  icon: FaLinkedinIn,
-                  label: "LinkedIn",
-                  href: "https://www.linkedin.com/in/dnyandev-kamble-75b61a26a",
+                  icon: FaPinterest,
+                  label: "Pinterest",
+                  href: "https://in.pinterest.com/theformales/", // Replace with your actual URL
+                },
+                {
+                  icon: FaQuora,
+                  label: "Quora",
+                  href: "https://www.quora.com/profile/The-Formales", // Replace with your actual URL
                 },
                 {
                   icon: FaStore,
@@ -57,7 +62,7 @@ const Footer: React.FC = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-[#D8D2C2]/10 text-white hover:bg-[#B17457] hover:text-white transition-all duration-300 p-3 rounded-sm border border-[#D8D2C2]/20"
+                  className="bg-transparent text-primary-heading hover:bg-primary-button hover:text-primary-heading transition-all duration-300 p-3 rounded-sm border border-border-divider"
                   aria-label={social.label}
                 >
                   <social.icon size={16} />
@@ -69,9 +74,8 @@ const Footer: React.FC = () => {
           {/* Quick Links + Policies group */}
           <div className="sm:col-span-2 md:col-span-2 grid grid-cols-2 gap-8 text-center md:text-left">
             {/* Quick Links */}
-            {/* Quick Links */}
             <div className="flex flex-col items-center sm:items-start">
-              <h3 className="font-bold mb-6 text-sm uppercase tracking-[0.2em] text-[#B17457]">
+              <h3 className="font-bold mb-6 text-sm uppercase tracking-[0.2em] text-primary-heading">
                 Quick Links
               </h3>
               <ul className="space-y-4">
@@ -79,13 +83,13 @@ const Footer: React.FC = () => {
                   { name: "Home", path: "/" },
                   { name: "About Us", path: "/about" },
                   { name: "Contact", path: "/contact" },
-                  { name: "Wholesale", path: "/wholesale" },
+                  { name: "Products", path: "/products" },
                 ].map((item) => (
                   <li key={item.name}>
                     <Link
                       to={item.path}
-                      onClick={() => window.scrollTo(0, 0)} // Smoothly resets scroll to top
-                      className="text-[#D8D2C2] hover:text-[#B17457] transition-colors text-sm font-light tracking-wide"
+                      onClick={() => window.scrollTo(0, 0)}
+                      className="text-secondary-text hover:text-accent transition-colors text-sm font-light tracking-wide"
                     >
                       {item.name}
                     </Link>
@@ -96,14 +100,14 @@ const Footer: React.FC = () => {
 
             {/* Policies */}
             <div className="flex flex-col items-center sm:items-start">
-              <h3 className="font-bold mb-6 text-sm uppercase tracking-[0.2em] text-[#B17457]">
+              <h3 className="font-bold mb-6 text-sm uppercase tracking-[0.2em] text-primary-heading">
                 Policies
               </h3>
               <ul className="space-y-4">
                 <li>
                   <Link
                     to="/return-policy"
-                    className="text-[#D8D2C2] hover:text-[#B17457] transition-colors text-sm font-light tracking-wide"
+                    className="text-secondary-text hover:text-accent transition-colors text-sm font-light tracking-wide"
                   >
                     Return Policy
                   </Link>
@@ -111,7 +115,7 @@ const Footer: React.FC = () => {
                 <li>
                   <Link
                     to="/shipping-policy"
-                    className="text-[#D8D2C2] hover:text-[#B17457] transition-colors text-sm font-light tracking-wide"
+                    className="text-secondary-text hover:text-accent transition-colors text-sm font-light tracking-wide"
                   >
                     Shipping Policy
                   </Link>
@@ -122,31 +126,31 @@ const Footer: React.FC = () => {
 
           {/* Contact Info */}
           <div className="flex flex-col items-center md:items-start">
-            <h3 className="font-bold mb-6 text-sm uppercase tracking-[0.2em] text-[#B17457]">
+            <h3 className="font-bold mb-6 text-sm uppercase tracking-[0.2em] text-primary-heading">
               Contact Info
             </h3>
             <div className="space-y-6">
               <div className="flex items-start justify-center md:justify-start">
-                <MapPin className="w-5 h-5 text-[#B17457] mr-3 mt-0.5 flex-shrink-0" />
-                <span className="text-[#D8D2C2] text-xs leading-relaxed font-light">
+                <MapPin className="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
+                <span className="text-secondary-text text-xs leading-relaxed font-light">
                   Thergaon Pune, Maharashtra 411033
                 </span>
               </div>
               <div className="flex items-center justify-center md:justify-start">
-                <Phone className="w-4 h-4 text-[#B17457] mr-3 flex-shrink-0" />
-                <span className="text-[#D8D2C2] text-xs font-light tracking-wider">
-                  +91 9730266648
+                <Phone className="w-4 h-4 text-accent mr-3 flex-shrink-0" />
+                <span className="text-secondary-text text-xs font-light tracking-wider">
+                  +91 ---
                 </span>
               </div>
               <div className="flex items-center justify-center md:justify-start">
-                <Mail className="w-4 h-4 text-[#B17457] mr-3 flex-shrink-0" />
-                <span className="text-[#D8D2C2] text-xs font-light">
-                  contact@theformales.com
+                <Mail className="w-4 h-4 text-accent mr-3 flex-shrink-0" />
+                <span className="text-secondary-text text-xs font-light">
+                  contact
                 </span>
               </div>
               <div className="flex items-start justify-center md:justify-start">
-                <Clock className="w-4 h-4 text-[#B17457] mr-3 mt-0.5 flex-shrink-0" />
-                <span className="text-[#D8D2C2] text-xs font-light italic leading-relaxed">
+                <Clock className="w-4 h-4 text-accent mr-3 mt-0.5 flex-shrink-0" />
+                <span className="text-secondary-text text-xs font-light italic leading-relaxed">
                   Mon-Sat: 9AM-7PM
                   <br />
                   Sunday: Closed
@@ -157,15 +161,10 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-[#D8D2C2]/10 mt-16 pt-8 text-center">
-          <p className="text-[#D8D2C2]/60 text-xs tracking-[0.2em] uppercase">
-            Powered By <span className="text-white font-bold">Ads</span>
-            <span className="text-[#B17457] font-bold">wise</span>{" "}
-            <span className="text-white font-bold">marke</span>
-            <span className="text-[#B17457] font-bold">ting</span>
-          </p>
-          <p className="text-[#D8D2C2]/40 text-[10px] mt-4 tracking-[0.3em] uppercase">
-            © {new Date().getFullYear()} TheFormales. All rights reserved.
+        <div className="border-t border-border-divider mt-16 pt-8 text-center">
+          
+          <p className="text-muted-text text-[10px] mt-4 tracking-[0.3em] uppercase">
+            © {new Date().getFullYear()} Avyakta Art . All rights reserved.
           </p>
         </div>
       </div>

@@ -2,68 +2,77 @@ import React from 'react';
 
 const FootwearGrid = () => {
   return (
-    <div className="w-full py-10 bg-[#FAF7F0]">
-      <div className="max-w-7xl mx-auto px-4 py-6">
-        {/* Main Grid Container: 1 column on mobile, 4 columns on desktop */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+    /* CHANGE: Use min-h-screen instead of h-screen to allow the page to grow if needed.
+       CHANGE: Removed overflow-hidden to ensure the bottom of cards are visible.
+    */
+    <section className="w-full min-h-screen bg-background p-4 md:p-6 flex items-center justify-center">
+      <div className="w-full max-w-[1600px] mx-auto">
+        
+        {/* CHANGE: Used h-auto or aspect-ratio based heights to prevent bottom cutting.
+            On mobile, it switches to a natural flow; on desktop, it maintains the collage.
+        */}
+        <div className="grid grid-cols-1 md:grid-cols-10 gap-3">
           
-          {/* 1. Top Left: Sneakers on leaves (Spans 2 columns) */}
-          <div className="md:col-span-2 h-64 relative overflow-hidden group">
+          {/* COLUMN 1: LEFT STACK */}
+          <div className="md:col-span-2 grid grid-rows-2 gap-3">
+            <div className="relative overflow-hidden rounded-sm shadow-sm aspect-[4/5] md:aspect-auto md:h-[300px]">
+              <img
+                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80" 
+                alt="Portrait detail"
+                className="w-full h-full object-cover grayscale brightness-75"
+              />
+            </div>
+            <div className="relative overflow-hidden rounded-sm shadow-sm aspect-[4/5] md:aspect-auto md:h-[300px]">
+              <img
+                src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&q=80" 
+                alt="Child walking"
+                className="w-full h-full object-cover grayscale"
+              />
+            </div>
+          </div>
+
+          {/* COLUMN 2: CENTER PILLAR (Full Height) */}
+          <div className="md:col-span-3 relative overflow-hidden rounded-sm shadow-sm min-h-[400px] md:h-[612px]">
             <img
-              src="https://theformales.in//tranding1%20(1).jpg" // Replace with your leaves image
-              alt="Autumn sneakers"
-              className="w-full h-full object-cover shadow-sm transition-transform duration-300 group-hover:scale-105"
-              loading="lazy"
+              src="https://images.unsplash.com/photo-1589156229687-496a31ad1d1f?auto=format&fit=crop&q=80" 
+              alt="Hand detail"
+              className="w-full h-full object-cover grayscale"
             />
           </div>
 
-          {/* 2. Top Middle: Splash (Spans 1 column) */}
-          <div className="md:col-span-1 h-64 relative overflow-hidden group">
-            <img
-              src="https://theformales.in//tranding2.png" // Replace with your splash image
-              alt="Water splash sneaker"
-              className="w-full h-full object-cover shadow-sm transition-transform duration-300 group-hover:scale-105"
-              loading="lazy"
-            />
-          </div>
+          {/* COLUMN 3: RIGHT SECTION */}
+          <div className="md:col-span-5 grid grid-rows-2 gap-3">
+            {/* Top Large Landscape */}
+            <div className="relative overflow-hidden rounded-sm shadow-sm aspect-video md:aspect-auto md:h-[300px]">
+              <img
+                src="https://images.unsplash.com/photo-1505144808421-1984296ad536?auto=format&fit=crop&q=80" 
+                alt="Chair by sea"
+                className="w-full h-full object-cover grayscale"
+              />
+            </div>
 
-          {/* 3. Right: Black Friday (Spans 1 column, but 2 Rows tall) */}
-          <div className="md:col-span-1 md:row-span-2 h-96 md:h-auto relative overflow-hidden group">
-            <img
-              src="https://i.pinimg.com/1200x/85/00/b9/8500b9973a7dd6a2cecba095f183713e.jpg" // Replace with your Black Friday image
-              alt="Black Friday Supersales"
-              className="w-full h-full object-cover shadow-sm transition-transform duration-300 group-hover:scale-105"
-              loading="lazy"
-            />
-          </div>
-
-          {/* 4. Bottom Left: White Nike (Spans 1 column) */}
-          <div className="md:col-span-1 h-64 relative overflow-hidden group">
-            <img
-              src="https://theformales.in/ChatGPT%20Image%20Dec%2011%2C%202025%2C%2008_14_53%20PM.jpg" // Replace with your white shoe image
-              alt="White sneaker"
-              className="w-full h-full object-cover shadow-sm transition-transform duration-300 group-hover:scale-105"
-              loading="lazy"
-            />
-          </div>
-
-          {/* 5. Bottom Middle: Skater (Spans 2 columns) */}
-          <div className="md:col-span-2 h-64 relative overflow-hidden group">
-            <img
-              src="https://theformales.in/4.png" // Replace with your skater image
-              alt="Sneaker for sports"
-              className="w-full h-full object-cover shadow-sm transition-transform duration-300 group-hover:scale-105"
-              loading="lazy"
-            />
-            {/* Overlay Text */}
-            <div className="absolute inset-0 flex items-center justify-center bg-black/20">
-              
+            {/* Bottom Row: Split into two */}
+            <div className="grid grid-cols-2 gap-3">
+              <div className="relative overflow-hidden rounded-sm shadow-sm aspect-square md:aspect-auto md:h-[300px]">
+                <img
+                  src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&q=80" 
+                  alt="Interior"
+                  className="w-full h-full object-cover grayscale"
+                />
+              </div>
+              <div className="relative overflow-hidden rounded-sm shadow-sm aspect-square md:aspect-auto md:h-[300px]">
+                <img
+                  src="https://images.unsplash.com/photo-1542840410-3092f99611a3?auto=format&fit=crop&q=80" 
+                  alt="Tying boots"
+                  className="w-full h-full object-cover grayscale"
+                />
+              </div>
             </div>
           </div>
 
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

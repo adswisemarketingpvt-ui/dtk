@@ -17,116 +17,112 @@ import { products } from "../products/shoes"; // adjust path as needed
 // === DEMO IMAGES MAP (kept from your original file) ===
 const DEMO_IMAGES_MAP: Record<number | string, string[]> = {
   1: [
-    "https://www.dtkfootwear.com/public/1/Black%20Shoes%202_pages-to-jpg-0004.png",
-    "https://www.dtkfootwear.com/public/1/Black%20Shoes%202_pages-to-jpg-0002.png",
-    "https://www.dtkfootwear.com/public/1/Black%20Shoes%202_pages-to-jpg-0003.png",
-    "https://www.dtkfootwear.com/public/1/Black%20Shoes%202_pages-to-jpg-0006.png",
+    "https://yourdomain.com/murti/1/ganesh-front-white.jpg",
+    "https://yourdomain.com/murti/1/ganesh-side-white.jpg",
+    "https://yourdomain.com/murti/1/ganesh-back-white.jpg",
+    "https://yourdomain.com/murti/1/ganesh-closeup-white.jpg",
   ],
   2: [
-    "https://www.dtkfootwear.com/public/2/Artboard%201%20(6).png",
-    "https://www.dtkfootwear.com/public/2/Artboard%203%20(5).png",
-    "https://www.dtkfootwear.com/public/2/Artboard%205%20(6).png",
-    "https://www.dtkfootwear.com/public/2/Artboard%206%20(6).png",
+    "https://yourdomain.com/murti/2/krishna-front-white.jpg",
+    "https://yourdomain.com/murti/2/krishna-side-white.jpg",
+    "https://yourdomain.com/murti/2/krishna-back-white.jpg",
+    "https://yourdomain.com/murti/2/krishna-closeup-white.jpg",
   ],
   3: [
-    "https://www.dtkfootwear.com/public/3/Brown%20Shoes%203-3.png",
-    "https://www.dtkfootwear.com/public/3/Brown%20Shoes%203-4.png",
-    "https://www.dtkfootwear.com/public/3/Brown%20Shoes%203-6.png",
-    "https://www.dtkfootwear.com/public/3/Brown%20Shoes%203-2.png",
+    "https://yourdomain.com/murti/3/shiv-front-white.jpg",
+    "https://yourdomain.com/murti/3/shiv-side-white.jpg",
+    "https://yourdomain.com/murti/3/shiv-back-white.jpg",
+    "https://yourdomain.com/murti/3/shiv-closeup-white.jpg",
   ],
   4: [
-    "https://www.dtkfootwear.com/public/4/Artboard%202%20(7).png",
-    "https://www.dtkfootwear.com/public/4/Artboard%203%20(6).png",
-    "https://www.dtkfootwear.com/public/4/Artboard%205%20(7).png",
-    "https://www.dtkfootwear.com/public/4/Artboard%206%20(7).png",
+    "https://yourdomain.com/murti/4/durga-front-white.jpg",
+    "https://yourdomain.com/murti/4/durga-side-white.jpg",
+    "https://yourdomain.com/murti/4/durga-back-white.jpg",
+    "https://yourdomain.com/murti/4/durga-closeup-white.jpg",
   ],
   5: [
-    "https://www.dtkfootwear.com/public/5/Brown%20Shoes%204-1.png",
-    "https://www.dtkfootwear.com/public/5/Brown%20Shoes%204-3.png",
-    "https://www.dtkfootwear.com/public/5/Brown%20Shoes%204-4.png",
-    "https://www.dtkfootwear.com/public/5/Brown%20Shoes%204-5.png",
+    "https://yourdomain.com/murti/5/hanuman-front-white.jpg",
+    "https://yourdomain.com/murti/5/hanuman-side-white.jpg",
+    "https://yourdomain.com/murti/5/hanuman-back-white.jpg",
+    "https://yourdomain.com/murti/5/hanuman-closeup-white.jpg",
   ],
   6: [
-    "https://www.dtkfootwear.com/public/6/4%20(2).png",
-    "https://www.dtkfootwear.com/public/6/DTK%20(1).png",
-    "https://www.dtkfootwear.com/public/6/DTK%202%20(1).png",
-    "https://www.dtkfootwear.com/public/6/6%20(1).png",
-    "https://www.dtkfootwear.com/public/6/DTK%203%20(1).png",
+    "https://yourdomain.com/murti/6/lakshmi-front-white.jpg",
+    "https://yourdomain.com/murti/6/lakshmi-side-white.jpg",
+    "https://yourdomain.com/murti/6/lakshmi-back-white.jpg",
+    "https://yourdomain.com/murti/6/lakshmi-closeup-white.jpg",
   ],
   7: [
-    "https://www.dtkfootwear.com/public/7/2_%20(2).png",
-    "https://www.dtkfootwear.com/public/7/3%20(1).png",
-    "https://www.dtkfootwear.com/public/7/5%20(3).png",
-    "https://www.dtkfootwear.com/public/7/BLC%201%20(1).png",
+    "https://yourdomain.com/murti/7/saraswati-front-white.jpg",
+    "https://yourdomain.com/murti/7/saraswati-side-white.jpg",
+    "https://yourdomain.com/murti/7/saraswati-back-white.jpg",
+    "https://yourdomain.com/murti/7/saraswati-closeup-white.jpg",
   ],
   8: [
-    "https://www.dtkfootwear.com/public/8/Back%20Side%20%20(1).png",
-    "https://www.dtkfootwear.com/public/8/Front%20Side%20%20(1).png",
-    "https://www.dtkfootwear.com/public/8/Side%201%20(1).png",
-    "https://www.dtkfootwear.com/public/8/Side%202.png",
+    "https://yourdomain.com/murti/8/ram-front-white.jpg",
+    "https://yourdomain.com/murti/8/ram-side-white.jpg",
+    "https://yourdomain.com/murti/8/ram-back-white.jpg",
+    "https://yourdomain.com/murti/8/ram-closeup-white.jpg",
   ],
   9: [
-    "https://www.dtkfootwear.com/public/9/Artboard%206.png",
-    "https://www.dtkfootwear.com/public/9/Artboard%205.png",
-    "https://www.dtkfootwear.com/public/9/Artboard%202%20(1).png",
-    "https://www.dtkfootwear.com/public/9/Artboard%201%20(1).png",
-    "https://www.dtkfootwear.com/public/9/Artboard%204.png",
+    "https://yourdomain.com/murti/9/krishna-flute-front-white.jpg",
+    "https://yourdomain.com/murti/9/krishna-flute-side-white.jpg",
+    "https://yourdomain.com/murti/9/krishna-flute-back-white.jpg",
+    "https://yourdomain.com/murti/9/krishna-flute-closeup-white.jpg",
   ],
   10: [
-    "https://www.dtkfootwear.com/public/10/Artboard%203%20(1).png",
-    "https://www.dtkfootwear.com/public/10/Artboard%201%20(2).png",
-    "https://www.dtkfootwear.com/public/10/Artboard%206%20(2).png",
-    "https://www.dtkfootwear.com/public/10/Artboard%204%20(2).png",
-    "https://www.dtkfootwear.com/public/10/Artboard%202%20(2).png",
+    "https://yourdomain.com/murti/10/shiv-parvati-front-white.jpg",
+    "https://yourdomain.com/murti/10/shiv-parvati-side-white.jpg",
+    "https://yourdomain.com/murti/10/shiv-parvati-back-white.jpg",
+    "https://yourdomain.com/murti/10/shiv-parvati-closeup-white.jpg",
   ],
   11: [
-    "https://www.dtkfootwear.com/public/11/Artboard%205%20(3).png",
-    "https://www.dtkfootwear.com/public/11/Artboard%201%20(3).png",
-    "https://www.dtkfootwear.com/public/11/Artboard%203%20(2).png",
-    "https://www.dtkfootwear.com/public/11/Artboard%204%20(3).png",
-    "https://www.dtkfootwear.com/public/11/Artboard%205%20(3).png",
+    "https://yourdomain.com/murti/11/ganesh-premium-front-white.jpg",
+    "https://yourdomain.com/murti/11/ganesh-premium-side-white.jpg",
+    "https://yourdomain.com/murti/11/ganesh-premium-back-white.jpg",
+    "https://yourdomain.com/murti/11/ganesh-premium-closeup-white.jpg",
   ],
   12: [
-    "https://www.dtkfootwear.com/public/12/Artboard%206%20(8).png",
-    "https://www.dtkfootwear.com/public/12/Artboard%205%20(8).png",
-    "https://www.dtkfootwear.com/public/12/Artboard%203%20(7).png",
-    "https://www.dtkfootwear.com/public/12/Artboard%201%20(8).png",
+    "https://yourdomain.com/murti/12/buddha-front-white.jpg",
+    "https://yourdomain.com/murti/12/buddha-side-white.jpg",
+    "https://yourdomain.com/murti/12/buddha-back-white.jpg",
+    "https://yourdomain.com/murti/12/buddha-closeup-white.jpg",
   ],
   13: [
-    "https://www.dtkfootwear.com/public/13/Artboard%206%20(9).png",
-    "https://www.dtkfootwear.com/public/13/Artboard%205%20(9).png",
-    "https://www.dtkfootwear.com/public/13/Artboard%203%20(8).png",
-    "https://www.dtkfootwear.com/public/13/Artboard%201%20(9).png",
+    "https://yourdomain.com/murti/13/vithoba-front-white.jpg",
+    "https://yourdomain.com/murti/13/vithoba-side-white.jpg",
+    "https://yourdomain.com/murti/13/vithoba-back-white.jpg",
+    "https://yourdomain.com/murti/13/vithoba-closeup-white.jpg",
   ],
   14: [
-    "https://www.dtkfootwear.com/public/14/Artboard%205%20(10).png",
-    "https://www.dtkfootwear.com/public/14/Artboard%204%20(9).png",
-    "https://www.dtkfootwear.com/public/14/Artboard%202%20(10).png",
-    "https://www.dtkfootwear.com/public/14/Artboard%201%20(10).png",
+    "https://yourdomain.com/murti/14/sai-baba-front-white.jpg",
+    "https://yourdomain.com/murti/14/sai-baba-side-white.jpg",
+    "https://yourdomain.com/murti/14/sai-baba-back-white.jpg",
+    "https://yourdomain.com/murti/14/sai-baba-closeup-white.jpg",
   ],
   15: [
-    "https://www.dtkfootwear.com/public/15/Artboard%206%20(4).png",
-    "https://www.dtkfootwear.com/public/15/Artboard%204%20(4).png",
-    "https://www.dtkfootwear.com/public/15/Artboard%201%20(4).png",
-    "https://www.dtkfootwear.com/public/15/Artboard%202%20(4).png",
+    "https://yourdomain.com/murti/15/ganesh-eco-front-white.jpg",
+    "https://yourdomain.com/murti/15/ganesh-eco-side-white.jpg",
+    "https://yourdomain.com/murti/15/ganesh-eco-back-white.jpg",
+    "https://yourdomain.com/murti/15/ganesh-eco-closeup-white.jpg",
   ],
   16: [
-    "https://www.dtkfootwear.com/public/16/Artboard%206%20(11).png",
-    "https://www.dtkfootwear.com/public/16/Artboard%205%20(11).png",
-    "https://www.dtkfootwear.com/public/16/Artboard%204%20(10).png",
-    "https://www.dtkfootwear.com/public/16/Artboard%203%20(10).png",
+    "https://yourdomain.com/murti/16/shiv-dhyan-front-white.jpg",
+    "https://yourdomain.com/murti/16/shiv-dhyan-side-white.jpg",
+    "https://yourdomain.com/murti/16/shiv-dhyan-back-white.jpg",
+    "https://yourdomain.com/murti/16/shiv-dhyan-closeup-white.jpg",
   ],
   17: [
-    "https://www.dtkfootwear.com/public/17/Artboard%205%20(12).png",
-    "https://www.dtkfootwear.com/public/17/Artboard%204%20(11).png",
-    "https://www.dtkfootwear.com/public/17/Artboard%201%20(12).png",
-    "https://www.dtkfootwear.com/public/17/Artboard%203%20(11).png",
+    "https://yourdomain.com/murti/17/dattatreya-front-white.jpg",
+    "https://yourdomain.com/murti/17/dattatreya-side-white.jpg",
+    "https://yourdomain.com/murti/17/dattatreya-back-white.jpg",
+    "https://yourdomain.com/murti/17/dattatreya-closeup-white.jpg",
   ],
   18: [
-    "https://www.dtkfootwear.com/public/18/Artboard%206%20(5).png",
-    "https://www.dtkfootwear.com/public/18/Artboard%205%20(5).png",
-    "https://www.dtkfootwear.com/public/18/Artboard%204%20(5).png",
-    "https://www.dtkfootwear.com/public/18/Artboard%203%20(4).png",
+    "https://yourdomain.com/murti/18/navdurga-front-white.jpg",
+    "https://yourdomain.com/murti/18/navdurga-side-white.jpg",
+    "https://yourdomain.com/murti/18/navdurga-back-white.jpg",
+    "https://yourdomain.com/murti/18/navdurga-closeup-white.jpg",
   ],
 };
 
@@ -210,12 +206,12 @@ const ProductPage: React.FC = () => {
 
   if (!product) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-8 bg-[#EAEDED]">
-        <div className="bg-white p-8 rounded shadow-md text-center border border-gray-200">
-          <p className="text-lg text-[#131921]">Product not found.</p>
+      <div className="min-h-screen flex items-center justify-center p-8 bg-background">
+        <div className="bg-card-background p-8 rounded shadow-md text-center border border-border-divider">
+          <p className="text-lg text-primary-body">Product not found.</p>
           <button
             onClick={() => navigate("/")}
-            className="mt-4 px-4 py-2 rounded bg-[#FFD814] text-black border border-[#FCD200]"
+            className="mt-4 px-4 py-2 rounded bg-primary-button text-primary-heading border border-button-hover"
           >
             Go to Home
           </button>
@@ -254,7 +250,7 @@ const ProductPage: React.FC = () => {
   // ----------------------------
   // WhatsApp / ordering utilities
   // ----------------------------
-  const BUSINESS_NUMBER = "+9765758830";
+  const BUSINESS_NUMBER = "+919921517752";
 
   const normalizePhone = (raw: string) => {
     return raw.replace(/\D/g, "");
@@ -455,21 +451,20 @@ const ProductPage: React.FC = () => {
   const sidebarImage = "/mnt/data/e928c3b8-7ac7-4a43-b762-26ca44e073c8.jpg"; 
 
   return (
-    // Global Background: Amazon Gray
-    <div className=" bg-[#FAF7F0] min-h-screen py-6 md:py-12">
+    <div className="bg-background min-h-screen py-6 md:py-12">
       <div className="max-w-[1500px] mx-auto px-4 md:px-6">
         
-        {/* Breadcrumbs - Amazon Style */}
-        <div className="flex items-center text-xs md:text-sm text-[#565959] mb-4 space-x-1">
-          <button onClick={() => navigate(-1)} className="hover:text-[#C7511F] flex items-center">
+        {/* Breadcrumbs */}
+        <div className="flex items-center text-xs md:text-sm text-secondary-text mb-4 space-x-1">
+          <button onClick={() => navigate(-1)} className="hover:text-accent flex items-center">
             <ChevronLeft className="w-4 h-4" /> Back
           </button>
           <span>/</span>
-          <span className="hover:text-[#C7511F] hover:underline cursor-pointer" onClick={() => navigate("/")}>
+          <span className="hover:text-accent hover:underline cursor-pointer" onClick={() => navigate("/")}>
             Home
           </span>
           <span>/</span>
-          <span className="text-[#C7511F] font-medium truncate max-w-[200px]">{product.name}</span>
+          <span className="text-accent font-medium truncate max-w-[200px]">{product.name}</span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
@@ -477,8 +472,8 @@ const ProductPage: React.FC = () => {
           {/* === LEFT COLUMN: IMAGES & DESCRIPTION === */}
           <div className="lg:col-span-7 space-y-6">
             
-            {/* Image Gallery Container - White Bg */}
-            <div className="bg-white rounded-sm p-4 border border-gray-200">
+            {/* Image Gallery Container */}
+            <div className="bg-card-background rounded-sm p-4 border border-border-divider">
               <div className="flex flex-col-reverse md:flex-row gap-4">
                 {/* Vertical thumbnails (Desktop) */}
                 <div className="hidden md:flex flex-col gap-3">
@@ -488,14 +483,14 @@ const ProductPage: React.FC = () => {
                       onClick={() => setMainImageIndex(idx)}
                       className={`w-14 h-14 rounded-md overflow-hidden border transition ${
                         idx === mainImageIndex 
-                          ? "border-[#FF9900] ring-2 ring-[#FF9900] ring-opacity-50" 
-                          : "border-gray-200 hover:border-[#FF9900]"
+                          ? "border-primary-button ring-2 ring-primary-button ring-opacity-50" 
+                          : "border-border-divider hover:border-primary-button"
                       }`}
                     >
                       <img
                         src={src}
                         alt={`img-${idx}`}
-                        className="w-full h-full object-contain bg-white"
+                        className="w-full h-full object-contain bg-card-background"
                         onError={(e: any) => onImgError(e)}
                       />
                     </button>
@@ -513,7 +508,7 @@ const ProductPage: React.FC = () => {
                     onTouchStart={(e) => { if (e.touches.length === 1) onMoveLens(e.touches[0].clientX, e.touches[0].clientY); }}
                     onTouchMove={onTouchMove}
                   >
-                    <div className="bg-white overflow-hidden relative flex justify-center">
+                    <div className="bg-card-background overflow-hidden relative flex justify-center">
                       <img
                         src={combinedImages[mainImageIndex]}
                         alt={product.name}
@@ -533,7 +528,7 @@ const ProductPage: React.FC = () => {
                         key={`mob-${idx}`}
                         onClick={() => setMainImageIndex(idx)}
                         className={`flex-shrink-0 w-16 h-16 rounded border ${
-                          idx === mainImageIndex ? "border-[#FF9900]" : "border-gray-200"
+                          idx === mainImageIndex ? "border-primary-button" : "border-border-divider"
                         }`}
                       >
                         <img src={src} className="w-full h-full object-contain" />
@@ -545,93 +540,59 @@ const ProductPage: React.FC = () => {
             </div>
 
             {/* Description Block */}
-            <div className="bg-white rounded-sm p-6 border border-gray-200">
-              <h3 className="text-lg font-bold text-[#C7511F] mb-4 uppercase">Product Description</h3>
+            <div className="bg-card-background rounded-sm p-6 border border-border-divider">
+              <h3 className="text-lg font-bold text-primary-heading mb-4 uppercase">Product Description</h3>
               <div 
-                className="prose max-w-none text-[#131921] text-sm leading-relaxed"
+                className="prose max-w-none text-primary-body text-sm leading-relaxed"
                 dangerouslySetInnerHTML={{ __html: description }}
               />
             </div>
 
-            {/* Sizing Guide Block - Styled like Amazon A+ Content */}
-            <div className="bg-white rounded-sm p-6 border border-gray-200">
-               <div className="flex items-center gap-2 mb-4">
-                 <Ruler className="w-6 h-6 text-[#007185]" />
-                 <h3 className="text-xl font-bold text-[#131921]">Find Your Perfect Size</h3>
-               </div>
-               
-               <div className="bg-[#F0F2F2] p-4 rounded border border-gray-300">
-                  <p className="text-[#131921] mb-2 font-medium">Measurement Formula:</p>
-                  <p className="text-[#565959] text-sm mb-4">
-                    (Foot Length in cm + 1.5 cm) × 1.5 = Recommended Size
-                  </p>
-                  
-                  <div className="flex flex-wrap items-end gap-4">
-                    <div>
-                      <label className="block text-xs font-bold text-[#565959] uppercase mb-1">Enter Foot Length (cm)</label>
-                      <input
-                        type="number"
-                        step="0.1"
-                        value={footLength}
-                        onChange={(e) => setFootLength(e.target.value === "" ? "" : Number(e.target.value))}
-                        placeholder="e.g., 26.5"
-                        className="w-32 px-3 py-2 border border-[#888C8C] rounded shadow-inner focus:border-[#e77600] focus:ring-1 focus:ring-[#e77600] outline-none"
-                      />
-                    </div>
-                    
-                    <div className="pb-1">
-                      <span className="text-sm text-[#565959] mr-2">Your Size:</span>
-                      <span className="text-2xl font-bold text-[#B12704]">{computedSize ?? "—"}</span>
-                    </div>
-                  </div>
-                  
-                  {note && <p className="mt-3 text-sm text-[#C7511F] font-medium">{note}</p>}
-               </div>
-            </div>
+            
           </div>
 
           {/* === RIGHT COLUMN: PRODUCT DETAILS & BUY BOX === */}
           <aside className="lg:col-span-5 space-y-4">
             
             {/* Product Header & Options */}
-            <div className="bg-white p-6 rounded-sm border border-gray-200">
+            <div className="bg-card-background p-6 rounded-sm border border-border-divider">
               <div className="flex justify-between items-start">
                  <div>
-                    <h1 className="text-2xl md:text-3xl font-medium text-[#131921] leading-tight mb-1">{product.name}</h1>
-                    <span className="text-[#007185] text-sm hover:underline cursor-pointer">{product.category ?? "Men's Footwear"}</span>
+                    <h1 className="text-2xl md:text-3xl font-medium text-primary-heading leading-tight mb-1">{product.name}</h1>
+                    <span className="text-secondary-text text-sm hover:underline cursor-pointer">{product.category ?? "Men's Footwear"}</span>
                  </div>
                  <button
                   onClick={() => setWishlisted(!wishlisted)}
-                  className="p-2 hover:bg-gray-100 rounded-full"
+                  className="p-2 hover:bg-background rounded-full"
                 >
-                  <Heart className={`w-6 h-6 ${wishlisted ? "fill-[#B12704] text-[#B12704]" : "text-gray-400"}`} />
+                  <Heart className={`w-6 h-6 ${wishlisted ? "fill-secondary-accent text-secondary-accent" : "text-muted-text"}`} />
                 </button>
               </div>
 
               {/* Rating */}
               <div className="flex items-center gap-1 mt-2">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className={`w-4 h-4 ${i < rating ? "fill-[#FF9900] text-[#FF9900]" : "text-gray-300"}`} />
+                  <Star key={i} className={`w-4 h-4 ${i < rating ? "fill-primary-button text-primary-button" : "text-muted-text"}`} />
                 ))}
-                <span className="text-[#007185] text-sm ml-2 hover:underline cursor-pointer">142 ratings</span>
+                <span className="text-secondary-text text-sm ml-2 hover:underline cursor-pointer">142 ratings</span>
               </div>
 
-              <div className="border-t border-gray-200 my-4"></div>
+              <div className="border-t border-border-divider my-4"></div>
 
               {/* Price */}
               <div className="flex items-baseline gap-2">
-                <span className="text-[#B12704] text-sm">Deal Price:</span>
-                <span className="text-3xl font-medium text-[#B12704]">
+                <span className="text-secondary-accent text-sm">Deal Price:</span>
+                <span className="text-3xl font-medium text-secondary-accent">
                   <sup className="text-sm">₹</sup>{product.price}
                 </span>
               </div>
-              <p className="text-[#565959] text-sm mt-1">Inclusive of all taxes</p>
+              <p className="text-secondary-text text-sm mt-1">Inclusive of all taxes</p>
 
               {/* Size Selection */}
               <div className="mt-6">
                 <div className="flex justify-between mb-2">
-                   <span className="font-bold text-[#565959] text-sm">Select Size: <span className="text-[#131921]">{selectedSize}</span></span>
-                   <span className="text-[#007185] text-sm hover:underline cursor-pointer flex items-center gap-1">
+                   <span className="font-bold text-secondary-text text-sm">Select Size: <span className="text-primary-heading">{selectedSize}</span></span>
+                   <span className="text-secondary-text text-sm hover:underline cursor-pointer flex items-center gap-1">
                      <Ruler className="w-3 h-3" /> Size Chart
                    </span>
                 </div>
@@ -642,8 +603,8 @@ const ProductPage: React.FC = () => {
                       onClick={() => setSelectedSize(size)}
                       className={`px-4 py-2 text-sm border rounded-sm transition-all ${
                         selectedSize === size
-                          ? "border-[#FF9900] bg-[#FFF5E5] text-[#131921] font-bold ring-1 ring-[#FF9900]"
-                          : "border-gray-300 bg-white text-[#131921] hover:bg-gray-50"
+                          ? "border-primary-button bg-primary-button/10 text-primary-heading font-bold ring-1 ring-primary-button"
+                          : "border-border-divider bg-card-background text-primary-body hover:bg-background"
                       }`}
                     >
                       {size}
@@ -654,7 +615,7 @@ const ProductPage: React.FC = () => {
 
               {/* Color Selection */}
               <div className="mt-4">
-                <span className="font-bold text-[#565959] text-sm mb-2 block">Color: <span className="text-[#131921]">{selectedColor}</span></span>
+                <span className="font-bold text-secondary-text text-sm mb-2 block">Color: <span className="text-primary-heading">{selectedColor}</span></span>
                 <div className="flex flex-wrap gap-2">
                   {colors.map((color) => (
                     <button
@@ -662,12 +623,12 @@ const ProductPage: React.FC = () => {
                       onClick={() => setSelectedColor(color)}
                       className={`px-3 py-1.5 text-sm border rounded-sm flex items-center gap-2 ${
                         selectedColor === color
-                          ? "border-[#FF9900] bg-[#FFF5E5] ring-1 ring-[#FF9900] font-bold"
-                          : "border-gray-300 hover:bg-gray-50"
+                          ? "border-primary-button bg-primary-button/10 ring-1 ring-primary-button font-bold"
+                          : "border-border-divider hover:bg-background"
                       }`}
                     >
                       <span 
-                        className="w-3 h-3 rounded-full border border-gray-300" 
+                        className="w-3 h-3 rounded-full border border-border-divider" 
                         style={{ backgroundColor: color.toLowerCase() }} 
                       />
                       {color}
@@ -677,66 +638,67 @@ const ProductPage: React.FC = () => {
               </div>
 
               {/* Trust Badges */}
-              <div className="grid grid-cols-3 gap-2 mt-6 text-xs text-[#007185]">
+              <div className="grid grid-cols-3 gap-2 mt-6 text-xs text-secondary-text">
                 <div className="flex flex-col items-center text-center gap-1">
-                   <div className="bg-white p-2 rounded-full shadow-sm border border-gray-200">
-                     <Truck className="w-5 h-5 text-[#FF9900]" />
+                   <div className="bg-background p-2 rounded-full shadow-sm border border-border-divider">
+                     <Truck className="w-5 h-5 text-primary-button" />
                    </div>
                    <span>Free Delivery</span>
                 </div>
                 <div className="flex flex-col items-center text-center gap-1">
-                   <div className="bg-white p-2 rounded-full shadow-sm border border-gray-200">
-                     <Shield className="w-5 h-5 text-[#FF9900]" />
+                   <div className="bg-background p-2 rounded-full shadow-sm border border-border-divider">
+                     <Shield className="w-5 h-5 text-primary-button" />
                    </div>
                    <span>30 Days Return</span>
                 </div>
                 <div className="flex flex-col items-center text-center gap-1">
-                   <div className="bg-white p-2 rounded-full shadow-sm border border-gray-200">
-                     <CheckCircle className="w-5 h-5 text-[#FF9900]" />
+                   <div className="bg-background p-2 rounded-full shadow-sm border border-border-divider">
+                     <CheckCircle className="w-5 h-5 text-primary-button" />
                    </div>
                    <span>Top Brand</span>
                 </div>
               </div>
 
               {/* Stock Status */}
-              <div className="mt-6 text-[#067D62] text-lg font-medium">
+              <div className="mt-6 text-green-600 text-lg font-medium">
                 In stock
               </div>
 
               {/* Quantity */}
               <div className="mt-2 flex items-center gap-2">
-                 <label className="text-sm text-[#131921]">Qty:</label>
+                 <label className="text-sm text-primary-body">Qty:</label>
                  <select 
                     value={quantity} 
                     onChange={(e) => setQuantity(Number(e.target.value))}
-                    className="bg-[#F0F2F2] border border-[#D5D9D9] rounded-md shadow-sm px-2 py-1 text-sm focus:ring-[#e77600] focus:border-[#e77600]"
+                    className="bg-background border border-border-divider rounded-md shadow-sm px-2 py-1 text-sm focus:ring-accent focus:border-accent"
                  >
                     {[1,2,3,4,5].map(num => <option key={num} value={num}>{num}</option>)}
                  </select>
               </div>
 
-              {/* Buy Button - Amazon Yellow */}
+              {/* Buy Button */}
               <div className="mt-6">
                 <button
+                onClick={handleOrder}
                 disabled={!canOrder}
-                className={`w-full mt-6 py-3 font-medium text-black border ${
+                className={`w-full mt-6 py-3 font-medium border ${
                   canOrder
-                    ? "bg-[#B17457] text-white hover:bg-[#4A4947]"
-                    : "bg-[#D8D2C2] cursor-not-allowed"
+                    ? "bg-primary-button text-primary-heading hover:bg-button-hover"
+                    : "bg-border-divider cursor-not-allowed"
                 }`}
               >
                 Order via WhatsApp
               </button>
               </div>
               
-              <div className="mt-3 flex items-center justify-center gap-2 text-xs text-[#565959]">
+              <div className="mt-3 flex items-center justify-center gap-2 text-xs text-secondary-text">
                  <Shield className="w-3 h-3" />
                  Secure transaction
               </div>
             </div>
 
             {/* Promotional Image / Banner */}
-            <div className="bg-white p-4 rounded-sm border border-gray-200">
+            <div className="bg-card-background p-4 rounded-sm border border-border-divider">
               <img
                 src={sidebarImage}
                 alt="Promotion"
@@ -764,7 +726,7 @@ const ProductPage: React.FC = () => {
             >
               ✕
             </button>
-            <div className="w-full h-full flex items-center justify-center overflow-hidden bg-white rounded-lg">
+            <div className="w-full h-full flex items-center justify-center overflow-hidden bg-card-background rounded-lg">
               <img
                 src={combinedImages[mainImageIndex]}
                 alt="Zoom"

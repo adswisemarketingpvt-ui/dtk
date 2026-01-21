@@ -6,17 +6,17 @@ const TrendingCollectionCard: React.FC = () => {
   const collections = [
      {
       title: "Gifting",
-      image: "https://i.pinimg.com/1200x/8f/fc/e8/8ffce88d2880f9a29196ee8d2de23ae9.jpg",
+      image: "https://mediumaquamarine-quetzal-462306.hostingersite.com//public/gifting.png",
       link: "/products",
     },
     {
       title: "Home Decor",
-      image: "https://i.pinimg.com/1200x/53/0d/b8/530db82713fe803f892927582a2ab4d0.jpg",
+      image: "https://mediumaquamarine-quetzal-462306.hostingersite.com//public/homedecor.png",
       link: "/products",
     },
     {
       title: "Table Decor",
-      image: "https://i.pinimg.com/1200x/74/17/fe/7417fe4e44846472f1d8f1241ee10e2a.jpg",
+      image: "https://mediumaquamarine-quetzal-462306.hostingersite.com/public/table.jpg",
       link: "/products",
     }
    
@@ -32,7 +32,7 @@ const TrendingCollectionCard: React.FC = () => {
               Curated Picks
             </span>
             <h2 className="text-4xl md:text-5xl font-serif text-primary-heading mb-6 tracking-tight mt-2">
-              Most Trending Collection
+              Most Trending <span className='text-[#E67E22]'>Collection</span> 
             </h2>
           </div>
           <p className="text-secondary-text/70 max-w-xs text-sm font-light leading-relaxed">

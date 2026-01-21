@@ -14,6 +14,7 @@ import FootwearGrid from "./FootwearGrid";
 import TrendingCollectionCard from "./TrendingCollectionCard";
 import AutomaticArtSlider from "./AutomaticArtSlider";
 import Testimonials from "./Testimonials";
+import Seo from "../components/Seo";
 
 /* === Scroll Reveal helper === */
 type RevealProps = {
@@ -50,6 +51,7 @@ function Reveal({
   }, []);
 
   return (
+     
     <Tag
       ref={ref}
       style={{ transitionDelay: `${delayMs}ms` }}
@@ -89,8 +91,17 @@ const HomePage = () => {
   ];
 
   return (
+   
+    
     <div className="flex flex-col min-h-screen bg-background">
       {/* Hero Section */}
+      <Seo
+        title="Avyact Arts - Handcrafted Artistry from India"
+        description="Discover exquisite handcrafted murtis and sculptures at Avyact Arts. Hand-carved by Indian artisans, our unique pieces celebrate a rich heritage."
+        keywords="Handcrafted murtis, Indian sculptures, Artisan art India, Traditional Indian crafts, Unique Indian artwork, Hand-carved murtis, Cultural art India"
+        url="https://avyactarts.com/"
+        
+      />
       <Hero />
 
       {/* Features Section */}
@@ -157,6 +168,7 @@ const HomePage = () => {
       <Testimonials />
 
     </div>
+   
   );
 };
 

@@ -12,11 +12,12 @@ import ContactPage from "./pages/ContactPage";
 import ThankYouPage from "./pages/ThankYouPage";
 import ShippingPolicy from "./policy/shipping-policy";
 import ReturnPolicy from "./policy/return-policy";
-// import WholesalePage from "./pages/WholesalePage";
 import ProductsPageMain from "./pages/ProductsPageMain";
+import { HelmetProvider } from 'react-helmet-async';
 
 function App() {
   return (
+    <HelmetProvider>
     <div className="min-h-screen bg-background">
       <Header />
       <main>
@@ -35,6 +36,7 @@ function App() {
       </main>
       <Footer />
     </div>
+    </HelmetProvider>
   );
 }
 

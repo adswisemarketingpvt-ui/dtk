@@ -69,9 +69,9 @@ const AutomaticArtSlider = () => {
   };
 
   return (
-    <section className="relative w-full max-w-7xl mx-auto px-4 py-8 overflow-hidden group">
-      <h2 className="text-2xl md:text-3xl font-serif mb-6 md:mb-10 text-center text-gray-800">
-        Featured Gallery
+    <section className="relative w-full max-w-7xl mx-auto px-4 py-2 overflow-hidden group">
+      <h2 className="text-4xl md:text-5xl  font-serif mb-6 md:mb-10 text-center text-gray-800">
+        Craft Honored by <span className='text-[#E67E22]'>Leaders</span> 
       </h2>
 
       {/* Slider Viewport */}

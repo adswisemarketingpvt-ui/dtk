@@ -8,7 +8,6 @@ import {
   FaStore,
   FaQuora,
   FaPinterest,
-
 } from "react-icons/fa";
 
 const Footer: React.FC = () => {
@@ -25,8 +24,8 @@ const Footer: React.FC = () => {
               alt="DTK Footwear Logo"
             />
             <p className="text-secondary-text mb-8 leading-relaxed max-w-xs text-sm font-light">
-              Crafting exceptional footwear, each pair tells a story of
-              dedication, precision, and timeless elegance.
+              Creating divine murtis with skill, tradition, and premium
+              craftsmanship.
             </p>
 
             <div className="flex space-x-3">
@@ -40,21 +39,6 @@ const Footer: React.FC = () => {
                   icon: FaFacebookF,
                   label: "Facebook",
                   href: "https://www.facebook.com/share/17TGZCbzkQ/",
-                },
-                {
-                  icon: FaPinterest,
-                  label: "Pinterest",
-                  href: "https://in.pinterest.com/theformales/", // Replace with your actual URL
-                },
-                {
-                  icon: FaQuora,
-                  label: "Quora",
-                  href: "https://www.quora.com/profile/The-Formales", // Replace with your actual URL
-                },
-                {
-                  icon: FaStore,
-                  label: "IndiaMART",
-                  href: "https://www.indiamart.com/dtk-footwear/",
                 },
               ].map((social, idx) => (
                 <a
@@ -133,19 +117,19 @@ const Footer: React.FC = () => {
               <div className="flex items-start justify-center md:justify-start">
                 <MapPin className="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
                 <span className="text-secondary-text text-xs leading-relaxed font-light">
-                  Thergaon Pune, Maharashtra 411033
+                  NH 04, Kamthadi, Nasrapur, Bhor, Pune-412213
                 </span>
               </div>
               <div className="flex items-center justify-center md:justify-start">
                 <Phone className="w-4 h-4 text-accent mr-3 flex-shrink-0" />
                 <span className="text-secondary-text text-xs font-light tracking-wider">
-                  +91 ---
+                  +91 99215 17752
                 </span>
               </div>
               <div className="flex items-center justify-center md:justify-start">
                 <Mail className="w-4 h-4 text-accent mr-3 flex-shrink-0" />
                 <span className="text-secondary-text text-xs font-light">
-                  contact
+                  avyaktaart555@gmail.com
                 </span>
               </div>
               <div className="flex items-start justify-center md:justify-start">
@@ -162,7 +146,6 @@ const Footer: React.FC = () => {
 
         {/* Bottom Section */}
         <div className="border-t border-border-divider mt-16 pt-8 text-center">
-          
           <p className="text-muted-text text-[10px] mt-4 tracking-[0.3em] uppercase">
             © {new Date().getFullYear()} Avyakta Art . All rights reserved.
           </p>

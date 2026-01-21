@@ -13,15 +13,15 @@ const Reveal = ({ children, className, delayMs = 0 }: any) => (
 
 const ProductsPageMain = () => {
   return (
-    <div className="min-h-screen bg-background text-primary-body font-sans">
+    <div id='/products' className="min-h-screen bg-background text-primary-body font-sans">
       {/* Header Section */}
       <header className="pt-20 pb-12 px-6 text-center">
         <Reveal as="h2" className="text-4xl md:text-5xl font-serif text-primary-heading mb-6 tracking-tight">
-          Our Collection
+           Explore Avyact Arts <span className='text-[#E67E22]'> Collection</span>
         </Reveal>
         <div className="w-12 h-1 bg-accent mx-auto mb-6"></div>
         <Reveal delayMs={120} className="text-secondary-text max-w-2xl mx-auto px-2 opacity-90 font-light leading-loose italic">
-          idolize authentic experiences rather than products.
+          Unique Handcrafted Art & Decor
         </Reveal>
       </header>
 

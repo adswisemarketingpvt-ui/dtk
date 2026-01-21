@@ -41,14 +41,23 @@ const ContactPage: React.FC = () => {
 
     try {
       await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY);
+      
+      // Update status to success
       setStatus({ type: 'success', text: 'Message sent successfully!' });
-      setTimeout(() => navigate('/thank-you'), 1500);
+      
+      // Optional: Clear form
       setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+
+      // Navigate to Thank You page after a short delay so user sees the success state
+      setTimeout(() => {
+        navigate('/thank-you');
+      }, 1000);
+
     } catch (err) {
       console.error('EmailJS error:', err);
       setStatus({
         type: 'error',
-        text: 'Failed to send message. Please email contact@dtkfootwear.com directly.',
+        text: 'Failed to send message. Please email avyaktaart555@gmail.com directly.',
       });
       setTimeout(() => setStatus({ type: 'idle' }), 8000);
     }
@@ -62,17 +71,17 @@ const ContactPage: React.FC = () => {
     {
       icon: MapPin,
       title: 'Visit Our Store',
-      details: ['Thergaon Pune, Maharashtra 411033'],
+      details: ['NH 04, Kamthadi, Nasrapur, Bhor, Pune-412213'],
     },
     {
       icon: Phone,
       title: 'Call Us',
-      details: ['+91 9730266648'],
+      details: ['+91 99215 17752'],
     },
     {
       icon: Mail,
       title: 'Email Us',
-      details: ['contact@theformales.com'],
+      details: ['avyaktaart555@gmail.com'],
     },
     {
       icon: Clock,
@@ -82,14 +91,31 @@ const ContactPage: React.FC = () => {
   ];
 
   return (
-    <div className="bg-background min-h-screen">
+    <div id='contact' className="bg-background min-h-screen">
       
       {/* Hero Section */}
-      <section className="bg-primary-heading py-24 border-b border-accent/30">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <span className="text-accent font-bold tracking-[0.3em] uppercase text-xs mb-4 block">Get In Touch</span>
-          <h1 className="text-4xl md:text-6xl font-serif text-white mb-6 tracking-tight">Contact Us</h1>
-          <p className="text-lg text-secondary-text max-w-2xl mx-auto leading-relaxed font-light">
+      <section className="relative h-[60vh] flex items-center justify-center bg-primary-heading text-white overflow-hidden">
+        {/* Background Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source
+            src="https://mediumaquamarine-quetzal-462306.hostingersite.com//f05892df31e16a189ab2b5afa0fa7d91.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+        
+        {/* Content Overlay */}
+        <div className="relative z-10 text-center px-4">
+          <h1 className="text-5xl md:text-7xl font-serif mb-4 text-white">
+            Get In <span className="text-[#E67E22]"> Touch</span>
+          </h1>
+          <p className="text-xl md:text-2xl font-light max-w-2xl mx-auto italic text-white/90">
             Whether you have a custom request or an inquiry about our artisanal collection, our expert team is ready to assist you.
           </p>
         </div>
@@ -210,7 +236,7 @@ const ContactPage: React.FC = () => {
                   </p>
                 )}
                 {status.type === 'error' && (
-                  <p className="text-center text-secondary-accent text-xs font-bold tracking-widest uppercase mt-4">
+                  <p className="text-center text-red-500 text-xs font-bold tracking-widest uppercase mt-4">
                     {status.text}
                   </p>
                 )}
@@ -224,7 +250,7 @@ const ContactPage: React.FC = () => {
       <section className="w-full h-[450px] grayscale hover:grayscale-0 transition-all duration-700 ease-in-out border-t border-border-divider/50 shadow-inner">
         <iframe
           title="Store Location"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.2638848135!2d73.7634458751926!3d18.562137682540053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b992167d4f9b%3A0x74f63c6316717a02!2sThergaon%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3788.136437343603!2d73.8447883!3d18.2941014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc293f0b0000001%3A0xc0688a4a58145217!2sAvyact%20Arts!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
           width="100%"
           height="100%"
           style={{ border: 0 }}
